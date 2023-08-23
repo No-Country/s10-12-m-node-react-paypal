@@ -17,9 +17,11 @@ export default function RootLayout({ children }) {
 
       <body className={inter.className}>
         <NavBar/>
-      <main>  
+      
+      <main className='h-full' >  
       {children}
       </main>
+      
       <FooterComp/>
       
       </body>

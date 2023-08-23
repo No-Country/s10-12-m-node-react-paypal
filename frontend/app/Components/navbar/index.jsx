@@ -5,7 +5,9 @@ export function NavBar() {
   return (
     <div className="bg-Morado/50 w-full h-24 flex items-center ">
       <div className="basis-1/3 place-content-center p-12">
+        <Link href={"/"}>
         <Image src="/logos/Logo-CPweb.svg" width={255.64} height={46} />
+        </Link>
       </div>
       <div className="basis-1/3 space-x-10 text-base place-content-center">
         <a src="/pages/index.js">Sobre nosotros</a>
