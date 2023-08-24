@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
       
       <main className='h-full' >  
       {children}
+      
       </main>
       
       <FooterComp/>
