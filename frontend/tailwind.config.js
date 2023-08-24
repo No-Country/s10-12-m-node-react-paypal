@@ -23,6 +23,9 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          // LadingPage
+          'InicioPagePng': 'url(https://res.cloudinary.com/dhb9rdaoc/image/upload/v1692845885/byhioqiqlrdrjv7mmhdi.jpg)',
+          'AboutUsPng': 'url(https://res.cloudinary.com/dhb9rdaoc/image/upload/v1692846188/bvggzs6850dkbzjuazh1.jpg)',
       },
       colors: {
 

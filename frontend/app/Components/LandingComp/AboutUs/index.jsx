@@ -7,7 +7,7 @@ export default function AboutUsComp() {
     <section className="AboutUs w-full h-[560.46px]  border-2 flex justify-center items-center bg-Morado/R200">
     <div className=" flex justify-center items-center m-auto "> 
 <div>
-    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-[590px] h-[400.46px] rounded-md shadow-md" />
+    <img src="https://res.cloudinary.com/dhb9rdaoc/image/upload/v1692846188/bvggzs6850dkbzjuazh1.jpg" alt=""  className="w-[590px] h-[400.46px] rounded-md shadow-md"/>
 </div>
 <article className="ml-4 flex flex-col justify-center items-start h-full">
     <h2 className="text-Azul/800 text-5xl">Sobre nosotros</h2>

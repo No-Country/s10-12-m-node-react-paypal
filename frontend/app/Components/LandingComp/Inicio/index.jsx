@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function InicioComp() {
   return(
-    <section className="Inicio w-full  h-[665px]   bg-[url('https://img.freepik.com/fotos-premium/fondo-morado-fondo-azul-que-dice-te-amo_873925-17393.jpg')] bg-cover bg-no-repeat   flex flex-col justify-center  px-10 ">
+    <section className="Inicio w-full  h-[665px]   bg-InicioPagePng bg-cover   flex flex-col justify-center  px-10 ">
     <div className="w-[488px]"> 
 <h1 className="font-bold text-6xl leading-[4.9rem] capitalize text-Grises/50 ">countrypay</h1>  
 <p className="text-2xl text-Grises/50 my-6 ">Tu forma segura y sencilla de transferir dinero</p>
