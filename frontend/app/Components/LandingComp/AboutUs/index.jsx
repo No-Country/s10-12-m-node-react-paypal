@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function AboutUsComp() {
   return(
-    <section className="AboutUs w-full h-[560.46px]  border-2 flex justify-center items-center bg-Morado/R200">
+    <section id="about" className="AboutUs w-full h-[560.46px]  border-2 flex justify-center items-center bg-Morado/R200">
     <div className=" flex justify-center items-center m-auto "> 
 <div>
     <img src="https://res.cloudinary.com/dhb9rdaoc/image/upload/v1692846188/bvggzs6850dkbzjuazh1.jpg" alt=""  className="w-[590px] h-[400.46px] rounded-md shadow-md"/>

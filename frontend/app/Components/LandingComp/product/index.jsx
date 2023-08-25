@@ -2,7 +2,7 @@
 export default function DirectionPage() {
 
     return(
-      <section className="AboutUs w-full h-full p-10 bg-Morado/100 border-2 flex justify-center items-center ">
+      <section className="AboutUs w-full h-full p-10 bg-Morado/100 border-2 flex justify-center items-center " id="caracteristicas">
       <div className=" flex justify-center items-center m-auto "> 
 
   <article className="ml-4 flex flex-col justify-center items-center h-full">
