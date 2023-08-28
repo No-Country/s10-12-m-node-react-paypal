@@ -33,7 +33,7 @@ export function FooterComp() {
       <div className="w-full flex justify-around items-center">
         <div className="xl:w-1/3 w-full  p-0 xl:p-12">
           <Link href={"/"}>
-            <LogoPortalProps className="w-[200px] h-2 border-2"   />
+            <LogoPortalProps className="w-2"   />
           </Link>
         </div>
         <div className="w-full">

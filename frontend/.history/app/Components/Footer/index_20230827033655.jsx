@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
 import { BiLogoInstagram, BiLogoLinkedinSquare } from "react-icons/bi";
-import LogoPortalProps from "@/public/logos/Logo-CPweb";
 
 const FOOTERLINKS = [
   {
@@ -31,9 +30,9 @@ export function FooterComp() {
   return (
     <div className="w-full h-full relative bottom-0">
       <div className="w-full flex justify-around items-center">
-        <div className="xl:w-1/3 w-full  p-0 xl:p-12">
+        <div className="xl:w-1/3 w-full xl:p-12">
           <Link href={"/"}>
-            <LogoPortalProps className="w-[200px] h-2 border-2"   />
+            <Image alt="contry-pay" src="/logos/Logo-CPweb.svg" width={255.64} height={46} />
           </Link>
         </div>
         <div className="w-full">
