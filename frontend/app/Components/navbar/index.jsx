@@ -22,10 +22,10 @@ export function NavBar(){
                 <div className=" w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-center lg:w-1/3   ">   
                     <ul className="flex space-x-10">
                         <li> 
-                            <Link href="#caracteristicas"onClick={()=> setNavbar(!navbar)}>Características</Link>
+                            <Link href="#caracteristicas">Características</Link>
                         </li>
                         <li>
-                            <Link href="#about" onClick={()=> setNavbar(!navbar)}>Sobre nosotros</Link>   
+                            <Link href="#about">Sobre nosotros</Link>   
                         </li>
                     </ul>
                 </div>
@@ -36,16 +36,36 @@ export function NavBar(){
                     </button>
                 </div>
 
+                <div id="menu" className={` ${
+                navbar ? 'p-12 block' : 'hidden'
+              } absolute z-50 top-10 right-2 transform translate-x-1 border-2 rounded-md p-8  bg-Grises/100 lg:hidden`}>
+                    <ul className="text-Grises/500 text-base font-semibold">
+                        <li className="hover:bg-Grises/200 hover:text-Morado/700 h-1/3 w-full p-2">
+                            <Link href={"/"} onClick={()=> setNavbar(!navbar)}>Home</Link>
+                        </li>
+                        <li className="hover:bg-Grises/200 hover:text-Morado/700 h-1/3 w-full p-2">
+                            <Link href="#caracteristicas" onClick={()=> setNavbar(!navbar)}>Características</Link>
+                        </li>
+                        <li className="hover:bg-Grises/200 hover:text-Morado/700 h-1/3 w-full p-2">
+                            <Link href="#about" onClick={()=> setNavbar(!navbar)}>Sobre nosotros</Link>
+                        </li>
+                    </ul>
+                </div>
+
                 <div className="p-4 w-1/3 h-full flex justify-end items-center lg:invisible visibility:visible lg:w-1">
                     <button className=" w-6 h-4 " onClick={()=> setNavbar(!navbar)}>
                         {navbar? (
+                            <>
                             <HiOutlineX />
+                            </>
                             ) : (
                             <FaBars />
                             )
 	                     }
                     </button>
                 </div>
+
+                
                 
 
             </nav>
