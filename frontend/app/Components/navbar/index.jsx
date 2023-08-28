@@ -5,6 +5,7 @@ import { useState} from "react"
 import { FaBars} from "react-icons/fa"
 import { HiOutlineX } from "react-icons/hi"
 
+
 export function NavBar(){
     const [navbar, setNavbar] = useState(false);
 
@@ -22,10 +23,10 @@ export function NavBar(){
                 <div className=" w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-center lg:w-1/3   ">   
                     <ul className="flex space-x-10">
                         <li> 
-                            <Link href="#caracteristicas">Características</Link>
+                            <Link href="/#caracteristicas">Características</Link>
                         </li>
                         <li>
-                            <Link href="#about">Sobre nosotros</Link>   
+                            <Link href="/#about">Sobre nosotros</Link>   
                         </li>
                     </ul>
                 </div>
@@ -73,5 +74,3 @@ export function NavBar(){
     )
 }
 
-{/* <Link href="#caracteristicas"onClick={()=> setNavbar(!navbar)}>Características</Link>
-                    <Link href="#about" onClick={()=> setNavbar(!navbar)}>Sobre nosotros</Link> */}

@@ -1,16 +1,21 @@
 "use client";
-import React from "react";
+import React, {useContext } from "react";
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import leftImage from "../../public/images/rectangle.jpg";
 import PageTitle from "../Components/FormComp/Title";
 import SubTitle from "../Components/FormComp/SubTitle";
 import FormInput from "../Components/FormComp/Input";
 import Button from "../Components/Button";
+import {AuthContext} from "../context/auth-context";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import handleLogin from "./loginService";
 
+
 const LoginPage = () => {
+  const router = useRouter();
+  const authContext = useContext(AuthContext);
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
       .email("Correo electrónico no válido")
@@ -19,7 +24,7 @@ const LoginPage = () => {
   });
 
   const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
-    await handleLogin(values, setSubmitting, setFieldError);
+    await handleLogin(values, setSubmitting, setFieldError, authContext, router);
   };
 
   return (
@@ -89,7 +94,7 @@ const LoginPage = () => {
           <SubTitle
             subTitleText="¿No tienes una cuenta aún?"
             linkText="Regístrate"
-            linkUrl="/"
+            linkUrl="/Signup"
           />
         </Form>
       </Formik>
