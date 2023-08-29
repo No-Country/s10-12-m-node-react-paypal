@@ -14,8 +14,8 @@ async function handleLogin(values, setSubmitting, setFieldError, authContext, ro
       };
   
       const response = await fetch('https://backend-s10-12-m-paypal.onrender.com/api/v1/users/login', requestOptions);
-      const data = await response.json()
-      console.log(data)
+      // const data = await response.json()
+      // console.log(data)
 
       if (response.status === 200) {
         const data = await response.json();
