@@ -27,6 +27,7 @@ const LoginPage = () => {
     await handleLogin(values, setSubmitting, setFieldError, authContext, router);
   };
 
+  console.log("user autenticado?", authContext.isUserAuthenticated())
   return (
     <div className="flex flex-col md:flex-row h-screen">
       {/* Mitad Izquierda */}

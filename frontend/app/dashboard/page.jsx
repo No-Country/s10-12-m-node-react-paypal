@@ -8,15 +8,10 @@ import MovimientComp from '../Components/DashboadComp/Inicio/MovimientoRecientes
 function DashboardPage() {
   const router = useRouter();
   const authContext = useContext(AuthContext);
-  // const { user } = useaAuth(); // Obtén el estado de autenticación desde tu contexto o hook
-
-  // useEffect(() => {
-  //   if (!user) {
-  //     router.push('/login'); // Redirige a la página de inicio de sesión si el usuario no está autenticado
-  //   }
-  // }, [user]);
+  
   useEffect(() => {
     // checks if the user is authenticated
+console.log("esta aut", authContext.isUserAuthenticated())
     authContext.isUserAuthenticated()
       ? router.push("/dashboard")
       : router.push("/loginPage");

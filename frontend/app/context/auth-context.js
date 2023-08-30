@@ -1,28 +1,29 @@
 "use client";
-import React from "react";
+import React, {useEffect} from "react";
 const AuthContext = React.createContext();
 const { Provider } = AuthContext;
 
 const AuthProvider = ({ children }) => {
-  const [authState, setAuthState] = React.useState({
-    token: "",
-  });
 
   const setUserAuthInfo = (data) => {
     const token = data.token;
     localStorage.setItem("token", token);
-
-    setAuthState({
-      token,
-    });
   };
 
-  const isUserAuthenticated = () => !!authState.token;
+  const isUserAuthenticated = () => {
+    if (typeof window !== 'undefined') {
+      
+      const storedToken = localStorage.getItem("token");
+      // Devuelve true si hay un token válido almacenado, de lo contrario, false
+      return !!storedToken 
+    }
+    return false;
+  };
 
+  
   return (
     <Provider
       value={{
-        authState,
         setAuthState: (userAuthInfo) => setUserAuthInfo(userAuthInfo),
         isUserAuthenticated,
       }}

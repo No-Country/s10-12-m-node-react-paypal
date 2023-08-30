@@ -38,7 +38,7 @@ export function NavBar () {
                                         <Link href="/">Cartera</Link>
                                     </li>
                                     <li>
-                                        <Link href="#movimientos">Movimientos</Link>
+                                        <Link href="/dashboard/movimientos">Movimientos</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -53,7 +53,7 @@ export function NavBar () {
                                             <Link href="" onClick={()=> setNavbar(!navbar)}>Cartera</Link>
                                         </li>
                                         <li className="hover:bg-Grises/200 hover:text-Morado/700 h-1/3 w-full p-2">
-                                            <Link href="#movimientos" onClick={()=> setNavbar(!navbar)}>Movimientos</Link>
+                                            <Link href="/dashboard/movimientos" onClick={()=> setNavbar(!navbar)}>Movimientos</Link>
                                         </li>
                                     </ul>
                                 </div>
