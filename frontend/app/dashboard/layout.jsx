@@ -15,6 +15,7 @@ function LayoutDashoard({children}) {
             <title>{metadata.title}</title>
             <meta name="description" content={metadata.description} />
         </head>
+
         <main className='bg-Morado/R200'>
         {children}
 
