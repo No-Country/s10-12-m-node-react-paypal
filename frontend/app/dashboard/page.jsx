@@ -1,10 +1,13 @@
-import React from 'react'
+'use client'
+import React, {useContext, useEffect} from 'react'
 import ButtonDashCompIn from '../Components/DashboadComp/Inicio/button'
 import { useRouter } from 'next/navigation';
+import { AuthContext } from "../context/auth-context";
 import MovimientComp from '../Components/DashboadComp/Inicio/MovimientoRecientes';
 
 function DashboardPage() {
-  // const router = React.useRouter();
+  const router = useRouter();
+  const authContext = useContext(AuthContext);
   // const { user } = useaAuth(); // Obtén el estado de autenticación desde tu contexto o hook
 
   // useEffect(() => {
@@ -12,6 +15,13 @@ function DashboardPage() {
   //     router.push('/login'); // Redirige a la página de inicio de sesión si el usuario no está autenticado
   //   }
   // }, [user]);
+  useEffect(() => {
+    // checks if the user is authenticated
+    authContext.isUserAuthenticated()
+      ? router.push("/dashboard")
+      : router.push("/loginPage");
+  }, []);
+
   return (
     <div className='flex justify-center items-center   h-fit'>
         <div className=' border-rose-200 grid grid-rows-2  gap-4 my-10  '>
@@ -29,7 +39,7 @@ function DashboardPage() {
                 <ButtonDashCompIn/>
                 </div>
                 </div>
-              <MovimientComp/>
+                <MovimientComp/>
         </div>
     </div>
   )

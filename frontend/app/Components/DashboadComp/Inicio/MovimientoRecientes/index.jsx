@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import Link from 'next/link';
 
 const MOVIMENTAPI = [{
     id: 1,
@@ -56,7 +57,7 @@ function MovimientComp() {
         
      </div>
      
-     <p className='leading-5 text-Azul/500 first-letter:uppercase cursor-pointer hover:underline'>mostrar todos</p>
+     <Link href='/dashboard/movimientos' className='leading-5 text-Azul/500 first-letter:uppercase cursor-pointer hover:underline'>mostrar todos</Link>
      </div>
  </div>                       
                   
