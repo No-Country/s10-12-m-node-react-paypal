@@ -29,7 +29,7 @@ function DashboardPage() {
                 <ButtonDashCompIn/>
                 </div>
                 </div>
-              <MovimientComp/>
+              <MovimientComp id="movimientos"/>
         </div>
     </div>
   )
