@@ -26,7 +26,7 @@ export  function CardComponent() {
     return(
 <>
         {CARDS.map(({id, title, description}) => (
-            <div className="w-[280px] h-[320px] rounded-[20px] p-[24px] opacity-70  hover:opacity-100 duration-500 bg-Grises/100 shadow-lg" key={id}>
+            <div className="md:w-[280px] w-full md:h-[320px] h-fit rounded-[20px] md:p-[24px] p-[30px]   duration-500  bg-Grises/100 shadow-lg" key={id}>
             <div className="h-fit w-full flex justify-center items-center">
                 <span className="bg-Morado/700 w-[64px] h-[64px] rounded-full"></span>
             </div>
