@@ -29,9 +29,9 @@ const LoginPage = () => {
 
   console.log("user autenticado?", authContext.isUserAuthenticated())
   return (
-    <div className="flex flex-col md:flex-row h-screen">
+    <div className="min-h-screen w-full flex flex-col md:flex-row">
       {/* Mitad Izquierda */}
-      <div className="md:w-1/2">
+      <div className="w-full md:w-1/2">
         <Image
           src={leftImage}
           alt="Imagen"
@@ -45,7 +45,7 @@ const LoginPage = () => {
         validationSchema={LoginSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="md:w-1/2 bg-Morado/100 flex flex-col items-center p-8">
+        <Form className="w-full md:w-1/2 bg-Morado/100 flex flex-col items-center p-8">
           <PageTitle title={"Inicia sesión"} />
 
           <div className="bg-Grises/50 p-7 rounded-lg w-login shadow-lg mt-16">
