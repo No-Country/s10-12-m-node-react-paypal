@@ -32,7 +32,7 @@ module.exports = {
         // COLORES PRINCIPALES
         // Azul
         'Azul/50': '#EEF2FF',
-        'Azul/100': '#EOE7FF',
+        'Azul/100': '#E0E7FF',
         'Azul/R200': '#c7d2fe',
         'Azul/300': '#a5b4fc',
         'Azul/400': '#818cf8',

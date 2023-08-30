@@ -39,6 +39,7 @@ export function NavBar  ({ loggedIn }) {
 
                 <div className="hidden lg:block my-auto mx-auto  justify-end items-center ">
                     <button className="bg-Morado/700 lg:w-32 lg:h-12 rounded-md text-white whitespace-nowrap text-center ">
+                        
                         Iniciar sesión
                     </button>
                 </div>

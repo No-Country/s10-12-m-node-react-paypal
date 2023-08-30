@@ -4,14 +4,14 @@ import React from 'react'
 const MOVIMENTAPI = [{
     id: 1,
     nombre: "maria alejandra suarez",
-    date: Date(),
+    date: "20 ago",
     success: "Dinero Enviado",
     money: "20.00"
 },
 {
     id: 2,
     nombre: "Jose Juan Viñeda",
-    date: Date(),
+    date: "20 ago",
     success: "Dinero recibido",
     money: "20.00"
 }
@@ -41,8 +41,8 @@ function MovimientComp() {
               <div className=' flex flex-col justify-start items-start tracking-wide w-1/2'>
      
               <h4 className='capitalize font-bold  text-base '> {nombre}</h4>
-              <div className='flex justify-between items-center w-full '>
-              <span>{date}</span> <ul className='ml-8'><li className='list-disc'>{success}</li></ul>
+              <div className='flex justify-left items-center w-full '>
+              <span>{date}</span> <ul className='ml-6'><li className='list-disc'>{success}</li></ul>
      
               </div>
               </div>

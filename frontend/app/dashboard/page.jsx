@@ -1,7 +1,7 @@
 import React from 'react'
 import ButtonDashCompIn from '../Components/DashboadComp/Inicio/button'
 import { useRouter } from 'next/navigation';
-import MovimientComp from '../Components/LandingComp/Inicio/MovimientoRecientes';
+import MovimientComp from '../Components/DashboadComp/Inicio/MovimientoRecientes';
 
 function DashboardPage() {
   // const router = React.useRouter();
