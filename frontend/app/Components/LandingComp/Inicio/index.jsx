@@ -1,12 +1,12 @@
-'use client'
-import { useContext } from "react";
+
+
 import Link from "next/link";
-import { AuthContext } from "../../../context/auth-context";
+import AuthTetiInicio from "./AuthTeti";
+
 
 export default function InicioComp() {
   
-  const authContext = useContext(AuthContext);
-  const isUserAuthenticated = authContext.isUserAuthenticated();
+
   return (
     <section className="Inicio w-full  h-[665px]   md:bg-InicioPagePng bg-[#38353D] bg-cover  bg-center  flex md:flex-col justify-center  items-left  md:px-10  ">
       <div className="md:w-[488px] w-full relative">
@@ -21,20 +21,7 @@ export default function InicioComp() {
             Tu forma segura y sencilla de transferir dinero
           </p>
 
-          <div className=" flex justify-start items-center w-full">
-            <Link
-              href={"/Signup"}
-              className={isUserAuthenticated ?   'hidden' : "w-[143px] h-[48px] rounded-md flex justify-center items-center mr-2 text-Grises/100 bg-Morado/700 hover:bg-Morado/800 duration-300  font-semibold"}
-            >
-              Registrarme
-            </Link>
-            <Link
-              href={isUserAuthenticated ? '/dashboard' : '/LoginPage'}
-              className= 'w-[143px] h-[48px] rounded-md flex justify-center capitalize items-center text-Grises/100 hover:bg-Azul/100 hover:text-Azul/900 duration-300 font-semibold'
-            >
-            {isUserAuthenticated ?  'cerrar sesion' : 'iniciar sesion'}
-            </Link>
-          </div>
+        <AuthTetiInicio/>
         </div>
       </div>
     </section>

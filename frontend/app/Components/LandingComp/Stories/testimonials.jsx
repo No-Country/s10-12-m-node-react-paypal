@@ -1,3 +1,4 @@
+'use client'
 import {FiChevronLeft, FiChevronRight} from 'react-icons/fi'
 
 const Card = ({ name, age, text }) => {
