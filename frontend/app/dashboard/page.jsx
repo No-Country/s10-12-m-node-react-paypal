@@ -34,7 +34,7 @@ console.log("esta aut", authContext.isUserAuthenticated())
                 <ButtonDashCompIn/>
                 </div>
                 </div>
-              <MovimientComp id="movimientos"/>
+              <MovimientComp/>
         </div>
     </div>
   )
