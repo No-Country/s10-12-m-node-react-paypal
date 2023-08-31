@@ -13,7 +13,6 @@ export function NavBar () {
     const authContext = useContext(AuthContext);
     const isUserAuthenticated = authContext.isUserAuthenticated();
 
-    //set navbar del boton
     const [navbar, setNavbar] = useState(false);
 
     return(
@@ -26,19 +25,19 @@ export function NavBar () {
                         <>
                             <div className=" flex w-1/3 h-full items-center justify-center lg:w-1/3 m-0 ml-2  ">
                                 <Link href={"/"}>
-                                    <LogoPortalProps src="/logos/Logo-CPweb.svg" layout="responsive" className="w-24 h-4 p-4 ml-2 lg:w-64 lg:h-12"/>
+                                    <LogoPortalProps src="/logos/Logo-CPweb.svg"  width={256} height={48} layout="responsive" className=" p-1 ml-2 lg:w-64 lg:h-12"/>
                                 </Link>
                             </div>
                             <div className=" w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-end lg:w-1/2">
                                 <ul className="flex space-x-10">
                                     <li>
-                                        <Link href="/">Home</Link>
+                                        <Link href="/dashboard">Home</Link>
                                     </li>
                                     <li>
-                                        <Link href="/">Cartera</Link>
+                                        <Link href="./dashboard/wallet">Cartera</Link>
                                     </li>
                                     <li>
-                                        <Link href="#movimientos">Movimientos</Link>
+                                        <Link href="/dashboard/movimientos">Movimientos</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -47,13 +46,13 @@ export function NavBar () {
                                     navbar ? 'p-12 block' : 'hidden'} absolute z-50 top-10 right-2 transform translate-x-1 border-2 rounded-md p-8  bg-Grises/100 lg:hidden`}>
                                     <ul className="text-Grises/500 text-base font-semibold">
                                         <li className="hover:bg-Grises/200 hover:text-Morado/700 h-1/3 w-full p-2">
-                                            <Link href={"/"} onClick={()=> setNavbar(!navbar)}>Home</Link>
+                                            <Link href={"/dashboard"} onClick={()=> setNavbar(!navbar)}>Home</Link>
                                         </li>
                                         <li className="hover:bg-Grises/200 hover:text-Morado/700 h-1/3 w-full p-2">
-                                            <Link href="" onClick={()=> setNavbar(!navbar)}>Cartera</Link>
+                                            <Link href="./dashboard/wallet" onClick={()=> setNavbar(!navbar)}>Cartera</Link>
                                         </li>
                                         <li className="hover:bg-Grises/200 hover:text-Morado/700 h-1/3 w-full p-2">
-                                            <Link href="#movimientos" onClick={()=> setNavbar(!navbar)}>Movimientos</Link>
+                                            <Link href="/dashboard/movimientos" onClick={()=> setNavbar(!navbar)}>Movimientos</Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -75,7 +74,7 @@ export function NavBar () {
                         ) : ( <>
                                 <div className=" flex w-1/3 h-full items-center justify-center lg:w-1/3 m-0 ml-2  ">
                                     <Link href={"/"}>
-                                        <LogoPortalProps src="/logos/Logo-CPweb.svg" layout="responsive" className="w-24 h-4 p-4 ml-2 lg:w-64 lg:h-12"/>
+                                        <LogoPortalProps src="/logos/Logo-CPweb.svg" className="w-24 h-full p-1 ml-2 lg:w-64 lg:h-12"/>
                                     </Link>
                                 </div>
                                 <div className=" w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-center lg:w-1/3">
