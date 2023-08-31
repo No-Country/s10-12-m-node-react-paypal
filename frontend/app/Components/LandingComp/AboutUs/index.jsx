@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 
@@ -7,7 +8,7 @@ export default function AboutUsComp() {
     <section id="about" className="AboutUs w-full h-fit py-10 border-2 flex justify-center items-center  bg-Morado/R200">
     <div className=" flex justify-center items-center m-auto xl:flex-row flex-col "> 
 <div className="flex justify-center items-center">
-    <img src="https://res.cloudinary.com/dhb9rdaoc/image/upload/v1692846188/bvggzs6850dkbzjuazh1.jpg" alt=""  className="lg:w-[590px] w-4/5  lg:h-[400.46px] h-full  rounded-md shadow-md"/>
+    <Image src="https://res.cloudinary.com/dhb9rdaoc/image/upload/v1692846188/bvggzs6850dkbzjuazh1.jpg" alt="" width={500} height={500}  className="lg:w-[590px] w-4/5  lg:h-[400.46px] h-full  rounded-md shadow-md"/>
 </div>
 <article className="ml-4 flex flex-col justify-center items-center  h-full ">
     <h2 className="text-Azul/800 lg:text-5xl text-4xl xl:text-left text-center w-full md:mt-0 mt-6 ">Sobre nosotros</h2>

@@ -19,6 +19,7 @@ async function handleSignup(values, setSubmitting, setFieldError) {
 
         if (response.status === 200) {
             const data = await response.json();
+            console.log(data)
             console.log('Usuario registrado exitosamente:', data);
 
             setSubmitting(false);
@@ -26,6 +27,9 @@ async function handleSignup(values, setSubmitting, setFieldError) {
             console.error('Error al registrarse: ', response.statusText);
             setFieldError('name', 'Campo repetido y/o invalido');
             setFieldError('lastName', 'Campo repetido y/o invalido');
+            setFieldError('password', 'Campo repetido y/o invalido');
+            setFieldError('email', 'Campo repetido y/o invalido');
+            setFieldError('phone', 'Campo repetido y/o invalido');
             setSubmitting(false);
         }
     } catch (error) {
