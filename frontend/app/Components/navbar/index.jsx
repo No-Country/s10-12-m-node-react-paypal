@@ -34,7 +34,7 @@ export function NavBar () {
                                         <Link href="/dashboard">Home</Link>
                                     </li>
                                     <li>
-                                        <Link href="./dashboard/wallet">Cartera</Link>
+                                        <Link href="/dashboard/wallet">Cartera</Link>
                                     </li>
                                     <li>
                                         <Link href="/dashboard/movimientos">Movimientos</Link>
@@ -49,7 +49,7 @@ export function NavBar () {
                                             <Link href={"/dashboard"} onClick={()=> setNavbar(!navbar)}>Home</Link>
                                         </li>
                                         <li className="hover:bg-Grises/200 hover:text-Morado/700 h-1/3 w-full p-2">
-                                            <Link href="./dashboard/wallet" onClick={()=> setNavbar(!navbar)}>Cartera</Link>
+                                            <Link href="/dashboard/wallet" onClick={()=> setNavbar(!navbar)}>Cartera</Link>
                                         </li>
                                         <li className="hover:bg-Grises/200 hover:text-Morado/700 h-1/3 w-full p-2">
                                             <Link href="/dashboard/movimientos" onClick={()=> setNavbar(!navbar)}>Movimientos</Link>

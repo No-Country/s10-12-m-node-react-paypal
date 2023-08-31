@@ -6,7 +6,7 @@ function ButtonDashCompIn() {
   return (
     <div className='w-full h-14 border-2'>
         <button className='bg-Morado/700 mx-2 w-[17.5rem] h-14 rounded-md shadow-lg '>
-        <Link href={"/dashboard"} className=' hover:opacity-50 duration-300 uppercase text-white '>
+        <Link href={"/dashboard/abonar"} className=' hover:opacity-50 duration-300 uppercase text-white '>
             Cargar
         </Link >
         </button>
