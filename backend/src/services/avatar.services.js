@@ -1,7 +1,9 @@
 const db = require('../models/index');
 const AppError = require('../helpers/AppError');
 const cloudinary = require('../config/cloudinary').v2;
-const defaultValue = '/backend/public/media/image/avatar.png'
+const defaultValue = '/backend/public/media/image/avatar.png';
+const fs = require('fs');
+const path = require('path');
 class AvatarServices {
     async updateAvatar ({user_id, newAvatarFile, next}){
         try {
@@ -21,9 +23,26 @@ class AvatarServices {
                 {avatar:avatarUrl},
                 {where: {id:user_id}}
             )
+            this.deleteLocalImages()
             return updateUser;
         } catch (error) {
             throw new Error(error);
+        }
+    }
+
+    async deleteLocalImages() {
+        const uploadsFolder = path.join(__dirname, '../../public/uploads');
+        
+        try {
+            const files = await fs.promises.readdir(uploadsFolder);
+            
+            for (const file of files) {
+                const filePath = path.join(uploadsFolder, file);
+                await fs.promises.unlink(filePath);
+                console.log('File deleted:', filePath);
+            }
+        } catch (error) {
+            console.error('Error deleting files:', error);
         }
     }
 

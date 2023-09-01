@@ -9,6 +9,8 @@ const AppError = require('./helpers/AppError');
 const bodyParser = require('body-parser');
 const globalErrorHandle = require('./controllers/error.controller');
 const uploadDirectory = './public/uploads';
+const routerApi = require('../src/routes/index')
+
 if (!fs.existsSync(uploadDirectory)) {
     fs.mkdirSync(uploadDirectory, { recursive: true });
 }
@@ -30,20 +32,20 @@ app.use(
 app.use(helmet());
 app.use(hpp());
 
-app.use('/api/v1', limiter);
-// app.use('/api/v1/users', userRouter);
-// require('./routes')(app);
+app.use('/api', limiter); //Ver esto
 
-const userRoute = require('./routes/user.routes');
-const cardRoute = require('./routes/card.routes');
-app.use('/api/v1/users', userRoute);
-app.use('/api/v1/cards', cardRoute);
+// levanto las rutas 
+app.use('/api',routerApi)
+
 
 app.all('*', (req, res, next) => {
     return next(
         new AppError(`Cant find ${req.originalUrl} on this server!`, 404),
     );
 });
+
+
+
 // app.use('/public', express.static('/public'));
 app.use('/public', express.static(path.join(__dirname + '/public')));
 app.use(globalErrorHandle);

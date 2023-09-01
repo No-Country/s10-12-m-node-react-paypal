@@ -4,6 +4,9 @@ const userServices = new UserServices();
 
 exports.createUser = catchAsync(async (req, res, next) => {
     const body = req.body;
+    console.log(body)
+    //body.id = uuidv4();
+    console.log("2")
     const { newUser, token } = await userServices.createUser({ body, next });
     res.status(200).json({
         status: 'success',

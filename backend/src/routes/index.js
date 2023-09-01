@@ -1,49 +1,24 @@
-// const userController = require('../controllers/user.controller');
-// const { createCard } = require('../controllers/card.controller');
-// const {
-//     updateAvatar,
-//     deleteAvatar,
-// } = require('../controllers/avatar.controller');
-// const avatarUpload = require('../middlewares/multer');
-// const {
-//     loginValidation,
-//     createUserValidation,
-// } = require('../middlewares/validated.middleware');
-// const {
-//     createCardValidation,
-//     AvatarValidation,
-// } = require('../middlewares/validated.middleware');
-// const {
-//     protectRoute,
-//     verifyAccountOwner,
-// } = require('../middlewares/auth.middleware');
-// module.exports = (app) => {
-//     app.get('/api', (req, res) => {
-//         res.status(200).send({
-//             message: 'Welcome to the API',
-//         });
-//     });
+const { Router } = require('express')
+const UserRouter = require('./user.routes')
+const CardRouter = require('./card.routes')
+const SessionRouter = require('./session.routes')
+const AvatarRouter = require('./avatar.router')
 
-//     //User login
-//     app.post('/create', createUserValidation, userController.createUser);
+const routerApi = Router()
 
-//     app.post('/login', loginValidation, userController.login);
+//rutas de user
+routerApi.use('/user', UserRouter)
 
-//     //Avatar
-//     app.put('/avatar/:id', avatarUpload, updateAvatar);
-//     app.put('/avatar/:id/delete', deleteAvatar);
+//rutas de cards
+routerApi.use('/card', CardRouter)
 
-//     //Card
+//rutas de sessions
+routerApi.use('/sessions', SessionRouter)
 
-//     app.post(
-//         '/create/:id/',
-//         createCardValidation,
-//         protectRoute,
-//         verifyAccountOwner,
-//         createCard,
-//     );
+//rutas de avatar
 
-//     //********** */
+routerApi.use('/avatar', AvatarRouter)
 
-//     //********** */
-// };
+
+
+module.exports = routerApi

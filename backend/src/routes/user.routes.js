@@ -12,3 +12,4 @@ router.post('/create', createUserValidation, userController.createUser);
 router.post('/login', loginValidation, userController.login);
 
 module.exports = router;
+

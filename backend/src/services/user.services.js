@@ -35,7 +35,7 @@ class UserServices {
 
     async findOneUser({ attributes, next }) {
         try {
-            console.log(attributes);
+            console.log(attributes)
             const user = await db.User.findOne({
                 where: attributes,
             });
@@ -51,6 +51,7 @@ class UserServices {
                 attributes: { email: body.email },
                 next,
             });
+            console.log('b')
             if (user) {
                 return next(new AppError(`User already exist`, 400));
             }
@@ -62,7 +63,7 @@ class UserServices {
 
             return { newUser, token };
         } catch (error) {
-            console.log(error, 'hola');
+            console.log(error, "hola")
             throw new Error(error);
         }
     }

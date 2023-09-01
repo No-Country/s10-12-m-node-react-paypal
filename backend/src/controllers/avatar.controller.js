@@ -14,6 +14,7 @@ exports.updateAvatar =catchAsync( async (req, res, next) => {
             user: updateUser,
         });
     });
+    
 
     exports.deleteAvatar = catchAsync(async (req, res, next) => {
         const user_id = req.params.id // id del usuario 
