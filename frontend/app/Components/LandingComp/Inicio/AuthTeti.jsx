@@ -16,7 +16,7 @@ function AuthTetiInicio() {
       Registrarme
     </Link>
     <Link
-      href={isUserAuthenticated ? '/dashboard' : '/LoginPage'}
+      href={isUserAuthenticated ? '/dashboard' : '/loginPage'}
       className= 'w-[143px] h-[48px] rounded-md flex justify-center capitalize items-center text-Grises/100 hover:bg-Azul/100 hover:text-Azul/900 duration-300 font-semibold'
    
    >

@@ -59,7 +59,7 @@ function FormSinIn() {
 <SubTitle
         subTitleText="¿Ya tienes una cuenta?"
         linkText="Iniciar sesion"
-        linkUrl="/LoginPage"
+        linkUrl="/loginPage"
       />
 </Form>
   </Formik>
