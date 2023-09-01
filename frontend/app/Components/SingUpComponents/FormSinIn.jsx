@@ -10,6 +10,7 @@ import * as Yup from "yup";
 import FirstView from './cards/FirstView';
 import SecondView from './cards/SecondView';
 import FormInput from '../FormComp/Input';
+import Button from '../Button';
 
 function FormSinIn() {
     const [ViewRegister, setViewRegister] = useState(true)
