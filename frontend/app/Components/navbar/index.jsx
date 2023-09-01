@@ -24,7 +24,7 @@ export function NavBar () {
                     {isUserAuthenticated ? ( 
                         <>
                             <div className=" flex w-1/3 h-full items-center justify-center lg:w-1/3 m-0 ml-2  ">
-                                <Link href={"/"}>
+                                <Link href={"/dashboard"}>
                                     <LogoPortalProps src="/logos/Logo-CPweb.svg"  width={256} height={48} layout="responsive" className=" p-1 ml-2 lg:w-64 lg:h-12"/>
                                 </Link>
                             </div>
@@ -34,7 +34,7 @@ export function NavBar () {
                                         <Link href="/dashboard">Home</Link>
                                     </li>
                                     <li>
-                                        <Link href="./dashboard/wallet">Cartera</Link>
+                                        <Link href="/dashboard/wallet">Cartera</Link>
                                     </li>
                                     <li>
                                         <Link href="/dashboard/movimientos">Movimientos</Link>
@@ -49,7 +49,7 @@ export function NavBar () {
                                             <Link href={"/dashboard"} onClick={()=> setNavbar(!navbar)}>Home</Link>
                                         </li>
                                         <li className="hover:bg-Grises/200 hover:text-Morado/700 h-1/3 w-full p-2">
-                                            <Link href="./dashboard/wallet" onClick={()=> setNavbar(!navbar)}>Cartera</Link>
+                                            <Link href="/dashboard/wallet" onClick={()=> setNavbar(!navbar)}>Cartera</Link>
                                         </li>
                                         <li className="hover:bg-Grises/200 hover:text-Morado/700 h-1/3 w-full p-2">
                                             <Link href="/dashboard/movimientos" onClick={()=> setNavbar(!navbar)}>Movimientos</Link>
@@ -88,7 +88,7 @@ export function NavBar () {
                                     </ul>
                                 </div>
                                 <div className="hidden lg:block my-auto mx-auto  justify-end items-center ">
-                                    <Link href={"/loginPage"}>
+                                    <Link href={"/LoginPage"}>
                                         <button className="bg-Morado/700 lg:w-32 lg:h-12 rounded-md text-white whitespace-nowrap text-center ">
                                         Iniciar sesión
                                         </button>

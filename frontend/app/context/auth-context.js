@@ -45,6 +45,7 @@ const AuthProvider = ({ children }) => {
         setAuthState: (userAuthInfo) => setUserAuthInfo(userAuthInfo),
         isUserAuthenticated,
       }}
+      
     >
       {children}
     </Provider>
