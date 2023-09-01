@@ -3,11 +3,13 @@ import React from 'react'
 import PageTitle from "../FormComp/Title";
 import SubTitle from "../FormComp/SubTitle";
 import { useState } from "react";
-import {  Form, Formik } from "formik";
+import {  Form, Formik, ErrorMessage, Field } from "formik";
 import handleSignup from "./data";
 import * as Yup from "yup";
+
 import FirstView from './cards/FirstView';
 import SecondView from './cards/SecondView';
+import FormInput from '../FormComp/Input';
 
 function FormSinIn() {
     const [ViewRegister, setViewRegister] = useState(true)
