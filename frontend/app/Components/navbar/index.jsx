@@ -23,12 +23,12 @@ export function NavBar () {
 
                     {isUserAuthenticated ? ( 
                         <>
-                            <div className=" flex w-1/3 h-full items-center justify-center lg:w-1/3 m-0 ml-2  ">
+                            <div id="logo" className=" flex w-1/3 h-full items-center justify-center lg:w-1/3 m-0 ml-2  ">
                                 <Link href={"/dashboard"}>
                                     <LogoPortalProps src="/logos/Logo-CPweb.svg"  width={256} height={48} layout="responsive" className=" p-1 ml-2 lg:w-64 lg:h-12"/>
                                 </Link>
                             </div>
-                            <div className=" w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-end lg:w-1/2">
+                            <div id="links" className=" w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-end lg:w-1/2">
                                 <ul className="flex space-x-10">
                                     <li>
                                         <Link href="/dashboard">Home</Link>
@@ -41,6 +41,12 @@ export function NavBar () {
                                     </li>
                                 </ul>
                             </div>
+                            <div id="avatar" className="invisible lg:visible flex w-1/3 h-full">
+                                <button  className="flex border w-14 h-14 bg-red-600">
+                                    y ahora?
+                                </button>
+                            </div>
+                            
 
                             <div id="menu" className={` ${ 
                                     navbar ? 'p-12 block' : 'hidden'} absolute z-50 top-10 right-2 transform translate-x-1 border-2 rounded-md p-8  bg-Grises/100 lg:hidden`}>
