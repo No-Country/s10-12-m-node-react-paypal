@@ -1,9 +1,11 @@
+'use client'
 import Image from "next/image";
 import React from "react";
 import Button from "../../Button";
 import Link from "next/link";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import WalletCardImg from "@/public/images/walletCard";
+import BackBtn from "@/app/Components/BackBtn";
 
 const WalletCard = ({ amount }) => {
   const handleTrans = () => {
@@ -11,8 +13,10 @@ const WalletCard = ({ amount }) => {
   };
 
   return (
-    <div className="flex flex-col w-3/4 md:w-1/2  bg-white rounded-xl pt-6  justify-center items-center shadow-gray-400 shadow-lg">
+    <div className="flex relative flex-col w-3/4 md:w-1/2  bg-white rounded-xl pt-6  justify-center items-center shadow-gray-400 shadow-lg">
+      <BackBtn />
       <div className="h-full py-10 ">
+        
         <h2 className="font-bold text-4xl text-Azul/900">Cartera</h2>
       </div>
       <div className="w-fit  relative">

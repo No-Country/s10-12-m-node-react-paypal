@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useContext, useEffect } from 'react'
 import MovimientComp from './MovimientoRecientes';
 import ButtonDashCompIn from './button';
+import BackBtn from "@/app/Components/BackBtn";
 
 function CompDashboardInicio() {
     const router = useRouter();
@@ -18,7 +19,8 @@ function CompDashboardInicio() {
     }, []);
   
     return (
-      <div className='flex  justify-center items-center w-full   h-full'>
+      <div className='flex  justify-center items-center w-full   h-full relative'>
+        <BackBtn ruta="/"/>
           <div className=' flex flex-col justify-evenly items-center h-full p-10 w-full '>
                   
                   <div className='bg-white  rounded-md xl:w-1/2 lg:w-2/3  w-fit p-6 lg:h-[28rem] md:h-[24rem]  shadow-lg grid grid-flow-row items-center justify-center '>

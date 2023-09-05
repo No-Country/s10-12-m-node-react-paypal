@@ -5,6 +5,7 @@ import ButtonsCtn from "@/app/Components/DashboadComp/Movimientos/Botones";
 import MovDetail from "@/app/Components/DashboadComp/Movimientos/MovDetail";
 import { useRouter } from 'next/navigation';
 import { AuthContext } from "../../context/auth-context";
+import BackBtn from "@/app/Components/BackBtn";
 
 
 function Movimientos() {
@@ -43,10 +44,11 @@ console.log("esta aut", authContext.isUserAuthenticated())
   };
   
   return (
-    <div className="w-full  flex justify-center ">
+    <div className="w-full h-full  flex justify-center relative ">
+      <BackBtn />
       <div className="px-4 sm:px-14 py-12  md:w-4/6 lg:w-3/6 xl:w-3/6 mt-10 mb-10 border-rose-200 bg-slate-100 shadow-lg rounded-md">
         {/* Título */}
-        <Title accNumber="00000000" />
+        <Title/>
 
         {/* Botones */}
         <ButtonsCtn onFiltroClick={handleFiltroClick}/>

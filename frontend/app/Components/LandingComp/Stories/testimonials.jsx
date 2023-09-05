@@ -4,12 +4,12 @@ import {FiChevronLeft, FiChevronRight} from 'react-icons/fi'
 const Card = ({ name, age, text }) => {
     return (
       
-      <div className="bg-white p-6 rounded-lg shadow-md flex w-auto h-36 gap-3">
-        <div className="flex-shrink-0">
-          <p className="text-Azul/900 text-base font-semibold">{name}</p>
+      <div className="bg-white p-6 rounded-lg shadow-md flex-col  w-auto h-80 gap-3 md:h-48 ">
+        <div className="flex-shrink-0 mb-2">
+          <p className="text-Azul/900 text-base font-semibold ">{name}</p>
           <p className="text-Grises/500 text-sm font-normal ">{age}</p>
         </div>
-        <div className="flex w-80 h-24 gap-4">
+        <div className="flex w-40 h-96 gap-4 md:flex-auto md:w-96 ">
           <p className="text-black text-base font-normal">{text}</p>
         </div>
       </div>
@@ -52,10 +52,10 @@ const Testimonials = () => {
     ];
 
     const scrollLeft = () => {
-      document.getElementById("testimonio").scrollLeft -= 900;
+      document.getElementById("testimonio").scrollLeft -= 210;
     }
     const scrollRight = () => {
-        document.getElementById("testimonio").scrollLeft += 900;
+        document.getElementById("testimonio").scrollLeft += 210;
     }
 
     return(
@@ -64,7 +64,7 @@ const Testimonials = () => {
           <button onClick={scrollLeft}><FiChevronLeft /></button>
         </div>
 
-        <div id="testimonio" className="flex flex-row overflow-x-auto space-x-4 scroll-smooth scrollbar-hide">
+        <div id="testimonio" className="flex flex-row overflow-x-auto space-x-4 scroll-smooth scrollbar-hide ">
             {usuarios.map((usuario, index) => (
                     <Card key={index} name={usuario.name} age={usuario.age} text={usuario.text} />
                 )

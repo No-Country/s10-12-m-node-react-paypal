@@ -1,12 +1,17 @@
+'use client'
 import React from "react";
 import Image from "next/image";
 import Button from "@/app/Components/Button";
 import qrImg from "@/public/images/qr.png";
+import BackBtn from "@/app/Components/BackBtn";
 
 function QR() {
   return (
-    <div className="w-full h-full  flex justify-center items-center">
-      <div className="text-center px-14 py-12 w-11/12 sm:w-5/6 md:w-4/6 lg:w-3/6 xl:w-3/6 mt-10 mb-10 md:mt-10 md:mb-10  border-rose-200 bg-white shadow-lg rounded-md ">
+    <div className="w-full h-full  flex justify-center relative">
+      <BackBtn />
+     
+      <div className="text-center px-14 py-12 ml-4 mr-4 lg:w-3/6 mt-10 mb-10 md:mt-10 md:mb-10  border-rose-200 bg-white shadow-lg rounded-md ">
+     
         {/* Título */}
         <div className="flex flex-col mb-8 items-center justify-center">
           <h2 className="font-bold mb-8 text-3xl md:text-4xl  text-Azul/900">
@@ -17,7 +22,7 @@ function QR() {
             alt="qr"
             width={""}
             height={""}
-            className="w-232 h-232"
+            className="w-44 h-44 md:w-64 md:h-64 lg:w-232 lg:h-232"
           />
         </div>
         <div className="flex flex-col items-center justify-center">

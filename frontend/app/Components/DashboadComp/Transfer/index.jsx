@@ -9,6 +9,7 @@ import { AiOutlineStar } from 'react-icons/ai';
 import Link from 'next/link';
 import SecondView from './SecondView/SecondView';
 import ThirdView from './ThirdView/ThirdView';
+import BackBtn from "@/app/Components/BackBtn";
 
 function TransferComp() {
   const [firstviewtr, setFirstViewTr] = useState(true);
@@ -30,8 +31,8 @@ function TransferComp() {
 
   
   return (
-    <div className='w-full flex h-full p-10 my-10 justify-center items-center'>
-
+    <div className='w-full flex h-full p-10 my-10 justify-center items-center relative'>
+      <BackBtn />
       {firstviewtr ? (
         <FirstViewTransfer
           formData={formData}
