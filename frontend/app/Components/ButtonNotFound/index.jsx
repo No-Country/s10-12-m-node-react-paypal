@@ -1,6 +1,8 @@
-
-export default function Button( {text, variant, onClick, type }) {
-    
+'use client'
+export default function ButtonNotFound( {text, variant, type }) {
+    const handleGoBack = () => {
+        window.history.back();
+      };
     let buttonClassName = 'button';
   
     if (variant === 'filled') {
@@ -10,9 +12,11 @@ export default function Button( {text, variant, onClick, type }) {
     }
   
     return (
-      <button  className={buttonClassName } onClick={onClick} type={type}>
+      <button  className={buttonClassName } onClick={handleGoBack} type={type}>
         {text}
       </button>
     );
   }
   
+
+//   bg-Morado/700 hover:bg-Morado/900 capitalize duration-300  w-full h-10 rounded-md py-3.5 px-7 flex items-center justify-center text-white
