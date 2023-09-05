@@ -1,5 +1,5 @@
 "use client";
-import WalletCard from "@/app/Components/WalletCard/index";
+import WalletCard from "@/app/Components/DashboadComp/WalletCard/index";
 
 const walletPage = () => {
   const dataCard = {

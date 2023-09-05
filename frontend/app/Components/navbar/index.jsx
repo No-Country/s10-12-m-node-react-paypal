@@ -13,7 +13,7 @@ export function NavBar() {
   const user = authContext.user;
   const logout = authContext.logout;
   const [navbar, setNavbar] = useState(false);
-  //console.log("context user", authContext)
+  console.log("context user", authContext)
   
   return (
     
