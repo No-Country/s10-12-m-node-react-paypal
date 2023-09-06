@@ -15,7 +15,7 @@ function CompDashboardInicio() {
   console.log("esta aut", authContext.isUserAuthenticated())
       authContext.isUserAuthenticated()
         ? router.push("/dashboard")
-        : router.push("/loginPage");
+        : router.push("/LoginPage");
     }, []);
   
     return (

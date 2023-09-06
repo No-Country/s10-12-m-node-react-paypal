@@ -91,7 +91,7 @@ export function NavBar() {
               </ul>
             </div>
             <div className="hidden lg:block my-auto mx-auto justify-end items-center ">
-              <Link href="./loginPage">
+              <Link href="./LoginPage">
                 <button className="bg-Morado/700 lg:w-32 lg:h-12 rounded-md text-white whitespace-nowrap text-center ">
                   Iniciar sesión
                 </button>
