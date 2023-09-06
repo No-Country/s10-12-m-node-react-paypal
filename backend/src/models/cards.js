@@ -8,21 +8,35 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+            this.belongsTo(models.Accounts, { foreignKey: 'AccountId' });
         }
     }
     Cards.init(
         {
-            number: {
+            id: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+                type: DataTypes.INTEGER,
+            },
+            AccountId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
+            number: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             exp_date: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 allowNull: false,
             },
             type: {
                 type: DataTypes.STRING,
+                allowNull: false,
+            },
+            category: {
+                type: DataTypes.ENUM('visa', 'mastercard', 'americanExpress'),
                 allowNull: false,
             },
             name: {
@@ -31,10 +45,6 @@ module.exports = (sequelize, DataTypes) => {
             },
             security_code: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
-            },
-            id_account: {
-                type: DataTypes.STRING,
                 allowNull: false,
             },
         },

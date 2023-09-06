@@ -6,19 +6,27 @@ module.exports = {
             id: {
                 allowNull: false,
                 primaryKey: true,
-                type: Sequelize.UUID,
-                defaultValue: Sequelize.UUIDV4,
+                autoIncrement: true,
+                type: Sequelize.INTEGER,
             },
-            number: {
+            AccountId: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
+            number: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
             exp_date: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING,
                 allowNull: false,
             },
             type: {
                 type: Sequelize.STRING,
+                allowNull: false,
+            },
+            category: {
+                type: Sequelize.ENUM('visa', 'mastercard', 'americanExpress'),
                 allowNull: false,
             },
             name: {
@@ -29,10 +37,7 @@ module.exports = {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
-            id_account: {
-                type: Sequelize.STRING,
-                allowNull: false,
-            },
+            //vole la FK de account
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE,

@@ -7,10 +7,16 @@ class UserServices {
     async login({ email, password, next }) {
         try {
             const user = await db.User.findOne({
+                //*
                 where: {
                     email: email.toLowerCase(),
-                    // status: 'active',
+                    status: true,
                 },
+                include: [
+                    {
+                        model: db.Accounts,
+                    },
+                ],
             });
             if (!user) {
                 return next(
@@ -34,10 +40,10 @@ class UserServices {
 
     async findOneUser({ attributes, next }) {
         try {
+            console.log(attributes);
             const user = await db.User.findOne({
                 where: attributes,
             });
-
             return user;
         } catch (error) {
             throw new Error(error);
@@ -50,20 +56,19 @@ class UserServices {
                 attributes: { email: body.email },
                 next,
             });
-
+            console.log('b');
             if (user) {
                 return next(new AppError(`User already exist`, 400));
             }
-
             const salt = await bcrypt.genSalt(12);
             const secretPassword = await bcrypt.hash(body.password, salt);
             body.password = secretPassword;
-
             const newUser = await db.User.create(body);
             const token = await generatejwt(newUser.id);
 
             return { newUser, token };
         } catch (error) {
+            console.log(error, 'hola');
             throw new Error(error);
         }
     }

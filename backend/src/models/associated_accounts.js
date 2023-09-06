@@ -1,23 +1,20 @@
 'use strict';
 const { Model } = require('sequelize');
+const user = require('./user');
 module.exports = (sequelize, DataTypes) => {
-    class Transaction extends Model {
+    class Associated_Accounts extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            this.belongsTo(models.Accounts, {
-                foreignKey: 'AccountId',
-            });
-
-            this.hasOne(models.Detail_transactions, {
-                foreignKey: 'transactionId',
+            this.belongsTo(models.User, {
+                foreignKey: 'userId',
             });
         }
     }
-    Transaction.init(
+    Associated_Accounts.init(
         {
             id: {
                 allowNull: false,
@@ -25,27 +22,15 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
                 type: DataTypes.INTEGER,
             },
-            date: {
-                type: DataTypes.DATE,
+            userId: {
                 allowNull: false,
-            },
-            sender_user: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
-            receiving_user: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
-            AccountId: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
             },
         },
         {
             sequelize,
-            modelName: 'Transaction',
+            modelName: 'Associated_Accounts',
         },
     );
-    return Transaction;
+    return Associated_Accounts;
 };

@@ -8,11 +8,21 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+            this.belongsTo(models.User, { foreignKey: 'userId' });
         }
     }
     Billingdata.init(
         {
+            id: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+                type: DataTypes.INTEGER,
+            },
+            userId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
             street: {
                 type: DataTypes.STRING,
                 allowNull: true,
