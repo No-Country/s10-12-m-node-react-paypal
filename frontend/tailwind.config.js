@@ -14,15 +14,18 @@ module.exports = {
         'title':'55px',
       },
       width: {
-        'login': '320px',
+        'login': '360px',
       },
       height: {
-        'login': '284px',
+        'login': '320px',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          // LadingPage
+          'InicioPagePng': 'url(https://res.cloudinary.com/dhb9rdaoc/image/upload/v1692845885/byhioqiqlrdrjv7mmhdi.jpg)',
+          'AboutUsPng': 'url(https://res.cloudinary.com/dhb9rdaoc/image/upload/v1692846188/bvggzs6850dkbzjuazh1.jpg)',
       },
       colors: {
 
@@ -34,7 +37,7 @@ module.exports = {
         'Azul/300': '#a5b4fc',
         'Azul/400': '#818cf8',
         'Azul/500': '#6366f1',
-        'Azul/600': '#4S4fe5',
+        'Azul/600': '#4f4fe5',
         'Azul/700': '#4338Ca',
         'Azul/800': '#3730A3',
         'Azul/900': '#312E81',

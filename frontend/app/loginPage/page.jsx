@@ -1,31 +1,30 @@
-'use client'
-import React, {useState} from 'react';
-import Image from "next/image"
-import leftImage from '../../public/images/rectangle.jpg'
+"use client";
+import React, {useContext } from "react";
+import { useRouter } from 'next/navigation';
+import Image from "next/image";
+import leftImage from "../../public/images/rectangle.jpg";
+import PageTitle from "../Components/FormComp/Title";
+import SubTitle from "../Components/FormComp/SubTitle";
+import FormInput from "../Components/FormComp/Input";
+import Button from "../Components/Button";
+import {AuthContext} from "../context/auth-context";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import handleLogin from "./loginService";
+
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const router = useRouter();
+  const authContext = useContext(AuthContext);
+  const LoginSchema = Yup.object().shape({
+    email: Yup.string()
+      .email("Correo electrónico no válido")
+      .required("Campo requerido"),
+    password: Yup.string().required("Campo requerido"),
+  });
 
-
-  const handleLogin = () => {
-    
-    if (!email) {
-      setEmailError('Por favor, ingresá tu email.');
-    } else {
-      setEmailError(''); 
-    }
-    if (!password){
-      setPasswordError('Por favor, ingresá tu contraseña.');
-    } else {
-      setPasswordError('')
-    }
-    if (!emailError && !passwordError) {
-      // nos logueamos
-    }
-    
+  const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
+    await handleLogin(values, setSubmitting, setFieldError, authContext, router);
   };
 
   return (
@@ -40,69 +39,65 @@ const LoginPage = () => {
       </div>
 
       {/* Mitad Derecha */}
-      <div className="md:w-1/2 bg-Morado/100 flex flex-col items-center p-8">
-        <h1 className="text-title  text-Azul/800 font-bold mb-12 mt-12">Iniciar sesión</h1>
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        validationSchema={LoginSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form className="md:w-1/2 bg-Morado/100 flex flex-col items-center p-8">
+          <PageTitle title={"Inicia sesión"} />
 
-        <div className="bg-Grises/50 p-7 rounded-lg w-84 h-62">
-          {/* input de Correo Electrónico */}
-          <div className="mb-4">
-            <label className="text-Azul/800 text-14px font-bold " htmlFor="email">
-              Correo electrónico
-            </label>
-            <input
+          <div className="bg-Grises/50 p-7 rounded-lg w-login shadow-lg mt-16">
+            {/* input de Correo Electrónico */}
+            <FormInput labelHtmlFor="email" label="Correo electrónico" />
+            <Field
               type="email"
-              id="email"
+              name="email"
               placeholder="Correo electrónico"
-              className="w-full p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 mt-2"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              
+              className="w-full h-12 p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 mt-2  text-lg placeholder-Grises/350 mb-4"
             />
-          </div>
 
-          {/* Mensaje de Error */}
-          {emailError && <p className="text-red-500 text-sm mb-4">{emailError}</p>}
+            {/* Mensaje de Error email*/}
+            <ErrorMessage
+              name="email"
+              component="p"
+              className="text-red-500 text-sm mb-4"
+            />
 
-          {/* input de Contraseña */}
-          <div className="mb-2">
-            <label className="text-Azul/800 text-14px font-bold" htmlFor="password">
-              Contraseña
-            </label>
-            <input
+            {/* input de Contraseña */}
+            <FormInput labelHtmlFor="password" label="Contraseña" />
+            <Field
               type="password"
-              id="password"
+              name="password"
               placeholder="Contraseña"
-              className="w-full p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 mt-2"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              
+              className="w-full h-12 p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 mt-2 text-lg placeholder-Grises/350 mb-2"
             />
-          </div>
 
-          {/* Mensaje de Error */}
-          {passwordError && <p className="text-red-500 text-sm mb-4">{passwordError}</p>}
+            {/* Mensaje de Error contraseña*/}
+            <ErrorMessage
+              name="password"
+              component="p"
+              className="text-red-500 text-sm mb-4"
+            />
 
-         
-          <div className="text-right">
-            <a href="#" className="text-Grises/350 text-sm underline">
-              Olvidé mi contraseña
-            </a>
-          </div>
+            <div className="text-right">
+              <a href="#" className="text-Grises/350 text-sm underline">
+                Olvidé mi contraseña
+              </a>
+            </div>
 
-          {/* Botones */}
-          <div className="flex mt-4">
-            <button
-              className="bg-Morado/700 w-22 h-10 rounded-md py-3.5 px-7 flex items-center justify-center text-white"
-              onClick={handleLogin}
-            >
-              Iniciar
-            </button>
-            <button className=" text-Azul/800 ml-3 font-semibold px-4 py-2 rounded hover:bg-purple-100 transition duration-300">
-              Registrar
-            </button>
+            {/* Botones */}
+            <div className="flex mt-8">
+              <Button type="submit" text="Iniciar" variant="filled" />
+            </div>
           </div>
-        </div>
-      </div>
+          <SubTitle
+            subTitleText="¿No tienes una cuenta aún?"
+            linkText="Regístrate"
+            linkUrl="/Signup"
+          />
+        </Form>
+      </Formik>
     </div>
   );
 };
