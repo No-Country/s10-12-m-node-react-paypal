@@ -1,5 +1,10 @@
 'use strict';
-const { Model } = require('sequelize');
+const { Model, UUIDV4 } = require('sequelize');
+const defaultValue = '/backend/public/media/image/avatar.png';
+// const { v4: uuid } = require('uuid');
+// const { Sequelize } = require('.');
+// const { DataTypes } = require('sequelize');
+// console.log(typeof(uuid())=== typeof(DataTypes.UUID))
 module.exports = (sequelize, DataTypes) => {
     class User extends Model {
         /**
@@ -8,11 +13,25 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+            this.hasMany(models.Associated_Accounts, {
+                foreignKey: 'userId',
+            });
+            this.hasOne(models.Accounts, {
+                foreignKey: 'userId',
+            });
+            this.hasOne(models.Billingdata, {
+                foreignKey: 'userId',
+            });
         }
     }
     User.init(
         {
+            id: {
+                allowNull: false, // equivalente a require:true
+                autoIncrement: true,
+                primaryKey: true,
+                type: DataTypes.INTEGER,
+            },
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -36,14 +55,6 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
                 unique: true,
             },
-            id_billingdata: {
-                type: DataTypes.STRING,
-                allowNull: true,
-            },
-            id_account: {
-                type: DataTypes.STRING,
-                allowNull: true,
-            },
             phone: {
                 type: DataTypes.STRING,
                 allowNull: true,
@@ -51,6 +62,12 @@ module.exports = (sequelize, DataTypes) => {
             avatar: {
                 type: DataTypes.STRING,
                 allowNull: true,
+                defaultValue: defaultValue,
+            },
+            status: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false,
+                defaultValue: true,
             },
         },
         {

@@ -6,20 +6,24 @@ module.exports = {
             id: {
                 allowNull: false,
                 primaryKey: true,
-                type: Sequelize.UUID,
-                defaultValue: Sequelize.UUIDV4,
+                autoIncrement: true,
+                type: Sequelize.INTEGER,
             },
-            id_user: {
-                type: Sequelize.STRING,
+            userId: {
+                type: Sequelize.INTEGER,
                 allowNull: false,
             },
-            cbu: {
+            account_number: {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
             balance: {
                 type: Sequelize.FLOAT,
                 allowNull: false,
+            },
+            account_detail_stripe: {
+                type: Sequelize.JSON,
+                allowNull: true,
             },
             createdAt: {
                 allowNull: false,
