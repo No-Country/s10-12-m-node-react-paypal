@@ -1,5 +1,5 @@
 "use client";
-import WalletCard from "@/app/Components/WalletCard/index";
+import WalletCard from "@/app/Components/DashboadComp/WalletCard/index";
 
 const walletPage = () => {
   const dataCard = {
@@ -7,9 +7,9 @@ const walletPage = () => {
   };
 
   return (
-    <main className="flex min-h-screen justify-center items-start py-14">
+    // <div className="flex min-h-screen justify-center items-start py-14">
       <WalletCard amount={dataCard.amount} />
-    </main>
+    // </div>
   );
 };
 

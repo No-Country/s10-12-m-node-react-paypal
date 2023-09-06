@@ -11,7 +11,6 @@ export function useForm() {
             [inputType]: newValue
         }));
 
-        console.log("Updated FormData:", formData);
     };
 
     return {
