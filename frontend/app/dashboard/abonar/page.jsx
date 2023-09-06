@@ -17,6 +17,7 @@ function Abonar() {
 
   const handleTarjetaClick = () => {
     console.log("Botón Vincular tarjeta clickeado");
+    router.push('/not-found');
   };
   
   return (
