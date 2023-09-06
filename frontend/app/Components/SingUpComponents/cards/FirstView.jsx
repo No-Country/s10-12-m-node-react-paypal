@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 import React, { useState } from 'react'
 import FormInput from '../../FormComp/Input'
 import { ErrorMessage, Field } from 'formik'
@@ -9,12 +9,7 @@ function FirstView({handleButtonClick}) {
   // const [name, setName] = useState("")
 
 
-  // const handleFirstViewChange  = (event) => {
-  //   const inputValue = event.target.value;
 
-  //   const newUsername
-
-  // }
   return (
     <div className="bg-Grises/50 p-7 rounded-lg w-login shadow-lg mt-16 duration-300 transition-all">
     <FormInput labelHtmlFor="text" label="Nombre completo" />

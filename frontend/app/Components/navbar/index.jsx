@@ -39,7 +39,7 @@ export function NavBar() {
   );
 
   return (
-    <div className="flex w-full h-14 lg:h-24">
+    <header className="flex w-full h-14 lg:h-24">
       <nav className="bg-Morado/50 flex w-full lg:h-24">
         {isUserAuthenticated ? (
           <>
@@ -100,7 +100,7 @@ export function NavBar() {
           </>
         )}
       </nav>
-    </div>
+    </header>
   );
 }
 
