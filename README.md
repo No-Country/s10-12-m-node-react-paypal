@@ -3,16 +3,17 @@
 </p>
 
 
-#  COUNTRYPAY
+# ![CountryPay](https://res.cloudinary.com/dhb9rdaoc/image/upload/v1694012487/icvu5tbtkokb3cvhzlvv.svg)
 
 
-## Acerca de
+# Acerca de
 
-````
+<section style="font-size: 20px;  ">
 CountryPay es una plataforma de pago en línea altamente utilizada, con una amplia gama de funciones y servicios para sus usuarios. Permite  transferencias de dinero rápidas y seguras, pagos en línea en tiendas y sitios web, garantiza la seguridad de tus datos, ofrece cuentas empresariales y admite múltiples monedas. También facilita retiros de fondos, programas de recompensas y opciones de compra a plazos. Sus transacciones son rápidas y eficientes, aunque las características pueden variar según la región y el tipo de cuenta.
-````
-## Team
-<p style="font-size: 20px; text-decoration: underline; ">
+</secttion/>
+
+# Team
+<p style="font-size: 20px; text-decoration: underline; " align="center">
  s10-12-m-node-react-paypal
 </p>
 
