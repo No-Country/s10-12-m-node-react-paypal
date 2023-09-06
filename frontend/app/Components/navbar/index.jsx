@@ -14,7 +14,7 @@ export function NavBar() {
   const [navbar, setNavbar] = useState(false);
 
   const NavLinks = (
-    <ul className="flex space-x-10">
+    <ul className="flex flex-col space-y-2 lg:space-x-10">
       <li>
         <Link href="/dashboard">Home</Link>
       </li>
@@ -23,6 +23,12 @@ export function NavBar() {
       </li>
       <li>
         <Link href="/dashboard/movimientos">Movimientos</Link>
+      </li>
+      <li>
+        <Link href="/Perfil">Perfil</Link>
+      </li>
+      <li>
+        <Link href="/">Cerrar Sesión</Link>
       </li>
     </ul>
   );
@@ -44,7 +50,7 @@ export function NavBar() {
         {isUserAuthenticated ? (
           <>
             <div className="flex w-1/3 h-full items-center justify-center lg:w-1/3 m-0 ml-2">
-              <Link href={"/dashboard"}>
+              <Link href={"/"}>
                 <LogoPortalProps
                   src="/logos/Logo-CPweb.svg"
                   width={256}
