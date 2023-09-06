@@ -9,7 +9,7 @@ class UserServices {
             const user = await db.User.findOne({
                 where: {
                     email: email.toLowerCase(),
-                    status: 'active',
+                    // status: 'active',
                 },
             });
             if (!user) {

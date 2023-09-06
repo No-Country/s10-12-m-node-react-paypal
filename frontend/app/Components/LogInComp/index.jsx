@@ -2,18 +2,18 @@
 import React, {useContext } from "react";
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
-import leftImage from "../../public/images/rectangle.jpg";
-import PageTitle from "../Components/FormComp/Title";
-import SubTitle from "../Components/FormComp/SubTitle";
-import FormInput from "../Components/FormComp/Input";
-import Button from "../Components/Button";
-import {AuthContext} from "../context/auth-context";
+import leftImage from "@/public/images/rectangle.jpg";
+import Button from "../Button";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import handleLogin from "./loginService";
+import handleLogin from "./LoginService";
+import { AuthContext } from "@/app/context/auth-context";
+import PageTitle from "../FormComp/Title";
+import SubTitle from "../FormComp/SubTitle";
+import FormInput from "../FormComp/Input";
 
 
-const LoginPage = () => {
+const LoginPageComp = () => {
   const router = useRouter();
   const authContext = useContext(AuthContext);
   const LoginSchema = Yup.object().shape({
@@ -27,10 +27,11 @@ const LoginPage = () => {
     await handleLogin(values, setSubmitting, setFieldError, authContext, router);
   };
 
+  //console.log("user autenticado?", authContext.isUserAuthenticated())
   return (
-    <div className="flex flex-col md:flex-row h-screen">
+    <div className="min-h-screen w-full flex flex-col md:flex-row">
       {/* Mitad Izquierda */}
-      <div className="md:w-1/2">
+      <div className="w-full md:w-1/2">
         <Image
           src={leftImage}
           alt="Imagen"
@@ -44,7 +45,7 @@ const LoginPage = () => {
         validationSchema={LoginSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="md:w-1/2 bg-Morado/100 flex flex-col items-center p-8">
+        <Form className="w-full md:w-1/2 bg-Morado/100 flex flex-col items-center p-8">
           <PageTitle title={"Inicia sesión"} />
 
           <div className="bg-Grises/50 p-7 rounded-lg w-login shadow-lg mt-16">
@@ -102,4 +103,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginPageComp;
