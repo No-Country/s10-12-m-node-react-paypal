@@ -44,7 +44,7 @@ export function NavBar() {
         {isUserAuthenticated ? (
           <>
             <div className="flex w-1/3 h-full items-center justify-center lg:w-1/3 m-0 ml-2">
-              <Link href={"/dashboard"}>
+              <Link href={"/"}>
                 <LogoPortalProps
                   src="/logos/Logo-CPweb.svg"
                   width={256}
