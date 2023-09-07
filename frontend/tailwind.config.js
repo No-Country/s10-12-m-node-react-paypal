@@ -101,24 +101,40 @@ module.exports = {
 
       },
       animation: {
-        'right': 'right 6s cubic-bezier(0, 0, 0.2, 1) 1',
-        'left': 'left 6s cubic-bezier(0, 0, 0.2, 1) 1',
+        'lg-right': 'lgright 6s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'lg-left': 'lgleft 6s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'md-right': 'mdright 6s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'md-left': 'mdleft 6s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
       keyframes: {
-        right: {
+        lgright: {
           '0%': { transform: 'translateX(-10rem) translateY(-2rem) rotate(-20deg)' },
 
           
           '100%': { transform: 'translateX(1px)  ' },
       
         },
-        left: {
+        lgleft: {
           '0%': { transform: 'translateX(10rem) translateY(-2rem) rotate(20deg)' },
 
           
           '100%': { transform: 'translateX(-1px)  ' },
       
-        }
+        },
+        mdright: {
+          '0%': { transform: 'translateX(-7rem) translateY(-2rem) rotate(-20deg)' },
+
+          
+          '100%': { transform: 'translateX(1px)  ' },
+      
+        },
+        mdleft: {
+          '0%': { transform: 'translateX(7rem) translateY(-2rem) rotate(20deg)' },
+
+          
+          '100%': { transform: 'translateX(1px)  ' },
+      
+        },
       }
     },
   },
