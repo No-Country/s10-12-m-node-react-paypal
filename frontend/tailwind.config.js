@@ -100,6 +100,26 @@ module.exports = {
 
 
       },
+      animation: {
+        'right': 'right 6s cubic-bezier(0, 0, 0.2, 1) 1',
+        'left': 'left 6s cubic-bezier(0, 0, 0.2, 1) 1',
+      },
+      keyframes: {
+        right: {
+          '0%': { transform: 'translateX(-10rem) translateY(-2rem) rotate(-20deg)' },
+
+          
+          '100%': { transform: 'translateX(1px)  ' },
+      
+        },
+        left: {
+          '0%': { transform: 'translateX(10rem) translateY(-2rem) rotate(20deg)' },
+
+          
+          '100%': { transform: 'translateX(-1px)  ' },
+      
+        }
+      }
     },
   },
   plugins: [
