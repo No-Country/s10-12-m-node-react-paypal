@@ -7,11 +7,13 @@ import LogoPortalProps from "@/public/logos/Logo-CPweb";
 import React from "react";
 import { AuthContext } from "/app/context/auth-context.js";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { UserIcon } from "@heroicons/react/24/outline";
 
 export function NavBar() {
   const authContext = useContext(AuthContext);
   const isUserAuthenticated = authContext.isUserAuthenticated();
-
+  const user = authContext.user;
   const  handleLogout = () => {
     if (typeof window !== 'undefined') {
       // Limpiar el token y la información del usuario del almacenamiento local
@@ -33,6 +35,7 @@ export function NavBar() {
   const toggleDesplegable = () => {
     setDropDown(!dropdown);
   };
+  const img = `${isUserAuthenticated ? `${user.avatar}` : "" }`
 
   const NavLinks = (
     <ul className="flex lg:flex-row flex-col justify-evenly items-center  w-full">
@@ -78,13 +81,14 @@ export function NavBar() {
             </div>
             <div className=" relative w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-end lg:w-1/2">
               {NavLinks}
-              <button className="p-5 relative rounded-full border-transparent text-white uppercase flex justify-center items-center w-10 h-10 border-2 bg-Morado/800" onClick={toggleDesplegable}>
-j
+              
+              <button className="w-12 h-12 border-2 border-transparent hover:border-Morado/700 duration-200 rounded-full  hover:text-Morado/700 hover:bg-Grises/150 " onClick={toggleDesplegable}>
+              <UserIcon className="p-2 duration-300"/>
               </button>
               {dropdown &&(
                 
-                <ul className="w-full rounded-md shadow-md max-w-[196px] h-full absolute right-0 top-[5.86rem] bg-[#F5F7FD] border-2 flex flex-col justify-evenly items-left  ">
-                  <li className="bg-Grises/100 flex items-center p-2  shadow-md hover:bg-Grises/200 duration-300 cursor-pointer  h-full w-full">
+                <ul className="w-full rounded-[10px] shadow-md max-w-[196px] h-full absolute right-0 top-[5.86rem] bg-[#F5F7FD] flex flex-col justify-evenly items-left  ">
+                  <li className="bg-white flex items-center p-2  shadow-md hover:bg-Grises/200 duration-300 cursor-pointer  h-full w-full">
         <Link className="text-Grises/350 opacity-60 font-medium z-10 w-full text-left" href="/Perfil" >Perfil</Link>
       </li>
       <li className="bg-Grises/100 flex items-center p-2 text-Morado/700 cursor-pointer shadow-md hover:bg-Grises/200 duration-300   h-full w-full">
