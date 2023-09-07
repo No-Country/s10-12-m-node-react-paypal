@@ -5,7 +5,7 @@ const AccountServices = require('../services/account.services');
 const accountServices = new AccountServices();
 
 const createTransaction = catchAsync(async (req, res, next) => {
-    const { senderId, receivingId, amount } = req.body;
+    const { senderId, receivingData, amount } = req.body;
     //verifico los fondos del senderId
     let attributes = { userId: senderId };
 
@@ -13,7 +13,11 @@ const createTransaction = catchAsync(async (req, res, next) => {
     if (accountSender.balance < amount) {
         throw next(new AppError('not enought money', 400));
     }
-    attributes.userId = receivingId;
+
+
+    //si ma mandaron un tipo Number busco por el numero de cuenta. y si me mandaron un string busco por nickName
+    
+    attributes.userId = receivingData;
     accountReceiving = await accountServices.findOneAccount({
         attributes,
         next,

@@ -2,6 +2,7 @@ const db = require('../models/index');
 const AppError = require('../helpers/AppError');
 
 class TransactionServices {
+    
     async transactionDetail({
         transactionId,
         amount,
