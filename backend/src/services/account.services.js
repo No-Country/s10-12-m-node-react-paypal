@@ -20,7 +20,6 @@ class AccountServices {
             throw new Error(error);
         }
     }
-
     async createAccount(userId) {
         try {
             const createdAccount = await db.Accounts.create({
@@ -73,7 +72,6 @@ class AccountServices {
             throw new Error(error);
         }
     }
-
     async chargeAccountChargePoint({ userId, amount }) {
         try {
             const account = await db.Accounts.findOne({
