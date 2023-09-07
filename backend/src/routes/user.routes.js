@@ -3,6 +3,7 @@ const {
     loginValidation,
     createUserValidation,
     updateUserInfo,
+    changePassword,
 } = require('../middlewares/validated.middleware');
 const {
     protectRoute,
@@ -22,6 +23,14 @@ router.put(
     verifyAccountOwner,
     updateUserInfo,
     userController.updateUserInfo,
+);
+
+router.put(
+    '/change_password/:id',
+    protectRoute,
+    verifyAccountOwner,
+    changePassword,
+    userController.changePassword,
 );
 
 router.delete(

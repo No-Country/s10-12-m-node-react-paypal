@@ -181,3 +181,17 @@ exports.updateUserInfo = [
         .withMessage('phone number must be an integer'),
     validFields,
 ];
+
+exports.changePassword = [
+    body('password')
+        .notEmpty()
+        .withMessage('field is require')
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
+    body('newPassword')
+        .notEmpty()
+        .withMessage('field is require')
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
+    validFields,
+];
