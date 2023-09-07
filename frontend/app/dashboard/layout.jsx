@@ -11,15 +11,16 @@ export const metadata = {
 function LayoutDashoard({children}) {
   return (
     <div>
-        <head>
+        {/* <head>
             <title>{metadata.title}</title>
             <meta name="description" content={metadata.description} />
-        </head>
-        
-        <main className='bg-Morado/R200'>
+    
+        </head> */}
+
+        <div className='bg-Morado/R200 md:min-h-[75vh]'>
         {children}
 
-        </main>
+        </div>
     </div>
   )
 }
