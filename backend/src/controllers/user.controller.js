@@ -46,3 +46,13 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
         status: 'success',
     });
 });
+
+exports.changePassword = catchAsync(async (req, res, next) => {
+    const { sessionUser, body } = req;
+    const user = await userServices.changePassword({ sessionUser, body, next });
+
+    res.status(200).json({
+        status: 'success',
+        user,
+    });
+});

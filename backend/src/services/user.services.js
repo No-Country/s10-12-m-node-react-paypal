@@ -71,13 +71,17 @@ class UserServices {
     async updateUser({ body, sessionUser, next }) {
         try {
             const { name, lastName, nickName, email, phone } = body;
-            const verifyEmailUser = await this.findOneUser({
-                attributes: { email },
-                next,
-            });
-            if (verifyEmailUser && sessionUser.email != email) {
-                throw next(new AppError(`${email} already exist`, 400));
+
+            if (email) {
+                const verifyEmailUser = await this.findOneUser({
+                    attributes: { email },
+                    next,
+                });
+                if (verifyEmailUser && sessionUser.email != email) {
+                    throw next(new AppError(`${email} already exist`, 400));
+                }
             }
+
             const updatedUser = sessionUser.update({
                 name,
                 lastName,
@@ -94,6 +98,22 @@ class UserServices {
     async deleteUser({ sessionUser }) {
         try {
             await sessionUser.update({ status: false });
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    async changePassword({ sessionUser, body, next }) {
+        try {
+            const { password, newPassword } = body;
+            if (!(await bcrypt.compare(password, sessionUser.password))) {
+                throw next(new AppError('wrong password', 401));
+            }
+            const salt = await bcrypt.genSalt(12);
+            const secretPassword = await bcrypt.hash(newPassword, salt);
+            sessionUser.password = secretPassword;
+            sessionUser.save();
+            return sessionUser;
         } catch (error) {
             throw new Error(error);
         }
