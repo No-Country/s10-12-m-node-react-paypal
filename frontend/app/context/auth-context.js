@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = React.useState(() => {
     if (isBrowser) {
       const storedToken = localStorage.getItem("token");
-      const storedUser = JSON.parse(localStorage.getItem("user")) || null;
+      const storedUser = JSON.parse(localStorage.getItem("user")) || " ";
       return {
         token: storedToken || "",
         user: storedUser,

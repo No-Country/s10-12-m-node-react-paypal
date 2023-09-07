@@ -18,6 +18,8 @@ function CompDashboardInicio() {
         : router.push("/LoginPage");
     }, []);
   
+   const isUserAuthenticated =  authContext.isUserAuthenticated()
+    const text = `${isUserAuthenticated ? `Hola,  ${user.lastName}` : "" }`
     return (
       <div className='flex  justify-center items-center w-full   h-full relative'>
         <BackBtn ruta="/"/>
@@ -25,7 +27,7 @@ function CompDashboardInicio() {
                   
                   <div className='bg-white  rounded-md w-full xl:max-w-[800px] lg:max-w-[708px] md:max-w-[600px] max-w-[288px] p-6 lg:h-[28rem] md:h-[24rem]   shadow-lg grid grid-flow-row items-center justify-center '>
                   <div className='text-left w-full h-fit flex flex-col justify-center gap-2 	'>
-                      <h2 className='font-bold lg:text-4xl md:text-3xl  text-2xl text-Azul/900 mb-5' >Hola, Juan </h2>
+                      <h2 className='font-bold lg:text-4xl md:text-3xl  text-2xl text-Azul/900 mb-5' > {text}  </h2>
                       <p className='font-medium lg:text-2xl text-lg text-Grises/550 first-letter:uppercase'> tu saldo de CoutryPay</p>
                     
                     <div className='flex  lg:items-end items-center  justify-start mt-5 mb-6'>

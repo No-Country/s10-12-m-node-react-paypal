@@ -6,30 +6,46 @@ import { HiOutlineX } from "react-icons/hi";
 import LogoPortalProps from "@/public/logos/Logo-CPweb";
 import React from "react";
 import { AuthContext } from "/app/context/auth-context.js";
+import { useRouter } from "next/navigation";
 
 export function NavBar() {
   const authContext = useContext(AuthContext);
   const isUserAuthenticated = authContext.isUserAuthenticated();
 
+  const  handleLogout = () => {
+    if (typeof window !== 'undefined') {
+      // Limpiar el token y la información del usuario del almacenamiento local
+      window.location.href = "/"; 
+
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
+      // Cerrar la sesión en el contexto de autenticación
+      authContext.logout();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000)
+    }
+  };
   const [navbar, setNavbar] = useState(false);
+  const [dropdown, setDropDown] = useState(false)
+
+  const toggleDesplegable = () => {
+    setDropDown(!dropdown);
+  };
 
   const NavLinks = (
-    <ul className="flex flex-col space-y-2 lg:space-x-10">
+    <ul className="flex lg:flex-row flex-col justify-evenly items-center  w-full">
       <li>
-        <Link href="/dashboard">Home</Link>
+        <Link href="/dashboard" className="font-semibold text-Azul/800 border-b-2 border-transparent hover:border-b-Azul/600 duration-300">Home</Link>
       </li>
       <li>
-        <Link href="/dashboard/wallet">Cartera</Link>
+        <Link href="/dashboard/wallet" className="font-semibold text-Azul/800 border-b-2 border-transparent hover:border-b-Azul/600 duration-300">Cartera</Link>
       </li>
       <li>
-        <Link href="/dashboard/movimientos">Movimientos</Link>
+        <Link href="/dashboard/movimientos" className="font-semibold text-Azul/800 border-b-2 border-transparent hover:border-b-Azul/600 duration-300">Movimientos</Link>
       </li>
-      <li>
-        <Link href="/Perfil">Perfil</Link>
-      </li>
-      <li>
-        <Link href="/">Cerrar Sesión</Link>
-      </li>
+    
     </ul>
   );
 
@@ -60,8 +76,24 @@ export function NavBar() {
                 />
               </Link>
             </div>
-            <div className="w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-end lg:w-1/2">
+            <div className=" relative w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-end lg:w-1/2">
               {NavLinks}
+              <button className="p-5 relative rounded-full border-transparent text-white uppercase flex justify-center items-center w-10 h-10 border-2 bg-Morado/800" onClick={toggleDesplegable}>
+j
+              </button>
+              {dropdown &&(
+                
+                <ul className="w-full rounded-md shadow-md max-w-[196px] h-full absolute right-0 top-[5.86rem] bg-[#F5F7FD] border-2 flex flex-col justify-evenly items-left  ">
+                  <li className="bg-Grises/100 flex items-center p-2  shadow-md hover:bg-Grises/200 duration-300 cursor-pointer  h-full w-full">
+        <Link className="text-Grises/350 opacity-60 font-medium z-10 w-full text-left" href="/Perfil" >Perfil</Link>
+      </li>
+      <li className="bg-Grises/100 flex items-center p-2 text-Morado/700 cursor-pointer shadow-md hover:bg-Grises/200 duration-300   h-full w-full">
+        <button  className="font-semibold cursor-pointer w-full text-left z-10 " onClick={handleLogout}>Cerrar Sesión</button>
+      </li>
+                </ul>
+              ) 
+
+              }
             </div>
             <div className="p-4 w-1/3 h-full flex justify-end items-center lg:invisible visibility:visible lg:w-1">
               <button className="w-6 h-4" onClick={() => setNavbar(!navbar)}>
@@ -83,10 +115,10 @@ export function NavBar() {
             <div className="w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-center lg:w-1/3">
               <ul className="flex space-x-10">
                 <li>
-                  <Link href="/#caracteristicas">Características</Link>
+                  <Link className="font-semibold text-Azul/800 border-b-2 border-transparent hover:border-b-Azul/600 duration-300" href="/#caracteristicas">Características</Link>
                 </li>
                 <li>
-                  <Link href="/#about">Sobre nosotros</Link>
+                  <Link className="font-semibold text-Azul/800 border-b-2 border-transparent hover:border-b-Azul/600 duration-300" href="/#about">Sobre nosotros</Link>
                 </li>
               </ul>
             </div>
@@ -108,6 +140,6 @@ export function NavBar() {
       </nav>
     </header>
   );
-}
+} 
 
 
