@@ -1,7 +1,7 @@
 'use strict';
 const { Model } = require('sequelize');
 const uniqueId = require('../helpers/randomId');
-console.log('idrandom,', uniqueId());
+
 module.exports = (sequelize, DataTypes) => {
     class Accounts extends Model {
         /**

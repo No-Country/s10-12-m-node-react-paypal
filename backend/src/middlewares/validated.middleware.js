@@ -47,7 +47,6 @@ exports.createUserValidation = [
         .withMessage('password cannot be empty')
         .isLength({ min: 3 })
         .withMessage('password must be at least 3 characters long'),
-    body('phone').isInt().withMessage('phone number must be a integer'),
     validFields,
 ];
 
@@ -158,5 +157,40 @@ exports.validTransfers = [
         .withMessage('field is requiered')
         .isFloat()
         .withMessage('this field must be a float'),
+    validFields,
+];
+
+exports.updateUserInfo = [
+    body('name')
+        .optional()
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
+    body('lastName')
+        .optional()
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
+    body('nickName')
+        .optional()
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
+    body('email').optional().isEmail().withMessage('must be a valid email'),
+    body('phone')
+        .optional()
+        .isInt()
+        .withMessage('phone number must be an integer'),
+    validFields,
+];
+
+exports.changePassword = [
+    body('password')
+        .notEmpty()
+        .withMessage('field is require')
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
+    body('newPassword')
+        .notEmpty()
+        .withMessage('field is require')
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
     validFields,
 ];

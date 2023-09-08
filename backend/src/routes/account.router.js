@@ -18,4 +18,11 @@ router.post(
     accountController.rechargeCard,
 );
 
+router.get(
+    '/:id',
+    protectRoute,
+    verifyAccountOwner,
+    accountController.getUserAccount,
+);
+
 module.exports = router;

@@ -7,7 +7,6 @@ class UserServices {
     async login({ email, password, next }) {
         try {
             const user = await db.User.findOne({
-                //*
                 where: {
                     email: email,
                     status: true,
@@ -24,7 +23,6 @@ class UserServices {
                 );
             }
             //3. validar si la contraseña es correcta
-
             if (!(await bcrypt.compare(password, user.password))) {
                 return next(new AppError(`Incorrect email or password`, 401));
             }
@@ -40,7 +38,6 @@ class UserServices {
 
     async findOneUser({ attributes, next }) {
         try {
-            console.log(attributes);
             const user = await db.User.findOne({
                 where: attributes,
             });
@@ -56,7 +53,6 @@ class UserServices {
                 attributes: { email: body.email },
                 next,
             });
-            console.log('b');
             if (user) {
                 return next(new AppError(`User already exist`, 400));
             }
@@ -68,7 +64,57 @@ class UserServices {
 
             return { newUser, token };
         } catch (error) {
-            console.log(error, 'hola');
+            throw new Error(error);
+        }
+    }
+
+    async updateUser({ body, sessionUser, next }) {
+        try {
+            const { name, lastName, nickName, email, phone } = body;
+
+            if (email) {
+                const verifyEmailUser = await this.findOneUser({
+                    attributes: { email },
+                    next,
+                });
+                if (verifyEmailUser && sessionUser.email != email) {
+                    throw next(new AppError(`${email} already exist`, 400));
+                }
+            }
+
+            const updatedUser = sessionUser.update({
+                name,
+                lastName,
+                nickName,
+                email,
+                phone,
+            });
+            return updatedUser;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    async deleteUser({ sessionUser }) {
+        try {
+            await sessionUser.update({ status: false });
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    async changePassword({ sessionUser, body, next }) {
+        try {
+            const { password, newPassword } = body;
+            if (!(await bcrypt.compare(password, sessionUser.password))) {
+                throw next(new AppError('wrong password', 401));
+            }
+            const salt = await bcrypt.genSalt(12);
+            const secretPassword = await bcrypt.hash(newPassword, salt);
+            sessionUser.password = secretPassword;
+            sessionUser.save();
+            return sessionUser;
+        } catch (error) {
             throw new Error(error);
         }
     }
