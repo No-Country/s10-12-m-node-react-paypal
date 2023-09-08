@@ -10,9 +10,9 @@ const router = Router();
 
 router.post(
     '/:id',
-    validTransfers,
-    protectRoute,
-    verifyAccountOwner,
+    // validTransfers,
+    // protectRoute,
+    // verifyAccountOwner,
     transactionController.createTransaction,
 );
 router.post('/charge-point/:id', transactionController.chargePointCharge);

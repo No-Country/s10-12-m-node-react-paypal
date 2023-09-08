@@ -27,3 +27,32 @@ exports.login = catchAsync(async (req, res, next) => {
         user,
     });
 });
+
+exports.updateUserInfo = catchAsync(async (req, res, next) => {
+    const { body, sessionUser } = req;
+    const user = await userServices.updateUser({ body, sessionUser, next });
+
+    res.status(200).json({
+        status: 'success',
+        user,
+    });
+});
+
+exports.deleteUser = catchAsync(async (req, res, next) => {
+    const { sessionUser } = req;
+    await userServices.deleteUser({ sessionUser });
+
+    res.status(200).json({
+        status: 'success',
+    });
+});
+
+exports.changePassword = catchAsync(async (req, res, next) => {
+    const { sessionUser, body } = req;
+    const user = await userServices.changePassword({ sessionUser, body, next });
+
+    res.status(200).json({
+        status: 'success',
+        user,
+    });
+});
