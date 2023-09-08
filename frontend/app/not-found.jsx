@@ -1,5 +1,5 @@
 import React from 'react'
-import ButtonNotFound from './Components/ButtonNotFound';
+import ButtonNotFound from './Components/Not-Found-Comp/cards/ButtonNotFound';
 import CardAnimation from './Components/Not-Found-Comp/cards/CardAnimation';
 
 function NoFoundPage() {
