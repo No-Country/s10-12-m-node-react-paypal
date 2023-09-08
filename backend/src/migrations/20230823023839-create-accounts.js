@@ -13,7 +13,7 @@ module.exports = {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
-            cbu: {
+            account_number: {
                 type: Sequelize.STRING,
                 allowNull: false,
             },

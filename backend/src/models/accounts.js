@@ -1,5 +1,7 @@
 'use strict';
 const { Model } = require('sequelize');
+const uniqueId = require('../helpers/randomId');
+
 module.exports = (sequelize, DataTypes) => {
     class Accounts extends Model {
         /**
@@ -8,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            console.log(models);
             this.belongsTo(models.User, { foreignKey: 'userId' });
 
             this.hasMany(models.Transaction, { foreignKey: 'AccountId' });
@@ -28,11 +29,11 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            cbu: {
-                type: DataTypes.STRING,
+            account_number: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
+                defaultValue: () => uniqueId(),
             },
-
             balance: {
                 type: DataTypes.FLOAT,
                 allowNull: false,

@@ -11,7 +11,6 @@ class CardServices {
                 attributes: { userId: id },
                 next,
             });
-            
             if (!account) {
                 throw next(new AppError('user has not an active account', 400));
             }

@@ -4,9 +4,18 @@ const cloudinary = require('../config/cloudinary').v2;
 const defaultValue = '/backend/public/media/image/avatar.png';
 const fs = require('fs');
 const path = require('path');
+const UserServices = require('../services/user.services')
 class AvatarServices {
     async updateAvatar ({user_id, newAvatarFile, next}){
+        const userServices = new UserServices();
         try {
+            const user = await userServices.findOneUser({
+                attributes:{id:user_id},
+                next
+            })
+            if(!user){
+                throw next(new AppError('User does not exist', 400));
+            }
             if (!newAvatarFile) {
                 return next(
                     new AppError(`"No image file provided": ${newAvatarFile} not found`, 400),

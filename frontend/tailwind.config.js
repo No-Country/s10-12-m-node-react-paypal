@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import 'tailwind-scrollbar-hide';
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -14,27 +15,30 @@ module.exports = {
         'title':'55px',
       },
       width: {
-        'login': '320px',
+        'login': '360px',
       },
       height: {
-        'login': '284px',
+        'login': '320px',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          // LadingPage
+          'InicioPagePng': 'url(https://res.cloudinary.com/dhb9rdaoc/image/upload/v1692845885/byhioqiqlrdrjv7mmhdi.jpg)',
+          'AboutUsPng': 'url(https://res.cloudinary.com/dhb9rdaoc/image/upload/v1692846188/bvggzs6850dkbzjuazh1.jpg)',
       },
       colors: {
 
         // COLORES PRINCIPALES
         // Azul
         'Azul/50': '#EEF2FF',
-        'Azul/100': '#EOE7FF',
+        'Azul/100': '#E0E7FF',
         'Azul/R200': '#c7d2fe',
         'Azul/300': '#a5b4fc',
         'Azul/400': '#818cf8',
         'Azul/500': '#6366f1',
-        'Azul/600': '#4S4fe5',
+        'Azul/600': '#4f4fe5',
         'Azul/700': '#4338Ca',
         'Azul/800': '#3730A3',
         'Azul/900': '#312E81',
@@ -96,7 +100,45 @@ module.exports = {
 
 
       },
+      animation: {
+        'lg-right': 'lgright 6s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'lg-left': 'lgleft 6s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'md-right': 'mdright 6s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'md-left': 'mdleft 6s cubic-bezier(0, 0, 0.2, 1) infinite',
+      },
+      keyframes: {
+        lgright: {
+          '0%': { transform: 'translateX(-10rem) translateY(-2rem) rotate(-20deg)' },
+
+          
+          '100%': { transform: 'translateX(1px)  ' },
+      
+        },
+        lgleft: {
+          '0%': { transform: 'translateX(10rem) translateY(-2rem) rotate(20deg)' },
+
+          
+          '100%': { transform: 'translateX(-1px)  ' },
+      
+        },
+        mdright: {
+          '0%': { transform: 'translateX(-7rem) translateY(-2rem) rotate(-20deg)' },
+
+          
+          '100%': { transform: 'translateX(1px)  ' },
+      
+        },
+        mdleft: {
+          '0%': { transform: 'translateX(7rem) translateY(-2rem) rotate(20deg)' },
+
+          
+          '100%': { transform: 'translateX(1px)  ' },
+      
+        },
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ],
 }

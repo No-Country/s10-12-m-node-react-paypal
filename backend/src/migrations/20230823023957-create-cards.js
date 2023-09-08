@@ -14,15 +14,19 @@ module.exports = {
                 allowNull: false,
             },
             number: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING,
                 allowNull: false,
             },
             exp_date: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING,
                 allowNull: false,
             },
             type: {
                 type: Sequelize.STRING,
+                allowNull: false,
+            },
+            category: {
+                type: Sequelize.ENUM('visa', 'mastercard', 'americanExpress'),
                 allowNull: false,
             },
             name: {

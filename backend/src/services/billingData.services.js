@@ -1,39 +1,70 @@
 const db = require('../models/index');
 const AppError = require('../helpers/AppError');
-
+const UserServices = require('../services/user.services');
 class BillingDataServices {
-    async createBillingData ({userId,body}){
+    async createBillingData ({id ,body, next}){
+     const userServices = new UserServices();
        try {
-        const user = await this.findOneUser({
-            where:{id: userId},
-        });
+        const user = await userServices.findOneUser({
+            attributes:{id:id},
+            next
+        })
         if(!user){
-            return next(
-                new AppError(`User not found`, 404),
-            );
+            throw next(new AppError('User does not exist', 400));
         }
-        const billingData = await db.Billingdata.create(body)
-        return billingData;
+        body.userId = user.id
+        const billing = await db.Billingdata.create(body)
+        return billing;
        } catch (error) {
         throw new Error(error);
        }
     };
 
-    async findOneUser({ attributes, next }) {
+   async findBilling(id){
+    try {
+        const billingdata = await db.Billingdata.findOne({
+            where: {userId:id},
+            include: [
+                { model :db.User}
+            ],
+        })
+        return billingdata;
+    } catch (error) {
+        throw new Error(error);
+    }
+   };
+
+    async updateBillingData ({body,id,next}){
         try {
-            console.log(attributes)
-            const user = await db.User.findOne({
-                where: attributes,
-            });
-            return user;
+            const billing = await this.findBilling(id)
+            if(!billing){
+                throw next(new AppError('Non-existent data', 400));
+            }
+            if(!body){
+                throw next(new AppError('No data', 400));
+            }
+            const whereClause = { userId: id };
+            const update = await db.Billingdata.update(body,{where: whereClause})
+          
+            return update;
         } catch (error) {
             throw new Error(error);
         }
-    };
-    
-    async updateBillingData (){
+    }
 
+    async sendBillinData ({id,next}) {
+        try {
+            const billing = await this.findBilling(id);
+            if(!billing){
+                throw next(new AppError('Non-existent data', 400));
+            }
+            console.log(billing.dataValues)
+            return billing.dataValues
+        } catch (error) {
+            throw new Error(error);
+        }
     }
 }
 
+    
 module.exports = BillingDataServices;
