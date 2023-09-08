@@ -13,8 +13,8 @@ export function NavBar() {
 
   const [navbar, setNavbar] = useState(false);
 
-  const NavLinks = (
-    <ul className="flex flex-col space-y-2 lg:space-x-10">
+  const NavLinksAu = (
+    <ul className="flex flex-col  space-y-2 lg:space-x-10 lg:items-center lg:justify-center">
       <li>
         <Link href="/dashboard">Home</Link>
       </li>
@@ -33,14 +33,36 @@ export function NavBar() {
     </ul>
   );
 
-  const MobileMenu = (
+  const NavLinksNoAu = (
+    <ul className="flex lg:inline-flex flex-col  space-y-2 lg:space-x-10 lg:items-center lg:justify-center">
+      <li>
+        <Link href="/#caracteristicas">Características</Link>
+      </li>
+      <li>
+        <Link href="/#about">Sobre nosotros</Link>
+      </li>
+    </ul>
+  );
+
+  const MobileMenuAu = (
     <div
       id="menu"
       className={`${
         navbar ? "p-12 block" : "hidden"
       } absolute z-50 top-10 right-2 transform translate-x-1 border-2 rounded-md p-8 bg-Grises/100 lg:hidden`}
     >
-      {NavLinks}
+      {NavLinksAu}
+    </div>
+  );
+
+  const MobileMenuNoAu = (
+    <div
+      id="menu"
+      className={`${
+        navbar ? "p-12 block" : "hidden"
+      } absolute z-50 top-10 right-2 transform translate-x-1 border-2 rounded-md p-8 bg-Grises/100 lg:hidden`}
+    >
+      {NavLinksNoAu}
     </div>
   );
 
@@ -61,14 +83,14 @@ export function NavBar() {
               </Link>
             </div>
             <div className="w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-end lg:w-1/2">
-              {NavLinks}
+              {NavLinksAu}
             </div>
             <div className="p-4 w-1/3 h-full flex justify-end items-center lg:invisible visibility:visible lg:w-1">
               <button className="w-6 h-4" onClick={() => setNavbar(!navbar)}>
                 {navbar ? <HiOutlineX /> : <FaBars />}
               </button>
             </div>
-            {MobileMenu}
+            {MobileMenuAu}
           </>
         ) : (
           <>
@@ -81,14 +103,7 @@ export function NavBar() {
               </Link>
             </div>
             <div className="w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-center lg:w-1/3">
-              <ul className="flex space-x-10">
-                <li>
-                  <Link href="/#caracteristicas">Características</Link>
-                </li>
-                <li>
-                  <Link href="/#about">Sobre nosotros</Link>
-                </li>
-              </ul>
+              {NavLinksNoAu}
             </div>
             <div className="hidden lg:block my-auto mx-auto justify-end items-center ">
               <Link href="./loginPage">
@@ -97,7 +112,7 @@ export function NavBar() {
                 </button>
               </Link>
             </div>
-            {MobileMenu}
+            {MobileMenuNoAu}
             <div className="p-4 w-1/3 h-full flex justify-end items-center lg:invisible visibility:visible lg:w-1">
               <button className="w-6 h-4" onClick={() => setNavbar(!navbar)}>
                 {navbar ? <HiOutlineX /> : <FaBars />}
