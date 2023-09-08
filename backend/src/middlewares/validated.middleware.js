@@ -47,7 +47,6 @@ exports.createUserValidation = [
         .withMessage('password cannot be empty')
         .isLength({ min: 3 })
         .withMessage('password must be at least 3 characters long'),
-    body('phone').isInt().withMessage('phone number must be a integer'),
     validFields,
 ];
 
