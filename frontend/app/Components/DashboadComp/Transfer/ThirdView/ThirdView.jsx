@@ -12,19 +12,19 @@ function ThirdView({ formData, handleButtonClick }) {
 
   return (
     <div className='h-full flex flex-col justify-evenly'>
-      <div className='bg-white rounded-md w-full max-w-[792.97px] h-full max-h-[364px]  flex-col  shadow-lg py-24  px-28 flex justify-center items-center'>
-        <h3 className='font-medium text-[32px] leading-10 text-center'>
+      <div className='bg-white rounded-md w-full max-w-[792.97px] h-full max-h-[364px]  flex-col  shadow-lg py-24  lg:px-28 md:px-24 px-16 flex justify-center items-center'>
+        <h3 className='font-medium md:text-[32px] text-2xl leading-10 text-center'>
           Has enviado <span className='text-Morado/800'>{formData.select}</span>{' '}
           <span className='uppercase'>{formData.opcion}</span> a Alejandra Ramírez
         </h3>
-        <p className='my-12 text-Grises/600 opacity-70 text-xl text-center'>
+        <p className='lg:my-12 md:my-6 my-4 text-Grises/600 opacity-70 text-xl text-center'>
           Le avisaremos a Alejandra que has realizado esta transacción
         </p>
 
         <div className='flex justify-evenly w-full items-center'>
           
-          <ButtonDashCompTr texto={"realizar otra transferencia"} onClick={handleButtonClick}/>
-          <Link href={"/dashboard/movimientos"} className='bg-Morado/700  w-full flex justify-center items-center text-white capitalize font-bold hover:bg-Morado/900 mx-2  h-14  shadow-2xl  duration-300 rounded-md'>
+          <ButtonDashCompTr texto={"realizar otra transferencia"} onClick={handleButtonClick} className=" hover:bg-Morado/900 w-20 "/>
+          <Link href={"/dashboard/movimientos"} className='bg-Morado/700 hover:bg-Morado/900  w-full flex justify-center md:text-base text-sm  items-center text-white capitalize font-bold mx-2  h-14  shadow-2xl  duration-300 rounded-md'>
           ver movimientos
           </Link>
         </div>
