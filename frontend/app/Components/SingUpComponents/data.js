@@ -5,7 +5,6 @@ async function handleSignup(values, setSubmitting, setFieldError, authContext, r
       lastName: values.lastName,
       password: values.password,
       email: values.email,
-      phone: values.phone
     };
 
     const requestOptions = {
@@ -15,7 +14,8 @@ async function handleSignup(values, setSubmitting, setFieldError, authContext, r
     };
 
     const response = await fetch("https://backend-s10-12-m-paypal.onrender.com/api/user/create", requestOptions);
-
+    const data = await response.json();
+    console.log('Usuario registrado exitosamente:', data);
     if (response.status === 200) {
       const data = await response.json();
       console.log('Usuario registrado exitosamente:', data);
@@ -38,7 +38,6 @@ async function handleSignup(values, setSubmitting, setFieldError, authContext, r
         setFieldError('password', 'Credenciales inválidas');
         setFieldError('name', 'Credenciales inválidas');
         setFieldError('lastName', 'Credenciales inválidas');
-        setFieldError('phone', 'Credenciales inválidas');
       }
 
       setSubmitting(false);

@@ -8,6 +8,19 @@ function SecondView({handleButtonReturnClick}) {
   return (
   
     <div className="bg-Grises/50 p-7 rounded-lg w-login shadow-lg mt-16 transition-all duration-300">
+       <FormInput labelHtmlFor="email" label="Correo electrónico" />
+   <Field
+     type="email"
+     name="email"
+     placeholder="Ingresar correo electrónico"
+     className="w-full h-12 p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 mt-2 text-lg placeholder-Grises/350 mb-2"
+   />
+
+   <ErrorMessage
+     name="email"
+     component="p"
+     className="text-red-500 text-sm mb-4"
+   />
     <FormInput labelHtmlFor="password" label="Contraseña" />
    <Field
      type="password"
@@ -22,19 +35,20 @@ function SecondView({handleButtonReturnClick}) {
      className="text-red-500 text-sm mb-4"
    />
 
-   <FormInput labelHtmlFor="email" label="Correo electrónico" />
+  
+     {/* <FormInput labelHtmlFor="number" label="Numero de Telefono(Opcional)" />
    <Field
-     type="email"
-     name="email"
-     placeholder="Ingresar correo electrónico"
-     className="w-full h-12 p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 mt-2 text-lg placeholder-Grises/350 mb-2"
+     type="tel"
+     name="phone"
+     placeholder="Ingresar tu numero"
+     className="w-full h-12 p-2 rounded border border-gray-300 focus:outline-none appearance-none focus:border-blue-500 mt-2 text-lg placeholder-Grises/350 mb-2"
    />
 
    <ErrorMessage
-     name="email"
+     name="phone"
      component="p"
      className="text-red-500 text-sm mb-4"
-   />
+   /> */}
 
   
      
