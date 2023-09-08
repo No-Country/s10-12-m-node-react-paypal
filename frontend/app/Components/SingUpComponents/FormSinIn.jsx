@@ -23,11 +23,11 @@ function FormSinIn() {
       password: Yup.string().matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
         'La contraseña no es válida. Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial.'
-      ).required("Con requerido"),
+      ).required("Contraseña requerido"),
       email: Yup.string().matches(
         /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
         'La dirección de correo electrónico no es válida'
-      ).required("Campo requerido"),
+      ).required("Correo requerido"),
       phone: Yup.string().matches(
         /^[\d\s()+-]*$/,
         'El número de teléfono no es válido'
