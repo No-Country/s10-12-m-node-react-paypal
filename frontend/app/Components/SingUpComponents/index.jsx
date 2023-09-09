@@ -11,7 +11,7 @@ export default  function SignupPageComp() {
 
   return (
     
-            <div className=" relative h-full w-full flex flex-col md:flex-row">
+            <div className=" relative min-h-screen h-full w-full flex flex-col md:flex-row">
     <div className="w-full md:w-1/2">
       <Image
         src={signupImg}
