@@ -1,14 +1,23 @@
 const AppError = require('../helpers/AppError')
 const db = require('../models/index')
 const AccountServices = require('./account.services')
+const UserServices = require('./user.services')
 
 class AssociatedAccServices {
-    accountService = AccountServices
+    accountService = new AccountServices()
 
-    async getAllAssociatedAcc(userId) {
+    async getAllAssociated({ id }) {
+        const userService = new UserServices()
         try {
+            const user = await userService.findOneUser({
+                attributes: { id: id },
+            })
+            if (!user) {
+                throw next(new AppError('User does not exist', 400));
+            }
+            const userId = user.id
             const userAssociated = await db.Associated_Accounts.findOne({
-                where: { userId: userId },
+                where: { userId: id },
             })
             return userAssociated
         } catch (error) {
@@ -16,8 +25,16 @@ class AssociatedAccServices {
         }
     }
 
-    async createAssociatedAcc(userId) {
+    async createAssociated({ id, body, next }) {
+        const userService = new UserServices()
         try {
+            const user = await userService.findOneUser({
+                attributes: { id: id },
+            })
+            if (!user) {
+                throw next(new AppError('User does not exist', 400));
+            }
+            const userId = user.id
             const createAssociated = await db.Associated_Accounts.create({
                 userId
             })
@@ -25,38 +42,25 @@ class AssociatedAccServices {
         } catch (error) {
             throw new Error(error)
         }
-
     }
 
-    async findOneAccount({ attributes, next }) {
+    async deleteAssociated({ id }) {
+        const userService = new UserServices()
         try {
-            const account = await db.Accounts.findOne({
-                where: attributes,
-                include: [
-                    {
-                        model: db.Cards,
-                    },
-                ],
-            });
-            return account;
-        } catch (error) {
-            throw new Error(error);
-        }
-    }
-
-
-    async deleteAssociatedAcc(userId) {
-        try {
+            const user = await userService.findOneUser({
+                attributes: { id: id },
+            })
+            if (!user.id) {
+                throw next(new AppError('User does not exist', 400));
+            }
             const deletedAssociated = await db.Associated_Accounts.destroy({
-                where: { userId: userId }
+                where: { userId: id }
             })
             return deletedAssociated
         } catch (error) {
             throw new Error(error)
         }
-
     }
-
 }
 
 module.exports = AssociatedAccServices

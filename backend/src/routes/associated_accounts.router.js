@@ -1,9 +1,13 @@
 const express = require('express')
-const associatedController = require('../controllers/associated_account.controller')
+const {createAssociated,deleteAssociated,getAllAssociated} = require('../controllers/associated_account.controller')
 const { protectRoute, verifyAccountOwner } = require('../middlewares/auth.middleware')
 
 const router = express.Router()
 
-router.post()
+router.get('/:id/get', getAllAssociated)
 
-router.get('/show', associatedController.createAssociatedAcc)
+router.post('/:id/create', createAssociated)
+
+router.delete('/:id/delete', deleteAssociated)
+
+module.exports = router;
