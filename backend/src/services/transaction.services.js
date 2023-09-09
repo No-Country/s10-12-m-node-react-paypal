@@ -53,7 +53,7 @@ class TransactionServices {
 
             const TransactionDetail = await this.transactionDetail({
                 transactionId: transaction.id,
-                amount,
+                amount, //esta mal escrito en la tabla
                 method,
                 payment_method,
                 id_transaction_stripe,
