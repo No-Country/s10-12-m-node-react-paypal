@@ -101,10 +101,10 @@ module.exports = {
 
       },
       animation: {
-        'lg-right': 'lgright 6s cubic-bezier(0, 0, 0.2, 1) infinite',
-        'lg-left': 'lgleft 6s cubic-bezier(0, 0, 0.2, 1) infinite',
-        'md-right': 'mdright 6s cubic-bezier(0, 0, 0.2, 1) infinite',
-        'md-left': 'mdleft 6s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'lg-right': 'lgright 6s cubic-bezier(0, 0, 0.2, 1) 1',
+        'lg-left': 'lgleft 6s cubic-bezier(0, 0, 0.2, 1) 1',
+        'md-right': 'mdright 6s cubic-bezier(0, 0, 0.2, 1) 1',
+        'md-left': 'mdleft 6s cubic-bezier(0, 0, 0.2, 1) 1',
       },
       keyframes: {
         lgright: {
