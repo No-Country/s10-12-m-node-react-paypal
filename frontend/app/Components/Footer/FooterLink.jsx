@@ -48,7 +48,7 @@ function FooterLink() {
     <ul className="capitalize flex justify-around items-center  xl:w-2/3 flex-row md:text-base text-xs  w-full">
     {isUserAuthenticated
       ? FOOTERLINKSNOLOGIN.map(({ label, route }) => (
-          <li key={route} className="flex justify-center items-end break-after-auto p-2 ">
+          <li key={route} className="flex justify-center  items-end break-after-auto p-2 ">
             <Link href={route} className="hover:text-Morado/400 duration-300">
               {label}
             </Link>

@@ -4,8 +4,9 @@ export default function SignupPage() {
   
 
   return (
-  
+   
    <SignupPageComp/>
+
  
   );
 }
