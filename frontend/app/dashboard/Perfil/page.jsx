@@ -1,5 +1,5 @@
-import PerfilCard from "../Components/PerfilComp/PerfilCard/Perfil";
-import ConfigCard from "../Components/PerfilComp/PerfilCard/ConfigCard";
+import PerfilCard from "../../Components/PerfilComp/PerfilCard/Perfil";
+import ConfigCard from "../../Components/PerfilComp/PerfilCard/ConfigCard";
 
 export default function PerfilPage() {
     return (

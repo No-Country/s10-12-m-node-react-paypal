@@ -1,6 +1,8 @@
 'use client'
+import handleLogin from '@/app/Components/LogInComp/LoginService';
 import { AuthContext } from '@/app/context/auth-context';
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
+import AlertLogOut from './AlertLogOut';
 
 
 
@@ -37,7 +39,8 @@ export default TableId
 
 export function ButtonLogOut() {
     const authContext = useContext(AuthContext);
-    
+    const [viewLogOut, SetviewLogOut] = useState(false)
+
 
     const  handleLogout = () => {
         if (typeof window !== 'undefined') {
@@ -54,9 +57,22 @@ export function ButtonLogOut() {
           }, 1000)
         }
       };
+    
+      const handleViewLogOut = () => {
+        SetviewLogOut(true)
+      }
+      const handleViewLogOutClose = () => {
+        SetviewLogOut(false)
+      }
+      
     return(
-        <button onClick={handleLogout} className=" bg-Azul/700 w-41 h-10 rounded-md md:py-3.5 px-7 flex items-center justify-center text-white my-5">
+      <>
+        <button onClick={handleViewLogOut} className=" bg-Azul/700 w-41 h-10 rounded-md md:py-3.5 px-7 flex items-center justify-center text-white my-5">
         Cerrar Sesión
     </button>
+      { viewLogOut ? ( <AlertLogOut handleLogout={handleLogout} handleViewLogOutClose={handleViewLogOutClose} /> ) : ( "")}
+      
+      
+      </>
     )
 }
