@@ -22,11 +22,11 @@ function Movimientos() {
 
   useEffect(() => {
     // checks if the user is authenticated
-console.log("esta aut", authContext.isUserAuthenticated())
     authContext.isUserAuthenticated()
       ? router.push("/dashboard/movimientos")
-      : router.push("/loginPage");
+      : router.push("/");
   }, []);
+
 
   useEffect(() => {
     // Filtrar movimientos según el filtro seleccionado

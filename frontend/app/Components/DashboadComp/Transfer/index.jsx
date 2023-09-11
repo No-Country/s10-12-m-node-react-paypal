@@ -1,6 +1,7 @@
 'use client'
-import React, { useState } from 'react';
-
+import React, {useContext, useEffect, useState} from "react";
+import { useRouter } from 'next/navigation';
+import { AuthContext } from "../../../context/auth-context";
 import FirstViewTransfer from './Firstview';
 import { useForm } from './Firstview/data';
 import { BsShop } from "react-icons/bs"
@@ -16,6 +17,8 @@ function TransferComp() {
   const [secondviewTr, setSecondViewTr] = useState(false);
   const [showResultView, setShowResultView] = useState(false);
   const { formData, handleInputChange } = useForm();
+  const router = useRouter();
+  const authContext = useContext(AuthContext);
 
   function handleButtonClick() {
     setFirstViewTr(!firstviewtr);
@@ -27,6 +30,13 @@ function TransferComp() {
     setFirstViewTr(false);
     setShowResultView(true);
   }
+
+  useEffect(() => {
+    // checks if the user is authenticated
+    authContext.isUserAuthenticated()
+      ? router.push("/dashboard/transfer")
+      : router.push("/");
+  }, []);
 
 
   

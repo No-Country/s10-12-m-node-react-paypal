@@ -1,4 +1,5 @@
 
+
 async function handleLogin(values, setSubmitting, setFieldError, authContext, router) {
   
     try {
@@ -25,10 +26,12 @@ async function handleLogin(values, setSubmitting, setFieldError, authContext, ro
         setSubmitting(false);
       } else {
         console.error('Error al iniciar sesión:', response.statusText);
-        setFieldError('email', 'Credenciales inválidas');
-        setFieldError('password', 'Credenciales inválidas');
+        setFieldError('generalError', 'El usuario y/o contraseña son incorrectos.');
+        //setFieldError('email', 'Credenciales inválidas');
+        //setFieldError('password', 'Credenciales inválidas');
         setSubmitting(false);
       }
+      
     } catch (error) {
       console.error('Error al realizar la solicitud:', error);
       setSubmitting(false);
