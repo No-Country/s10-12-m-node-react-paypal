@@ -48,7 +48,35 @@ export function NavBar() {
       <li>
         <Link href="/dashboard/movimientos" className="font-semibold text-Azul/800 border-b-2 border-transparent hover:border-b-Azul/600 duration-300">Movimientos</Link>
       </li>
+    </ul>
+  );
+
+  const NavLinksMobile = (
+    <ul className="flex flex-col justify-evenly items-start h-full text-left  w-full">
+      <li className="w-full my-2">
+        <Link href="/dashboard" className=" w-full text-left  text-Grises/500 font-semibold ">Home</Link>
+      </li>
+      <li className="w-full my-2">
+        <Link href="/dashboard/wallet" className=" w-full text-left  text-Grises/500 font-semibold ">Cartera</Link>
+      </li>
+      <li className="w-full my-2">
+        <Link href="/dashboard/movimientos" className=" w-full text-left  text-Grises/500 font-semibold ">Movimientos</Link>
+      </li>
+      {isUserAuthenticated ? (
+        <>
+         <li className="w-full my-2">
+          <Link href="/dashboard/movimientos" className=" w-full text-left  text-Grises/500 font-semibold  capitalize">perfil</Link>
+        </li>
+        <li className="w-full my-2">
+          <button href="/dashboard/movimientos" className=" w-full text-left  text-Grises/500 font-semibold " onClick={handleLogout}>Cerrar Sesión</button>
+        </li>
+        </>
+         
+      ):(
+""
+      )}
     
+  
     </ul>
   );
 
@@ -57,9 +85,9 @@ export function NavBar() {
       id="menu"
       className={`${
         navbar ? "p-12 block" : "hidden"
-      } absolute z-50 top-10 right-2 transform translate-x-1 border-2 rounded-md p-8 bg-Grises/100 lg:hidden`}
+      } absolute z-50 top-10 right-2 transform translate-x-1  rounded-md py-4 bg-Grises/100  lg:hidden`}
     >
-      {NavLinks}
+      {NavLinksMobile}
     </div>
   );
 
@@ -82,19 +110,24 @@ export function NavBar() {
             <div className=" relative w-1/3 h-full invisible flex lg:visible lg:items-center lg:justify-end lg:w-1/2">
               {NavLinks}
               
-              <button className="w-12 h-12 border-2 border-transparent hover:border-Morado/700 duration-200 rounded-full  hover:text-Morado/700 hover:bg-Grises/150 " onClick={toggleDesplegable}>
+              <button className="w-12 h-12 border-2 border-transparent hover:border-Morado/700 duration-200 rounded-full  hover:text-Morado/700 hover:bg-Grises/100 " onClick={toggleDesplegable}>
               <UserIcon className="p-2 duration-300"/>
               </button>
               {dropdown &&(
                 
-                <ul className="w-full rounded-[10px] shadow-md max-w-[196px] h-full absolute right-0 top-[5.86rem] bg-[#F5F7FD] flex flex-col justify-evenly items-left  ">
-                  <li className="bg-white flex items-center p-2  shadow-md hover:bg-Grises/200 duration-300 cursor-pointer  h-full w-full">
-        <Link className="text-Grises/350 opacity-60 font-medium z-10 w-full text-left" href="/Perfil" >Perfil</Link>
+                <div className="w-full rounded-[10px] shadow-md max-w-[196px] h-full  absolute right-[-20px] top-[5.86rem]  bg-[#fefeff] flex flex-col justify-evenly items-left  z-10 ">
+                  <ul className="h-full flex flex-col justify-evenly items-center relative">
+
+            
+                  <li className="bg-white flex  rounded-t-[10px] items-center p-2  shadow-md hover:bg-Grises/150 duration-300 cursor-pointer  z-10  h-full w-full ">
+        <Link className="text-Grises/350 opacity-100 font-medium  w-full text-left" href="/Perfil" >Perfil</Link>
       </li>
-      <li className="bg-Grises/100 flex items-center p-2 text-Morado/700 cursor-pointer shadow-md hover:bg-Grises/200 duration-300   h-full w-full">
-        <button  className="font-semibold cursor-pointer w-full text-left z-10 " onClick={handleLogout}>Cerrar Sesión</button>
+      <li className="bg-white relative flex items-center  rounded-b-[10px] p-2 text-Morado/700 cursor-pointer shadow-md hover:bg-Grises/150 duration-300 z-10  h-full w-full ">
+        <button  className="font-semibold  w-full text-left  " onClick={handleLogout}>Cerrar Sesión</button>
       </li>
-                </ul>
+      </ul>
+     <span className="absolute w-10 h-10 bg-white shadow-md top-[-20px] right-[1.41rem] rotate-45 rounded-tl-md   "></span>
+                </div>
               ) 
 
               }
@@ -145,5 +178,3 @@ export function NavBar() {
     </header>
   );
 } 
-
-

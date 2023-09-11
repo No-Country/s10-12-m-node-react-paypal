@@ -36,7 +36,7 @@ export function FooterComp() {
             <BiLogoLinkedinSquare className="w-[40px] h-[40px] hover:text-Morado/500 transition-colors duration-500 cursor-pointer" />
           </span>
         </div>
-        <p className="flex items-center w-full justify-center text-Grises/500 absolute bottom-0 mt-10">
+        <p className="flex items-center w-full justify-center text-Grises/500 absolute bottom-0 mt-10 md:text-base text-sm text-center">
               <AiOutlineCopyrightCircle className="mr-2" /> 2022 Bonnie Hong. All Rights Reserved.
             </p>
       </div>

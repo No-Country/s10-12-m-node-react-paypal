@@ -2,7 +2,7 @@ import React from 'react'
 import FormInput from '../../FormComp/Input'
 import { ErrorMessage, Field } from 'formik'
 import Button from '../../Button'
-import AlertView from './AlertView'
+import AlertView from './Alert/Succes/AlertView'
 
 function SecondView({handleButtonReturnClick}) {
   return (
