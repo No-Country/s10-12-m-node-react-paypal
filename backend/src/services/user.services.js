@@ -2,6 +2,7 @@ const db = require('../models/index');
 const generatejwt = require('../helpers/JWT');
 const bcrypt = require('bcryptjs');
 const AppError = require('../helpers/AppError');
+const { generateNickName } = require('../helpers/generateNickName');
 
 class UserServices {
     async login({ email, password, next }) {
@@ -49,8 +50,10 @@ class UserServices {
 
     async createUser({ body, next }) {
         try {
+            const { name, email } = body;
+            const nickName = generateNickName(name);
             const user = await this.findOneUser({
-                attributes: { email: body.email },
+                attributes: { email },
                 next,
             });
             if (user) {
@@ -59,6 +62,7 @@ class UserServices {
             const salt = await bcrypt.genSalt(12);
             const secretPassword = await bcrypt.hash(body.password, salt);
             body.password = secretPassword;
+            body.nickName = nickName;
             const newUser = await db.User.create(body);
             const token = await generatejwt(newUser.id);
 
@@ -120,4 +124,4 @@ class UserServices {
     }
 }
 
-module.exports = UserServices;   
+module.exports = UserServices;
