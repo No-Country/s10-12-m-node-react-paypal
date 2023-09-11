@@ -14,13 +14,13 @@ async function handleSignup( values, setSubmitting, setFieldError, authContext, 
     };
 
     const response = await fetch("https://backend-s10-12-m-paypal.onrender.com/api/user/create", requestOptions);
-    console.log(response.status)
+    console.log(response.statusText)
     if (response.status === 200  ) {
       const data = await response.json();
       console.log(data)
       setSubmitting(false);
       return true;
-    } else if (response.status === 400) {
+    } else if (response.status === 400 || 4) {
       const errorData = await response.json(); // Si la API devuelve detalles del error en JSON
       
       if (errorData && errorData.errors) {
