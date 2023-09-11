@@ -15,7 +15,7 @@ export default function InicioComp() {
 
         <div className="md:px-0 px-10">
           <h1 className="font-bold xl:text-6xl   text-4xl leading-[4.9rem] capitalize text-Grises/50 ">
-            country<span>pay</span>
+            country<span className="capitalize">Pay</span>
           </h1>
           <p className="md:text-2xl text-xl text-Grises/50 my-6 ">
             Tu forma segura y sencilla de transferir dinero

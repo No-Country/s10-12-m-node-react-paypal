@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { AuthContext } from '@/app/context/auth-context';
 
+
 export function useCompDashboardInicioState() {
   const router = useRouter();
   const authContext = useContext(AuthContext);
@@ -11,7 +12,8 @@ export function useCompDashboardInicioState() {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    // Verifica si el usuario está autenticado
+    // Verifica si el usuario está autenticado  
+    console.log(authContext.user)
     console.log('esta aut', authContext.isUserAuthenticated());
     setIsUserAuthenticated(authContext.isUserAuthenticated());
     setText(isUserAuthenticated ? `Hola, ${user.lastName}` : '');
