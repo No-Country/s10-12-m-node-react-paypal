@@ -38,6 +38,7 @@ async function handleSignup( values, setSubmitting, setFieldError, authContext, 
       setSubmitting(false);
     }
   } catch (error) {
+    console.error('Error al iniciar sesión:', error);
     setSubmitting(false);
     return false
   }
