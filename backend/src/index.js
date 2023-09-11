@@ -21,6 +21,7 @@ const limiter = rateLimit({
     windowMs: 60 * 60 * 1000,
     message: 'too many renders from this api',
 });
+app.use('/public', express.static(path.join(__dirname, '..', '/public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,7 +45,7 @@ app.all('*', (req, res, next) => {
 });
 
 // app.use('/public', express.static('/public'));
-app.use('/public', express.static(path.join(__dirname + '/public')));
+// app.use('/public', express.static(path.join(__dirname + '/public')));
 app.use(globalErrorHandle);
 module.exports = app;
 
