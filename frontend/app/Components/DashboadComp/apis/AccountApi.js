@@ -1,41 +1,37 @@
-'use client'
+// import { AuthContext } from "@/app/context/auth-context";
+// import { useContext } from "react";
 
-import { AuthContext } from "@/app/context/auth-context";
-import { useContext, useEffect, useState } from "react";
-
-function AccountApi() {
-  const authContext = useContext(AuthContext);
-  const user = authContext.user 
-  const URL = `https://backend-s10-12-m-paypal.onrender.com/api/account/${user.id}`;
-console.log(URL)
-
-  const [AccounApi, SetAccounApi] = useState('');
+// async function handleAccount() {
+//   const authContext = useContext(AuthContext)
   
-  useEffect(() => {
-    const requestOptions = {
-      method: 'GET',
-      headers: { 
-        
-      'Content-Type': 'application/json',    
-      'Autorization': authContext.token },
-   
-      body: JSON.stringify(),
+//   try {
+//     const loginData = "";
 
-    };
-    async function getData() {
- const res = await fetch(URL , requestOptions);
- const data = await res.json()
- SetAccounApi( data )
-    }
-    getData()
-    console.log(AccounApi.toLowerCase, "AccountApi")
+//     const requestOptions = {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json',
+//                   'Autorization':  authContext.token ,
 
 
-  }, [])
- 
-  return AccounApi.length
+//     },
+//       body: JSON.stringify(loginData),
+//     };
 
-}
+//     const response = await fetch(`https://backend-s10-12-m-paypal.onrender.com/api/account/recharge/${authContext.id}`, requestOptions);
+//     const data = await response.json()
+//     console.log(data)
+  
 
+//     if (response.status === 200) {
+//       const data = await response.json();
+//       console.log(data)
+//     } else if (response.status === 400 || 404 || 401) {
+//       console.log(data)
 
-export default AccountApi
+//     }
+//   } catch (error) {
+//     console.error('Error al realizar la solicitud:', error);
+//   }
+// }
+
+// export default handleAccount;

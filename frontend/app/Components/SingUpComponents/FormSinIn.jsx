@@ -41,7 +41,7 @@ function FormSinIn() {
     const success = await handleSignup(values, setSubmitting, setFieldError, AuthContext, router);
    if(!success){
     setRegistrationFail(true)
-    alert(`Error: ${errorType}`)
+    
    }else {
      
      setRegistrationSuccess(true)

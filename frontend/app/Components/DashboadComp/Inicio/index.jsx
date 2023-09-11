@@ -4,12 +4,12 @@ import MovimientComp from './MovimientoRecientes';
 import ButtonDashCompIn from './button';
 import BackBtn from "@/app/Components/BackBtn";
 import InfoAccount from './Amount/InfoAccount';
-import AccountApi from '../apis/AccountApi';
+import handleAccount from '../apis/AccountApi';
 
 
 function CompDashboardInicio() {
- 
-
+// const ai =   handleAccount()
+// console.log(ai)
     return (
       <div className='flex  justify-center items-center w-full   h-full relative'>
         <BackBtn ruta="/"/>
