@@ -14,7 +14,6 @@ async function handleSignup( values, setSubmitting, setFieldError, authContext, 
     };
 
     const response = await fetch("https://backend-s10-12-m-paypal.onrender.com/api/user/create", requestOptions);
-    console.log(response.statusText)
     if (response.status === 200  ) {
       const data = await response.json();
       console.log(data)
@@ -35,7 +34,7 @@ async function handleSignup( values, setSubmitting, setFieldError, authContext, 
 
       setSubmitting(false);
     } else {
- 
+      console.error('Error al iniciar sesión:', response.statusText);
       setSubmitting(false);
     }
   } catch (error) {
