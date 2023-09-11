@@ -6,9 +6,12 @@ import Link from "next/link";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import WalletCardImg from "@/public/images/walletCard";
 import BackBtn from "@/app/Components/BackBtn";
+import { useRouter } from 'next/navigation';
 
 const WalletCard = ({ amount }) => {
+  const router = useRouter();
   const handleTrans = () => {
+    router.push("/dashboard/transfer");
     console.log("Saldo transferido");
   };
 
@@ -30,7 +33,7 @@ const WalletCard = ({ amount }) => {
         </div>
 
         <Link
-          href={""}
+          href={"/dashboard/abonar/vincularTarjeta"}
           className="text-blue-800 font-semibold mr-20 mb-10 mt-10 self-end  px-6 hidden md:block"
         >
           <HiOutlinePlusCircle size={24} className="inline mr-2" /> Nueva
