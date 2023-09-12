@@ -1,5 +1,7 @@
 "use client";
-import React from "react";
+import React, {useContext, useEffect} from "react";
+import { useRouter } from 'next/navigation';
+import { AuthContext } from "../../../context/auth-context";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import BackBtn from "@/app/Components/BackBtn";
@@ -7,6 +9,8 @@ import Button from "@/app/Components/Button";
 import FormInput from "@/app/Components/FormComp/Input";
 
 const VincularTarjeta = () => {
+    const router = useRouter();
+  const authContext = useContext(AuthContext);
   const cardSchema = Yup.object().shape({
     titular: Yup.string().required("Campo requerido"),
     numero: Yup.number().required("Campo requerido"),
@@ -17,6 +21,13 @@ const VincularTarjeta = () => {
   const handleSubmit = () => {
     console.log("Tarjeta agregada")
   };
+
+  useEffect(() => {
+    // checks if the user is authenticated
+    authContext.isUserAuthenticated()
+      ? router.push("/dashboard/abonar/vincularTarjeta")
+      : router.push("/");
+  }, []);
 
   return (
     <div className="w-full h-full  flex justify-center relative">

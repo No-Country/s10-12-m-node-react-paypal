@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, {useContext, useEffect} from "react";
+import { AuthContext } from "../../../context/auth-context";
 import Button from "../../Button";
 import Link from "next/link";
 import { HiOutlinePlusCircle } from "react-icons/hi";
@@ -10,10 +11,18 @@ import { useRouter } from 'next/navigation';
 
 const WalletCard = ({ amount }) => {
   const router = useRouter();
+  const authContext = useContext(AuthContext);
   const handleTrans = () => {
     router.push("/dashboard/transfer");
     console.log("Saldo transferido");
   };
+
+  useEffect(() => {
+    // checks if the user is authenticated
+    authContext.isUserAuthenticated()
+      ? router.push("/dashboard/wallet")
+      : router.push("/");
+  }, []);
 
   return (
     <div className="flex relative md:min-h-screen justify-center items-start py-14">
