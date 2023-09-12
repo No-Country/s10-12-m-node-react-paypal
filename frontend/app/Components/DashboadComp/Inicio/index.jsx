@@ -1,15 +1,17 @@
-
+'use client'
 import React from 'react'
 import MovimientComp from './MovimientoRecientes';
 import ButtonDashCompIn from './button';
 import BackBtn from "@/app/Components/BackBtn";
 import InfoAccount from './Amount/InfoAccount';
-import handleAccount from '../apis/AccountApi';
+import InfoSaldo from './Amount/InfoSaldo';
+import CrearCuenta from '../api/CrearAccount';
 
 
 function CompDashboardInicio() {
-// const ai =   handleAccount()
-// console.log(ai)
+  CrearCuenta()
+
+
     return (
       <div className='flex  justify-center items-center w-full   h-full relative'>
         <BackBtn ruta="/"/>
@@ -20,10 +22,7 @@ function CompDashboardInicio() {
                   <InfoAccount/>
  <p className='font-medium lg:text-2xl text-lg text-Grises/550 first-letter:uppercase'> tu saldo de CoutryPay</p>
   
-  <div className='flex  lg:items-end items-center  justify-start mt-5 mb-6'>
-    <p className='font-medium lg:text-8xl md:text-5xl text-2xl text-Morado/800  mr-2'> $40,00  </p>
-    <span className='  uppercase text-base font-semibold text-black py-2 px-4 bg-Morado/50 rounded-full shadow-md ' >usd</span>
-  </div>
+  <InfoSaldo/>
 <ButtonDashCompIn/>
 </div>
                   </div>

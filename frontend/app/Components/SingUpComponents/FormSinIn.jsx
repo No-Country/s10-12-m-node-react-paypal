@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 import AlertView from './cards/Alert/Succes/AlertView';
 import AlertViewSuccess from './cards/Alert/Succes/AlertView';
 import AlertViewFail from './cards/Alert/Fail/AlertView';
+import CrearCuenta from '../DashboadComp/api/CrearAccount';
 
 function FormSinIn() {
   const router = useRouter();
@@ -40,10 +41,11 @@ function FormSinIn() {
   const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
     const success = await handleSignup(values, setSubmitting, setFieldError, AuthContext, router);
    if(!success){
+
     setRegistrationFail(true)
     
    }else {
-     
+    console.log("Datos del Succes:" ,success)
      setRegistrationSuccess(true)
    }
   };

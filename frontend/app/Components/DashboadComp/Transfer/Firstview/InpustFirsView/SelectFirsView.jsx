@@ -1,10 +1,17 @@
 'use client'
-import React, { useState } from 'react';
+import { AuthContext } from '@/app/context/auth-context';
+import React, { useContext, useState } from 'react';
+
 
 function SelectFirsView({ onSelectionChange, onOptionChange }) {
+
   const [selectedCurrency, setSelectedCurrency] = useState('-');
   const [select, setSelect] = useState('');
+  const authContext = useContext(AuthContext);
+  const user = authContext.user;
+  const account = user.Account;
 
+  const MAX_AMOUNT = account.balance; // Define aquí el monto máximo permitido
   const currencyFormats = {
     usd: { currency: 'USD', style: 'currency', minimumFractionDigits: 0 },
     mxn: { currency: 'MXN', style: 'currency', minimumFractionDigits: 0 },
@@ -40,8 +47,13 @@ function SelectFirsView({ onSelectionChange, onOptionChange }) {
       formattedValue = new Intl.NumberFormat('en-US', currencyFormats[selectedCurrency]).format(sanitizedValue);
     }
 
-    setSelect(formattedValue);
-    onSelectionChange(formattedValue);
+    if (parseInt(sanitizedValue, 10) > MAX_AMOUNT) {
+      // Aquí puedes manejar la lógica para indicar que el monto es demasiado alto
+      // Puedes mostrar un mensaje de error o tomar alguna otra acción
+    } else {
+      setSelect(formattedValue);
+      onSelectionChange(formattedValue);
+    }
   };
 
   const isCurrencySelected = selectedCurrency !== '-';
