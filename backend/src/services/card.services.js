@@ -12,7 +12,7 @@ class CardServices {
                 next,
             });
             if (!account) {
-                throw next(new AppError('user has not an active account', 400));
+                throw next(new AppError('user has not an active account', 404));
             }
             body.AccountId = account.id;
             const card = await db.Cards.create(body);

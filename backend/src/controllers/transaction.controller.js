@@ -51,10 +51,6 @@ const createTransaction = catchAsync(async (req, res, next) => {
     if (accountSender.balance < amount) {
         throw next(new AppError('not enought money', 400));
     }
-
-    console.log({ accountSender });
-    console.log({ accountReceiver });
-
     // hago la transaccion y guardo.
     accountSender.balance -= amount;
     accountReceiver.balance += amount;

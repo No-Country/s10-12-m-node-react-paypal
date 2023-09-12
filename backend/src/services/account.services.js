@@ -49,7 +49,7 @@ class AccountServices {
             //buscar cuenta del usuario//
             const account = await this.findOneAccount({ attributes, next });
             if (!account) {
-                throw next(new AppError('user has no active account', 400));
+                throw next(new AppError('user has no active account', 404));
             }
             //buscar tarjeta del usuario//
             const card = await db.Cards.findOne({
@@ -61,7 +61,7 @@ class AccountServices {
                 },
             });
             if (!card) {
-                throw next(new AppError('this card is no register', 400));
+                throw next(new AppError('this card is no register', 404));
             }
 
             //usar servicio de crear trabsaferencia//
@@ -87,13 +87,13 @@ class AccountServices {
                 where: { userId: userId },
             });
             if (!account) {
-                throw new Error('Not user found');
+                throw next(new AppError('account not found', 404));
             }
             account.balance += amount;
             account.save();
             return account;
         } catch (error) {
-            throw error;
+            throw new Error(error);
         }
     }
 }
