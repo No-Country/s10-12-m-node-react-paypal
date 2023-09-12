@@ -47,7 +47,6 @@ exports.createUserValidation = [
         .withMessage('password cannot be empty')
         .isLength({ min: 3 })
         .withMessage('password must be at least 3 characters long'),
-    body('phone').isInt().withMessage('phone number must be a integer'),
     validFields,
 ];
 
@@ -143,20 +142,64 @@ exports.recharge = [
 ];
 
 exports.validTransfers = [
-    body('senderId')
-        .notEmpty()
-        .withMessage('field is requiered')
+    body('account_number')
+        .optional()
         .isInt()
-        .withMessage('this field must be an integer'),
-    body('receivingId')
-        .notEmpty()
-        .withMessage('field is requiered')
-        .isInt()
-        .withMessage('this field must be an integer'),
+        .withMessage('account_number must be an integer'),
+    body('nickName')
+        .optional()
+        .isLength({ min: 3 })
+        .withMessage('nickName must have at least 3 characters long'),
     body('amount')
         .notEmpty()
         .withMessage('field is requiered')
         .isFloat()
         .withMessage('this field must be a float'),
+    validFields,
+];
+
+exports.updateUserInfo = [
+    body('name')
+        .optional()
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
+    body('lastName')
+        .optional()
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
+    body('nickName')
+        .optional()
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
+    body('email').optional().isEmail().withMessage('must be a valid email'),
+    body('phone')
+        .optional()
+        .isInt()
+        .withMessage('phone number must be an integer'),
+    validFields,
+];
+
+exports.changePassword = [
+    body('password')
+        .notEmpty()
+        .withMessage('field is require')
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
+    body('newPassword')
+        .notEmpty()
+        .withMessage('field is require')
+        .isLength({ min: 3, max: 60 })
+        .withMessage('this field must be in 3 to 60 characters'),
+    validFields,
+];
+
+exports.validDeleteCard = [
+    body('number')
+        .notEmpty()
+        .withMessage('number cannot be empty')
+        .custom(customCardNumber)
+        .withMessage('is not a valid credit card number')
+        .isLength({ min: 16, max: 16 })
+        .withMessage('number has to be 16 characters long'),
     validFields,
 ];

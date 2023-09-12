@@ -1,0 +1,106 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "seleccionado10",
+    "dateExported": "2023-09-06T15:03:55.152Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "2e418117-7939-4f20-bed7-79731fd2af2f",
+            "colId": "d026260c-5e1c-43b0-b3b1-a257310756eb",
+            "containerId": "",
+            "name": "create user",
+            "url": "http://localhost:3000/api/user/create",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-08-30T12:20:24.112Z",
+            "modified": "2023-09-05T20:16:48.651Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"tomas\",\n  \"lastName\":\"tosello\",\n  \"nickName\":\"tofetich\",\n  \"password\": \"123\",\n  \"email\": \"tose@gmail.com\",\n  \"status\": true,\n  \"phone\": 4600352\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bc53e123-d3d0-41cd-be2c-731f6b4660d1",
+            "colId": "d026260c-5e1c-43b0-b3b1-a257310756eb",
+            "containerId": "",
+            "name": "create account",
+            "url": "http://localhost:3000/api/account/{:id}",
+            "method": "POST",
+            "sortNum": 12500,
+            "created": "2023-09-05T18:45:37.464Z",
+            "modified": "2023-09-05T20:22:54.780Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": ":id",
+                    "value": "2",
+                    "isPath": true
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "ddebec31-2bf4-47a6-9ada-9ac400652b70",
+            "colId": "d026260c-5e1c-43b0-b3b1-a257310756eb",
+            "containerId": "",
+            "name": "create transaction",
+            "url": "http://localhost:3000/api/transaction/",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2023-09-05T15:35:22.384Z",
+            "modified": "2023-09-06T13:21:09.464Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"senderId\": 1,\n  \"receivingId\":2,\n  \"amount\":1\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "df5c425b-b47e-4a1e-aa87-5340a99433a3",
+            "colId": "d026260c-5e1c-43b0-b3b1-a257310756eb",
+            "containerId": "",
+            "name": "charge PointCharge",
+            "url": "http://localhost:3000/api/transaction/charge-point/{:id}",
+            "method": "POST",
+            "sortNum": 17500,
+            "created": "2023-09-06T14:36:10.471Z",
+            "modified": "2023-09-06T14:53:05.428Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": ":id",
+                    "value": "11",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"amount\":150\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b93523ea-d148-4286-92d8-30ca7ad26db2",
+            "colId": "d026260c-5e1c-43b0-b3b1-a257310756eb",
+            "containerId": "",
+            "name": "prueba",
+            "url": "http://localhost:3000/prueba/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-30T20:21:07.810Z",
+            "modified": "2023-08-30T20:21:55.467Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

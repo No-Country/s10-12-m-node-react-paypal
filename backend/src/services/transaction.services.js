@@ -53,12 +53,34 @@ class TransactionServices {
 
             const TransactionDetail = await this.transactionDetail({
                 transactionId: transaction.id,
-                amount,
+                amount, //esta mal escrito en la tabla
                 method,
                 payment_method,
                 id_transaction_stripe,
             });
             return TransactionDetail;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    async getTransactions({ id, next }) {
+        try {
+            const transactions = await db.Transaction.findAll({
+                where: {
+                    sender_user: id,
+                },
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt'],
+                },
+                include: [
+                    {
+                        model: db.Detail_transactions,
+                    },
+                ],
+            });
+
+            return transactions;
         } catch (error) {
             throw new Error(error);
         }

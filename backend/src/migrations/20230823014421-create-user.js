@@ -1,5 +1,6 @@
 'use strict';
-const defaultValue = '/backend/public/media/image/avatar.png';
+const defaultValue =
+    'https://countrypay.onrender.com/public/media/image/avatar.png';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {

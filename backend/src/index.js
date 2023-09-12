@@ -9,7 +9,7 @@ const AppError = require('./helpers/AppError');
 const bodyParser = require('body-parser');
 const globalErrorHandle = require('./controllers/error.controller');
 const uploadDirectory = './public/uploads';
-const routerApi = require('../src/routes/index')
+const routerApi = require('../src/routes/index');
 
 if (!fs.existsSync(uploadDirectory)) {
     fs.mkdirSync(uploadDirectory, { recursive: true });
@@ -21,6 +21,7 @@ const limiter = rateLimit({
     windowMs: 60 * 60 * 1000,
     message: 'too many renders from this api',
 });
+app.use('/public', express.static(path.join(__dirname, '..', '/public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -34,9 +35,8 @@ app.use(hpp());
 
 app.use('/api', limiter); //Ver esto
 
-// levanto las rutas 
-app.use('/api',routerApi)
-
+// levanto las rutas
+app.use('/api', routerApi);
 
 app.all('*', (req, res, next) => {
     return next(
@@ -44,10 +44,7 @@ app.all('*', (req, res, next) => {
     );
 });
 
-
-
 // app.use('/public', express.static('/public'));
-app.use('/public', express.static(path.join(__dirname + '/public')));
+// app.use('/public', express.static(path.join(__dirname + '/public')));
 app.use(globalErrorHandle);
-
 module.exports = app;

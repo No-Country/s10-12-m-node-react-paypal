@@ -21,8 +21,7 @@ class AccountServices {
             throw new Error(error);
         }
     }
-
-    async createAccount(userId) {
+    async createAccount(userId, next) {
         try {
             const confirmation_account = generateRandomToken();
             const createdAccount = await db.Accounts.create({
@@ -44,7 +43,7 @@ class AccountServices {
 
             const account = await this.findOneAccount({ attributes, next });
             if (!account) {
-                throw next(new AppError('user has no active account', 400));
+                throw next(new AppError('user has no active account', 404));
             }
 
             const card = await db.Cards.findOne({
@@ -56,7 +55,7 @@ class AccountServices {
                 },
             });
             if (!card) {
-                throw next(new AppError('this card is no register', 400));
+                throw next(new AppError('this card is no register', 404));
             }
 
             const transaction = await this.transactionServices.transfer({
@@ -75,20 +74,19 @@ class AccountServices {
             throw new Error(error);
         }
     }
-
     async chargeAccountChargePoint({ userId, amount }) {
         try {
             const account = await db.Accounts.findOne({
                 where: { userId: userId },
             });
             if (!account) {
-                throw new Error('Not user found');
+                throw next(new AppError('account not found', 404));
             }
             account.balance += amount;
             account.save();
             return account;
         } catch (error) {
-            throw error;
+            throw new Error(error);
         }
     }
 

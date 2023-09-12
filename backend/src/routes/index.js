@@ -5,6 +5,9 @@ const SessionRouter = require('./session.routes');
 const AvatarRouter = require('./avatar.router');
 const AccountRouter = require('./account.router');
 const TransactionRouter = require('./transaction.router')
+const billing = require('./billingData.router')
+const AssociatedRouter = require('./associated_accounts.router')
+
 
 const routerApi = Router();
 
@@ -23,7 +26,13 @@ routerApi.use('/avatar', AvatarRouter);
 
 routerApi.use('/account', AccountRouter);
 
+//rutas de billing data
+
+routerApi.use('/billing', billing);
+
 //rutas de transaction
 routerApi.use('/transaction', TransactionRouter);
+
+routerApi.use('/associated-accounts', AssociatedRouter)
 
 module.exports = routerApi;

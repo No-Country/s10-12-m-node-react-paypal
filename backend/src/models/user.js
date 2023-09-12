@@ -1,6 +1,7 @@
 'use strict';
 const { Model, UUIDV4 } = require('sequelize');
-const defaultValue = '/backend/public/media/image/avatar.png';
+const defaultValue =
+    'https://countrypay.onrender.com/public/media/image/avatar.png';
 // const { v4: uuid } = require('uuid');
 // const { Sequelize } = require('.');
 // const { DataTypes } = require('sequelize');
@@ -44,7 +45,8 @@ module.exports = (sequelize, DataTypes) => {
 
             nickName: {
                 type: DataTypes.STRING,
-                allowNull: true,
+                allowNull: false,
+                unique: true,
             },
             password: {
                 type: DataTypes.STRING,

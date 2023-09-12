@@ -1,7 +1,19 @@
+
+import AccountApi from "../Components/DashboadComp/apis/AccountApi";
+import AboutUsComp from "../Components/LandingComp/AboutUs";
+import InicioComp from "../Components/LandingComp/Inicio";
+import DirectionPage from "../Components/LandingComp/product";
+import Stories from "../Components/LandingComp/Stories";
+
 export default function LandingPage() {
+ 
     return(
-        <>
-            <h1>Hola</h1>  
-        </>
+        <div className="w-full  h-fit ">
+          <InicioComp/>
+          <DirectionPage/>
+          <AboutUsComp/>
+          <Stories />
+          
+        </div>
     )
 }

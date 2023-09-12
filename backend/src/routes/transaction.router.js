@@ -15,6 +15,18 @@ router.post(
     verifyAccountOwner,
     transactionController.createTransaction,
 );
-router.post('/charge-point/:id', transactionController.chargePointCharge);
+router.post(
+    '/charge-point/:id',
+    protectRoute,
+    verifyAccountOwner,
+    transactionController.chargePointCharge,
+);
+
+router.get(
+    '/get_transactions/:id',
+    protectRoute,
+    verifyAccountOwner,
+    transactionController.getTransactions,
+);
 
 module.exports = router;
