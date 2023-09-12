@@ -54,7 +54,7 @@ const WalletCard = ({ amount }) => {
           <div className="text-left md:w-1/3">
             <h3 className="text-lg md:text-xl ">Saldo de CountryPay</h3>
             <p className="text-3xl md:text-5xl md:mt-4 font-semibold">
-              $ {balance.toFixed(2)}
+              $ {balance == null? '00,00' : balance.toFixed(2)}
             </p>
           </div>
           <div className="text-center md:w-1/3">
