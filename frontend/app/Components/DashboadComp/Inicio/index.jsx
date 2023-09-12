@@ -21,7 +21,7 @@ function CompDashboardInicio() {
  <p className='font-medium lg:text-2xl text-lg text-Grises/550 first-letter:uppercase'> tu saldo de CoutryPay</p>
   
   <div className='flex  lg:items-end items-center  justify-start mt-5 mb-6'>
-    <p className='font-medium lg:text-8xl md:text-5xl text-2xl text-Morado/800  mr-2'> $ 40,00  </p>
+    <p className='font-medium lg:text-8xl md:text-5xl text-2xl text-Morado/800  mr-2'> $40,00  </p>
     <span className='  uppercase text-base font-semibold text-black py-2 px-4 bg-Morado/50 rounded-full shadow-md ' >usd</span>
   </div>
 <ButtonDashCompIn/>

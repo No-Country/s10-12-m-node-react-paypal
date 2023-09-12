@@ -12,8 +12,7 @@ export default function DirectionPage() {
       <p className="text-Grises/500 md:text-2xl text-lg  leading-8 text-center">Podrás transferir dinero de manera segura y sin complicaciones</p>
       </div>
 
-      <div className="md:mx-2   grid xl:grid-cols-4 xl:gap-5 lg:grid-cols-2 lg:gap-3 mt-4 duration-500 transition-all grid-cols-1 gap-8">
-        {/* Aqui puedes implementar las cards  */}
+      <div className="md:mx-2   grid xl:grid-cols-4 xl:gap-5 lg:grid-cols-2 lg:gap-3 xl:mt-24 lg:mt-20 md:mt-18 mt-16 duration-500 transition-all grid-cols-1 gap-8">
  
    <CardComponent/>
  
