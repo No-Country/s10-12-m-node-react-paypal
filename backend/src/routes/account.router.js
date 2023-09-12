@@ -23,11 +23,6 @@ router.post(
     accountController.rechargeCard,
 );
 
-router.get(
-    '/:id',
-    protectRoute,
-    verifyAccountOwner,
-    accountController.getUserAccount,
-);
+router.post('/confirm/:token', protectRoute, accountController.confirmAccount);
 
 module.exports = router;
