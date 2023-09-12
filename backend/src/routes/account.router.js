@@ -8,7 +8,12 @@ const { recharge } = require('../middlewares/validated.middleware');
 
 const router = express.Router();
 
-router.post('/:id', accountController.createAccount);
+router.post(
+    '/:id',
+    protectRoute,
+    verifyAccountOwner,
+    accountController.createAccount,
+);
 
 router.post(
     '/recharge/:id',

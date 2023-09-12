@@ -10,11 +10,16 @@ const router = Router();
 
 router.post(
     '/:id',
-    // validTransfers,
-    // protectRoute,
-    // verifyAccountOwner,
+    validTransfers,
+    protectRoute,
+    verifyAccountOwner,
     transactionController.createTransaction,
 );
-router.post('/charge-point/:id', transactionController.chargePointCharge);
+router.post(
+    '/charge-point/:id',
+    protectRoute,
+    verifyAccountOwner,
+    transactionController.chargePointCharge,
+);
 
 module.exports = router;

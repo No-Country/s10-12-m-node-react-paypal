@@ -142,16 +142,14 @@ exports.recharge = [
 ];
 
 exports.validTransfers = [
-    body('senderId')
-        .notEmpty()
-        .withMessage('field is requiered')
+    body('account_number')
+        .optional()
         .isInt()
-        .withMessage('this field must be an integer'),
-    body('receivingId')
-        .notEmpty()
-        .withMessage('field is requiered')
-        .isInt()
-        .withMessage('this field must be an integer'),
+        .withMessage('account_number must be an integer'),
+    body('nickName')
+        .optional()
+        .isLength({ min: 3 })
+        .withMessage('nickName must have at least 3 characters long'),
     body('amount')
         .notEmpty()
         .withMessage('field is requiered')

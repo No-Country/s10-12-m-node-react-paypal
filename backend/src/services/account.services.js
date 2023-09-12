@@ -20,8 +20,17 @@ class AccountServices {
             throw new Error(error);
         }
     }
-    async createAccount(userId) {
+    async createAccount(userId, next) {
         try {
+            const account = await this.findOneAccount({
+                attributes: {
+                    userId,
+                },
+                next,
+            });
+            if (account) {
+                throw next(new AppError('user already has an account', 400));
+            }
             const createdAccount = await db.Accounts.create({
                 userId,
                 balance: 100,

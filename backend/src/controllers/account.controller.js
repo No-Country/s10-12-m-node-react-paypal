@@ -4,7 +4,7 @@ const accountServices = new AccountServices();
 
 exports.createAccount = catchAsync(async (req, res, next) => {
     const userId = req.params.id;
-    const createdAccount = await accountServices.createAccount(userId);
+    const createdAccount = await accountServices.createAccount(userId, next);
     res.status(200).json({
         status: 'success',
         message: 'Account created and saved to database',
