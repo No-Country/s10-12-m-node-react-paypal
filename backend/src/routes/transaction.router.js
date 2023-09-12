@@ -22,4 +22,11 @@ router.post(
     transactionController.chargePointCharge,
 );
 
+router.get(
+    '/get_transactions/:id',
+    protectRoute,
+    verifyAccountOwner,
+    transactionController.getTransactions,
+);
+
 module.exports = router;

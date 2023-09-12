@@ -12,3 +12,14 @@ exports.createCard = catchAsync(async (req, res, next) => {
         card,
     });
 });
+
+exports.deleteCard = catchAsync(async (req, res, next) => {
+    const { id: userId } = req.params;
+    const body = req.body;
+    await cardServices.deleteOneCard({ userId, body, next });
+
+    return res.status(200).json({
+        message: 'succes',
+        card: 'deleted',
+    });
+});

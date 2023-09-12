@@ -48,4 +48,3 @@ app.all('*', (req, res, next) => {
 // app.use('/public', express.static(path.join(__dirname + '/public')));
 app.use(globalErrorHandle);
 module.exports = app;
-

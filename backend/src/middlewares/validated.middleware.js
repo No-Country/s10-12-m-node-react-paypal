@@ -192,3 +192,14 @@ exports.changePassword = [
         .withMessage('this field must be in 3 to 60 characters'),
     validFields,
 ];
+
+exports.validDeleteCard = [
+    body('number')
+        .notEmpty()
+        .withMessage('number cannot be empty')
+        .custom(customCardNumber)
+        .withMessage('is not a valid credit card number')
+        .isLength({ min: 16, max: 16 })
+        .withMessage('number has to be 16 characters long'),
+    validFields,
+];

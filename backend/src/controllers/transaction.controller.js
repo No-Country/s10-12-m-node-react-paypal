@@ -87,7 +87,22 @@ const chargePointCharge = catchAsync(async (req, res, next) => {
     });
 });
 
+const getTransactions = catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const listTransactions = await transactionServices.getTransactions({
+        id,
+        next,
+    });
+
+    res.status(200).json({
+        status: 'success',
+        message: 'The account has been charged',
+        listTransactions,
+    });
+});
+
 module.exports = {
     createTransaction,
     chargePointCharge,
+    getTransactions,
 };

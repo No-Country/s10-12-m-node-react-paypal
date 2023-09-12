@@ -63,6 +63,28 @@ class TransactionServices {
             throw new Error(error);
         }
     }
+
+    async getTransactions({ id, next }) {
+        try {
+            const transactions = await db.Transaction.findAll({
+                where: {
+                    sender_user: id,
+                },
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt'],
+                },
+                include: [
+                    {
+                        model: db.Detail_transactions,
+                    },
+                ],
+            });
+
+            return transactions;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
 }
 
 module.exports = new TransactionServices();
