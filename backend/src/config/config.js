@@ -7,7 +7,7 @@ module.exports = {
         database: process.env.POSTGRESQL_ADDON_DB,
         host: process.env.POSTGRESQL_ADDON_HOST,
         dialect: process.env.DB_DIALECT,
-        port: 5432,
+        port: process.env.POSTGRESQL_ADDON_PORT,
         loggin: true,
         // username: 'postgres',
         // password: 'root',

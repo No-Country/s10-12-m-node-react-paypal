@@ -42,6 +42,9 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.JSON,
                 allowNull: true,
             },
+            confirmation_account: {
+                type: DataTypes.STRING,
+            },
         },
         {
             sequelize,
