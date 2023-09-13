@@ -24,10 +24,11 @@ router.post(
 );
 
 router.get(
-    'get_user_account/:id',
+    '/get_account/:id',
     protectRoute,
     verifyAccountOwner,
     accountController.getUserAccount,
 );
+router.post('/confirm/:token', protectRoute, accountController.confirmAccount);
 
 module.exports = router;

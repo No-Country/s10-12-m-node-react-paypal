@@ -1,4 +1,5 @@
 const AppError = require('../helpers/AppError');
+const generateRandomToken = require('../helpers/generateRandomToken');
 const db = require('../models/index');
 const TransactionServices = require('./transaction.services');
 
@@ -22,40 +23,33 @@ class AccountServices {
     }
     async createAccount(userId, next) {
         try {
-            const account = await this.findOneAccount({
-                attributes: {
-                    userId,
-                },
-                next,
-            });
-            if (account) {
-                throw next(new AppError('user already has an account', 400));
-            }
+            const confirmation_account = generateRandomToken();
             const createdAccount = await db.Accounts.create({
                 userId,
                 balance: 100,
                 account_detail_stripe: {},
+                confirmation_account,
             });
             return createdAccount;
         } catch (error) {
             throw error;
         }
     }
+
     async rechargeAccount({ body, id, next }) {
         try {
             const { number, security_code, amount } = body;
             const attributes = { userId: id };
 
-            //buscar cuenta del usuario//
             const account = await this.findOneAccount({ attributes, next });
             if (!account) {
                 throw next(new AppError('user has no active account', 404));
             }
-            //buscar tarjeta del usuario//
+
             const card = await db.Cards.findOne({
                 where: {
                     number,
-                    type: 'debito',
+                    type: 'debit',
                     security_code,
                     AccountId: account.id,
                 },
@@ -64,7 +58,6 @@ class AccountServices {
                 throw next(new AppError('this card is no register', 404));
             }
 
-            //usar servicio de crear trabsaferencia//
             const transaction = await this.transactionServices.transfer({
                 senderId: 1,
                 receivingId: id,
@@ -72,7 +65,7 @@ class AccountServices {
                 amount,
                 method: 'recharge',
             });
-            //ajustar balance de la cuenta
+
             const newAccountBalance = eval(account.balance + amount);
             await account.update({ balance: newAccountBalance });
 
@@ -95,6 +88,27 @@ class AccountServices {
         } catch (error) {
             throw new Error(error);
         }
+    }
+
+    async confirmAccount(confirmation_account, status) {
+        const account = await db.Accounts.findOne({
+            where: { confirmation_account },
+        });
+
+        if (!account) {
+            return 'invalid';
+        } else {
+            account.confirmation_account = status;
+            await account.save();
+            return status;
+        }
+    }
+
+    async hasAccount(userId) {
+        const account = await db.Accounts.findOne({
+            where: { userId },
+        });
+        return !!account;
     }
 }
 
