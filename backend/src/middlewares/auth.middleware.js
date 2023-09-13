@@ -22,6 +22,8 @@ exports.protectRoute = catchAsync(async (req, res, next) => {
         attributes: { id },
         next,
     });
+
+    console.log(id);
     if (!user) {
         return next(new AppError('This user is not available', 401));
     }

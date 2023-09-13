@@ -23,6 +23,12 @@ class AccountServices {
     }
     async createAccount(userId, next) {
         try {
+            const attributes = { userId };
+            const account = await this.findOneAccount({ attributes, next });
+
+            if (account) {
+                throw next(new AppError('user has already an account', 400));
+            }
             const confirmation_account = generateRandomToken();
             const createdAccount = await db.Accounts.create({
                 userId,
