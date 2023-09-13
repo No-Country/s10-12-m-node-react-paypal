@@ -1,3 +1,6 @@
+'use client'
+import ButtonDeleteAccount from "./DeleteButton";
+
 export default function ConfigCard (){
     return(
         <div className="flex-col w-72 md:w-7/12 bg-Grises/50 shadow rounded-xl  py-5 md:p-14 px-4 md:px-20 gap-10">
@@ -16,7 +19,7 @@ export default function ConfigCard (){
                     <p className="text-sm font-normal">Si eliminas la cuenta, se eliminarán de manera permanente todos los proyectos y tareas que están relacionados a tu perfil y se perderán toda tu información. </p>
                 </div>
                 <div className="flex md:items-center ml-0 md:ml-5">
-                    <button className="bg-Morado/700  w-41 h-10 rounded-md py-3 px-5 flex items-center justify-center text-white whitespace-nowrap text-center">Eliminar cuenta</button>
+                    <ButtonDeleteAccount />
                 </div>
             </div>
         </div>
