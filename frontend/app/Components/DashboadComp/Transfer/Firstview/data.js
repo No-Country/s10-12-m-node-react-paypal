@@ -4,10 +4,9 @@ import React from 'react';
 
 export function useForm() {
     const [formData, setFormData] = useState({
-        amount: '', // Campo para el monto
+        amount: '', 
         nickName: '',
         concept: '',
-        accountNumber: '',
     });
     const handleInputChange = (inputType, newValue) => {
         setFormData(prevData => ({
@@ -20,7 +19,6 @@ export function useForm() {
       };
     
 
-    console.log("FormData:", formData)
 
     return {
         formData,

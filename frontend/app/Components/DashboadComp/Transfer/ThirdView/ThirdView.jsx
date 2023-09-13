@@ -3,8 +3,10 @@ import ButtonDashCompTr from '../button';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import Link from 'next/link';
 
-function ThirdView({ formData, handleButtonClick }) {
+function ThirdView({ formData, handleButtonClick, userdata }) {
   const [selectedStar, setSelectedStar] = useState(null);
+  
+  const user1 = userdata ? userdata.user : {};
 
   const handleStarClick = (starId) => {
     setSelectedStar(starId);
@@ -14,8 +16,9 @@ function ThirdView({ formData, handleButtonClick }) {
     <div className='h-full flex flex-col justify-evenly'>
       <div className='bg-white rounded-md w-full max-w-[792.97px] h-full max-h-[364px]  flex-col  shadow-lg py-24  lg:px-28 md:px-24 px-16 flex justify-center items-center'>
         <h3 className='font-medium md:text-[32px] text-2xl leading-10 text-center'>
-          Has enviado <span className='text-Morado/800'>{formData.select}</span>{' '}
-          <span className='uppercase'>{formData.opcion}</span> a Alejandra Ramírez
+          
+          Has enviado <span className='text-Morado/800'>{formData.amount}</span>{""}
+          <span className='uppercase'>{formData.opcion}</span> a {user1.name}
         </h3>
         <p className='lg:my-12 md:my-6 my-4 text-Grises/600 opacity-70 text-xl text-center'>
           Le avisaremos a Alejandra que has realizado esta transacción

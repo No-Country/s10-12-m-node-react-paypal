@@ -1,18 +1,18 @@
-'use client'
 import { AuthContext } from '@/app/context/auth-context';
 import React, { useContext, useState } from 'react';
 
-
-function SelectFirsView({formData, onSelectionChange, onOptionChange }) {
-
+function SelectFirsView({ formData, onSelectionChange, onOptionChange }) {
   const [selectedCurrency, setSelectedCurrency] = useState('-');
   const [monto, setMonto] = useState('');
+  const [error, setError] = useState('');
   const authContext = useContext(AuthContext);
-  const balance = authContext.user.Account.balance;
+  const balance = authContext.user?.Account?.balance;
 
-  const amount = formData.amount
-  amount = monto 
+  const amount = formData.amount;
+ 
   const MAX_AMOUNT = balance; // Define aquí el monto máximo permitido
+  const MIN_AMOUNT = 1; // Define aquí el monto mínimo permitido
+
   const currencyFormats = {
     usd: { currency: 'USD', style: 'currency', minimumFractionDigits: 0 },
     mxn: { currency: 'MXN', style: 'currency', minimumFractionDigits: 0 },
@@ -49,9 +49,11 @@ function SelectFirsView({formData, onSelectionChange, onOptionChange }) {
     }
 
     if (parseInt(sanitizedValue, 10) > MAX_AMOUNT) {
-      // Aquí puedes manejar la lógica para indicar que el monto es demasiado alto
-      // Puedes mostrar un mensaje de error o tomar alguna otra acción
+      setError('El monto es demasiado alto');
+    } else if (parseInt(sanitizedValue, 10) < MIN_AMOUNT) {
+      setError('El monto mínimo es $1');
     } else {
+      setError(''); // Limpia cualquier mensaje de error existente
       setMonto(formattedValue);
       onSelectionChange(formattedValue);
     }
@@ -81,13 +83,15 @@ function SelectFirsView({formData, onSelectionChange, onOptionChange }) {
         type='text'
         name='amount'
         placeholder={inputPlaceholder}
-        value={isCurrencySelected ? monto : ''}
+        value={isCurrencySelected ? amount : ''}
         onChange={isCurrencySelected ? handleAmountChange : null}
         readOnly={!isCurrencySelected}
+        title={error}
         className={`placeholder:uppercase placeholder:font-semibold placeholder:text-Grises/500 placeholder:opacity-40 bg-transparent border border-t-Grises/500 border-r-Grises/500 border-l-Grises/350 border-b-Grises/500 text-Grises/600 text-sm rounded-br-lg rounded-tr-lg block w-full lg:p-2.5 p-4 ${
           isCurrencySelected ? '' : 'pointer-events-none'
         }`}
       />
+     
     </div>
   );
 }

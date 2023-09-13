@@ -42,17 +42,7 @@ async function handleSignup( values, setSubmitting, setFieldError, authContext, 
   }
 
 }
-// const result = await handleSignup(values, setSubmitting, setFieldError, authContext, router);
 
-// // Comprobar si la función devolvió datos exitosos
-// if (result && result.success) {
-//   // Aquí puedes acceder a los datos exitosos
-//   const userData = result.data;
-//   console.log('Datos exitosos:', userData);
-// } else {
-//   // La función no fue exitosa, puedes manejar el error aquí
-//   console.error('Error:', result.error);
-// }
 export default handleSignup;
 
 

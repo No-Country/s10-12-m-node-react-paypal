@@ -1,23 +1,29 @@
+import { AuthContext } from "@/app/context/auth-context";
+import { useContext } from "react";
 
-async function TransferApi(token, formData, updateFormData, authContext) { 
+async function GetTransfer() {
+    const authContext = useContext(AuthContext);
     const user = authContext.user;
-    const url = `https://countrypay.onrender.com/api/transaction/`;
-
+    const url = `https://countrypay.onrender.com/api/transaction/get_transactions/2`
     try {
-      console.log(token); // Asegúrate de que token sea el que pasaste como argumento
+
+      // Obtener el token almacenado en localStorage
+      const token = localStorage.getItem("token");
+      console.log(token)
         
       if (!token) {
         console.error("No se encontró el token en localStorage.");
         return;
       }
   
+    
       const requestOptions = {
-        method: "POST",
+        method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify()
       };
   
       const response = await fetch(
@@ -28,14 +34,16 @@ async function TransferApi(token, formData, updateFormData, authContext) {
       if (response.status === 200) {
         const data = await response.json();
         console.log("Datos obtenidos:", data);
-        updateFormData(data); 
       } else {
+      
         const data = await response.json();
+
         console.error("Error al realizar la solicitud:", data);
       }
     } catch (error) {
       console.error("Error al realizar la solicitud:", error);
     }
-}
-
-export default TransferApi;
+  }
+  
+  export default GetTransfer;
+  
