@@ -27,7 +27,7 @@ async function TransferApi(token, formData, updateFormData, authContext) {
   
       if (response.status === 200) {
         const data = await response.json();
-        console.log("Datos obtenidos:", data);
+        //console.log("Datos obtenidos:", data);
         updateFormData(data); 
       } else {
         const data = await response.json();

@@ -101,7 +101,7 @@ export async function agregarTarjetas(
 
     if (response.status === 200) {
       const data = await response.json();
-      console.log("Datos obtenidos:", data);
+      //console.log("Datos obtenidos:", data);
       setSubmitting(false);
       router.push("/dashboard/wallet");
     } else {

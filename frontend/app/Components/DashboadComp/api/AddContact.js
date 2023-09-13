@@ -27,7 +27,7 @@ async function AddContact() {
 
           if (response.status === 200) {
             const data = await response.json();
-            console.log("Datos obtenidos:", data);
+            //console.log("Datos obtenidos:", data);
           } else {
             const data = await response.json();
             console.error("Error al realizar la solicitud:", data);

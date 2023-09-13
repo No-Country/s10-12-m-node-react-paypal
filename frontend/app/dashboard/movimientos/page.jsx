@@ -113,7 +113,7 @@ function Movimientos() {
     setFiltro("todos"); // También puedes establecer el filtro aquí si lo deseas
   };
 
-  console.log("movs", movimientosFiltrados);
+  //console.log("movs", movimientosFiltrados);
   return (
     <div className="w-full h-full  flex justify-center relative ">
       <BackBtn />
@@ -141,7 +141,7 @@ function Movimientos() {
                 concepto={traducirTipo(
                   movimiento.Detail_transaction.payment_method
                 )}
-                amount={movimiento.Detail_transaction.amount}
+                amount={(movimiento.Detail_transaction.amount).toFixed(2)}
                 signo={
                   userId == movimiento.receiving_user ? "positivo" : "negativo"
                 }

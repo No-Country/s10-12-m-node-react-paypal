@@ -9,7 +9,7 @@ async function GetTransfer() {
 
       // Obtener el token almacenado en localStorage
       const token = localStorage.getItem("token");
-      console.log(token)
+      //console.log(token)
         
       if (!token) {
         console.error("No se encontró el token en localStorage.");
@@ -33,7 +33,7 @@ async function GetTransfer() {
   
       if (response.status === 200) {
         const data = await response.json();
-        console.log("Datos obtenidos:", data);
+        //console.log("Datos obtenidos:", data);
       } else {
       
         const data = await response.json();

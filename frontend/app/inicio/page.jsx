@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth-context";
 function Inicio() {
   const router = useRouter();
   const authContext = useContext(AuthContext);
-  console.log("autenticado?", authContext.isUserAuthenticated());
+  //console.log("autenticado?", authContext.isUserAuthenticated());
   useEffect(() => {
     // checks if the user is authenticated
     authContext.isUserAuthenticated()
