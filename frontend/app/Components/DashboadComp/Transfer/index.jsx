@@ -8,6 +8,7 @@ import { useForm } from './Firstview/data';
 import SecondView from './SecondView/SecondView';
 import ThirdView from './ThirdView/ThirdView';
 import BackBtn from "@/app/Components/BackBtn";
+import TransferApi from "../api/TransFerApi";
 
 function TransferComp() {
   const [firstviewtr, setFirstViewTr] = useState(true);
@@ -21,13 +22,13 @@ function TransferComp() {
     setFirstViewTr(!firstviewtr);
     setSecondViewTr(true);
   }
-
   function handleButtonSecondClick() {
     setSecondViewTr(!secondviewTr);
     setFirstViewTr(false);
     setShowResultView(true);
   }
-
+  TransferApi()
+  
   useEffect(() => {
     // checks if the user is authenticated
     authContext.isUserAuthenticated()

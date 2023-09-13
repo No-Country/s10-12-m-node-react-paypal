@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 
-function UserNameFirstView({onUsernameChange}) {
+function UserNameFirstView({formData, onUsernameChange}) {
     const [username, setUsername] = useState("");
 
     const handleUsernameChange = (event) => {
@@ -23,8 +23,8 @@ function UserNameFirstView({onUsernameChange}) {
                 <input
                     type="text"
                     placeholder='@username'
-                    name='UserName'
-                    value={username}
+                    name='nickname'
+                    value={formData.nickname}
                     onChange={handleUsernameChange}
                     required
                     className='bg-gray-50 border border-Grises/500 text-gray-900 text-sm rounded-lg lg:p-2.5  p-4 w-full'

@@ -3,15 +3,16 @@ import { AuthContext } from '@/app/context/auth-context';
 import React, { useContext, useState } from 'react';
 
 
-function SelectFirsView({ onSelectionChange, onOptionChange }) {
+function SelectFirsView({formData, onSelectionChange, onOptionChange }) {
 
   const [selectedCurrency, setSelectedCurrency] = useState('-');
-  const [select, setSelect] = useState('');
+  const [monto, setMonto] = useState('');
   const authContext = useContext(AuthContext);
-  const user = authContext.user;
-  const account = user.Account;
+  const balance = authContext.user.Account.balance;
 
-  const MAX_AMOUNT = account.balance; // Define aquí el monto máximo permitido
+  const amount = formData.amount
+  amount = monto 
+  const MAX_AMOUNT = balance; // Define aquí el monto máximo permitido
   const currencyFormats = {
     usd: { currency: 'USD', style: 'currency', minimumFractionDigits: 0 },
     mxn: { currency: 'MXN', style: 'currency', minimumFractionDigits: 0 },
@@ -32,7 +33,7 @@ function SelectFirsView({ onSelectionChange, onOptionChange }) {
     onOptionChange(selectedOption);
 
     if (selectedOption === '-') {
-      setSelect('');
+      setMonto('');
       onSelectionChange('');
     }
   };
@@ -51,7 +52,7 @@ function SelectFirsView({ onSelectionChange, onOptionChange }) {
       // Aquí puedes manejar la lógica para indicar que el monto es demasiado alto
       // Puedes mostrar un mensaje de error o tomar alguna otra acción
     } else {
-      setSelect(formattedValue);
+      setMonto(formattedValue);
       onSelectionChange(formattedValue);
     }
   };
@@ -78,8 +79,9 @@ function SelectFirsView({ onSelectionChange, onOptionChange }) {
       </select>
       <input
         type='text'
+        name='amount'
         placeholder={inputPlaceholder}
-        value={isCurrencySelected ? select : ''}
+        value={isCurrencySelected ? monto : ''}
         onChange={isCurrencySelected ? handleAmountChange : null}
         readOnly={!isCurrencySelected}
         className={`placeholder:uppercase placeholder:font-semibold placeholder:text-Grises/500 placeholder:opacity-40 bg-transparent border border-t-Grises/500 border-r-Grises/500 border-l-Grises/350 border-b-Grises/500 text-Grises/600 text-sm rounded-br-lg rounded-tr-lg block w-full lg:p-2.5 p-4 ${
