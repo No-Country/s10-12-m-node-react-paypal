@@ -34,7 +34,7 @@ exports.getUserAccount = catchAsync(async (req, res, next) => {
 
     res.status(200).json({
         status: 'success',
-        message: 'haz recargado tu cuenta',
+        message: 'has obtenido tu cuenta',
         account,
     });
 });
