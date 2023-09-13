@@ -1,3 +1,4 @@
+const AppError = require('../helpers/AppError');
 const catchAsync = require('../helpers/catchAsync');
 const UserServices = require('../services/user.services');
 const userServices = new UserServices();
@@ -61,6 +62,10 @@ exports.getUser = catchAsync(async (req, res, next) => {
     const { nickname } = req.params;
     const attributes = { nickName: nickname };
     const user = await userServices.findOneUser({ attributes, next });
+
+    if (!user) {
+        return new AppError(`user with nickame ${nickname} not found`, 404);
+    }
 
     res.status(200).json({
         status: 'success',
