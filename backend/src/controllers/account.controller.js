@@ -24,6 +24,24 @@ exports.rechargeCard = catchAsync(async (req, res, next) => {
     });
 });
 
+exports.confirmAccount = catchAsync(async (req, res) => {
+    const token = req.params.token;
+    const result = await accountServices.confirmAccount(token, 'confirmed');
+
+    if (result === 'confirmed') {
+        return res.status(200).json({
+            status: 'success',
+            message: 'Account successfully confirmed',
+            account: result,
+        });
+    } else {
+        return res.status(400).json({
+            status: 'error',
+            message: 'Error confirming account. Please contact support.',
+        });
+    }
+});
+
 exports.getUserAccount = catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const attributes = { userId: id };
