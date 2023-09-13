@@ -24,7 +24,7 @@ router.post(
 );
 
 router.get(
-    '/:id',
+    'get_user_account/:id',
     protectRoute,
     verifyAccountOwner,
     accountController.getUserAccount,
