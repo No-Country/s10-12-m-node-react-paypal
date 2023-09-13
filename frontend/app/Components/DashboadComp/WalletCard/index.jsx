@@ -8,13 +8,13 @@ import { HiOutlinePlusCircle } from "react-icons/hi";
 import WalletCardImg from "@/public/images/walletCard";
 import BackBtn from "@/app/Components/BackBtn";
 import { useRouter } from "next/navigation";
-import GetTarjetas from "../api/AgregarTarjeta";
+import {getTarjetas }from "../api/AgregarTarjeta";
 import { FaSpinner } from "react-icons/fa";
 
 const WalletCard = ({ amount }) => {
   const router = useRouter();
   const authContext = useContext(AuthContext);
-  const balance = authContext.user.Account.balance;
+  const balance = authContext.user?.Account?.balance;
   const [tarjetas, setTarjetas] = useState([]);
   const [loading, setLoading] = useState(true);
   const formatearNumero = (numero) =>
@@ -38,7 +38,7 @@ const WalletCard = ({ amount }) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await GetTarjetas(authContext);
+        const data = await getTarjetas(authContext);
         //console.log(data);
 
         if (data !== null) {
