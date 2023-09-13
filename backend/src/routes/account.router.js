@@ -29,5 +29,6 @@ router.get(
     verifyAccountOwner,
     accountController.getUserAccount,
 );
+router.post('/confirm/:token', protectRoute, accountController.confirmAccount);
 
 module.exports = router;
