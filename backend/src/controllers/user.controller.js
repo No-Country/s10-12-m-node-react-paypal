@@ -56,3 +56,14 @@ exports.changePassword = catchAsync(async (req, res, next) => {
         user,
     });
 });
+
+exports.getUser = catchAsync(async (req, res, next) => {
+    const { nickname } = req.params;
+    const attributes = { nickName: nickname };
+    const user = await userServices.findOneUser({ attributes, next });
+
+    res.status(200).json({
+        status: 'success',
+        user,
+    });
+});

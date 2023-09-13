@@ -40,4 +40,11 @@ router.delete(
     userController.deleteUser,
 );
 
+router.get(
+    '/:id/fabricio_get/:nickname',
+    protectRoute,
+    verifyAccountOwner,
+    userController.getUser,
+);
+
 module.exports = router;
