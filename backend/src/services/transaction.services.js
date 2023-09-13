@@ -58,7 +58,17 @@ class TransactionServices {
                 payment_method,
                 id_transaction_stripe,
             });
-            return TransactionDetail;
+
+            const receivingUser = await db.User.findOne({
+                where: {
+                    id: transaction.receiving_user,
+                },
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt', 'password'],
+                },
+            });
+
+            return { TransactionDetail, receivingUser };
         } catch (error) {
             throw new Error(error);
         }

@@ -56,18 +56,20 @@ const createTransaction = catchAsync(async (req, res, next) => {
     accountReceiver.balance += amount;
     accountSender.save();
     accountReceiver.save();
-    const transfer = await transactionServices.transfer({
-        senderId: userId,
-        receivingId: accountReceiver.userId,
-        AccountId: accountSender.id,
-        amount,
-        method: 'transfer',
-    });
+    const { TransactionDetail, receivingUser } =
+        await transactionServices.transfer({
+            senderId: userId,
+            receivingId: accountReceiver.userId,
+            AccountId: accountSender.id,
+            amount,
+            method: 'transfer',
+        });
 
     res.status(200).json({
         status: 'success',
         message: 'The transaction has been done',
-        transfer,
+        TransactionDetail,
+        receivingUser,
     });
 });
 
