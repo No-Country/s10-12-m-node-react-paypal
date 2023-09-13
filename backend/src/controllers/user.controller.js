@@ -64,7 +64,7 @@ exports.getUser = catchAsync(async (req, res, next) => {
     const user = await userServices.findOneUser({ attributes, next });
 
     if (!user) {
-        return new AppError(`user with nickame ${nickname} not found`, 404);
+        throw new AppError(`user with nickame ${nickname} not found`, 404);
     }
 
     res.status(200).json({
