@@ -74,7 +74,9 @@ const WalletCard = ({ amount }) => {
           </div>
         ) : (
           <ul>
-            {tarjetas.map((tarjeta) => (
+            {tarjetas
+            .filter((tarjeta) => tarjeta.status === true)
+            .map((tarjeta) => (
               // <li key={tarjeta.id}>{tarjeta.nombre}</li>
               <div className="w-fit relative max-h-[fit-content] mb-2">
                 <WalletCardImg className="w-full h-auto relative" />

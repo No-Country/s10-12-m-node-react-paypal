@@ -1,7 +1,7 @@
 
 export async function getTarjetas(authContext) {
   const user = authContext.user;
-  const url = `https://countrypay.onrender.com/api/account/`;
+  const url = `https://countrypay.onrender.com/api/account/get_account/`;
 
   try {
     // Obtener el token almacenado en localStorage
