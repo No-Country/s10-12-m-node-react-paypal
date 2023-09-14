@@ -17,11 +17,11 @@ function ThirdView({ formData, handleButtonClick, userdata }) {
       <div className='bg-white rounded-md w-full max-w-[792.97px] h-full max-h-[364px]  flex-col  shadow-lg py-24  lg:px-28 md:px-24 px-16 flex justify-center items-center'>
         <h3 className='font-medium md:text-[32px] text-2xl leading-10 text-center'>
           
-          Has enviado <span className='text-Morado/800'>{formData.amount}</span>{""}
+          Has enviado <span className='text-Morado/800'>el dinero</span>{""}
           <span className='uppercase'>{formData.opcion}</span> a {user1.name}
         </h3>
         <p className='lg:my-12 md:my-6 my-4 text-Grises/600 opacity-70 text-xl text-center'>
-          Le avisaremos a Alejandra que has realizado esta transacción
+          Le avisaremos a {user1.name} que has realizado esta transacción
         </p>
 
         <div className='flex justify-evenly w-full items-center'>

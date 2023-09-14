@@ -49,7 +49,7 @@ function SecondView({ formData, handleButtonClick, handleButtonSecondClick, upda
             </div>
           </div>
           <div className='flex justify-center items-end h-full'>
-            <p className='font-medium lg:text-5xl md:text-4xl text-2xl mr-4 text-Morado/800'> { userdata ?  formData.amount : ""}</p>
+            <p className='font-medium lg:text-5xl md:text-4xl text-2xl mr-4 text-Morado/800'> { userdata ? `$${formData.amount} `: ""}</p>
             <p className={userdata ? 'py-2 px-4 gap-2 bg-Morado/50 h-9 w-16 flex justify-center items-center rounded-3xl shadow-md text-Grises/600 font-semibold uppercase'  : 'hidden'}>{formData.opcion}</p>
           </div>
         </section>
@@ -80,7 +80,7 @@ function SecondView({ formData, handleButtonClick, handleButtonSecondClick, upda
           </div>
           <div className='w-full flex justify-between items-center my-5 text-Morado/800 font-bold'>
             <p className=' md:text-xl text-[14px] capitalize '>total</p>
-            <p className=' md:text-xl text-base  '>{formData.amount}</p>
+            <p className=' md:text-xl text-base  '>$ {formData.amount}</p>
           </div>
           { userdata ?  <ButtonDashCompTr texto="enviar" type="submit"   /> : <Link href={"/"} className="uppercase text-Morado/600 hover:underline duration-200 "> No se puede Realizar Su Transferencia</Link> }
          
