@@ -26,7 +26,7 @@ const createTransaction = catchAsync(async (req, res, next) => {
             throw next(
                 new AppError(`User with nickname ${nickName} not exist`, 404),
             );
-        attributes = { nickName };
+        attributes = { userId: receiverUser.id };
     }
     if (account_number) {
         attributes = { account_number: account_number.toString() };
