@@ -17,8 +17,7 @@ async function handleSignup( values, setSubmitting, setFieldError, authContext, 
     if (response.status === 200  ) {
       const data = await response.json();
       console.log(data)
-      setSubmitting(false);
-      return true;
+      return data, true;
     } else if (response.status === 400) {
       const errorData = await response.json(); // Si la API devuelve detalles del error en JSON
       
@@ -42,6 +41,8 @@ async function handleSignup( values, setSubmitting, setFieldError, authContext, 
     setSubmitting(false);
     return false
   }
+
 }
 
 export default handleSignup;
+

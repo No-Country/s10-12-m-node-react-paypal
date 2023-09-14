@@ -19,7 +19,7 @@ export function FooterComp() {
       <div className="w-full flex md:justify-around items-center md:flex-row flex-col justify-center py-10 ">
         <div className="md:w-1/3 flex justify-center items-center  w-full  p-4 md:p-0">
           <Link href={"/"}>
-            <LogoPortalProps className="xl:w-[20rem] lg:[18rem] md:[15rem] w-[10rem] h-fit  text-xl"   />
+            <LogoPortalProps className="xl:w-[20rem] lg:[18rem] md:[15rem] w-[10rem] h-fit  text-xl pl-4"   />
           </Link>
         </div>
        
