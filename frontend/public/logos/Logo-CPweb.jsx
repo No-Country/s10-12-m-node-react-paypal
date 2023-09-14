@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function LogoPortalProps ({...props} , width="w-64", height="h-4" )  {
+export default function LogoPortalProps ({...props} , width="256", height="16" )  {
     return(
       
         
