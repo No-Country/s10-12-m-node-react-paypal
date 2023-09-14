@@ -4,8 +4,8 @@ import LogoCountryPay from '@/public/logos/logoCountryPay';
 import { BsShop } from 'react-icons/bs';
 import ButtonDashCompTr from '../button';
 import { AuthContext } from '@/app/context/auth-context';
-import TransferApi from '../../api/TransferApi';
 import Link from 'next/link';
+import TransferApi from '../../api/TransferApi';
 
 function SecondView({ formData, handleButtonClick, handleButtonSecondClick, updateFormData, userdata }) {
   const user1 = userdata ? userdata.user : {};
