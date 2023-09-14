@@ -27,7 +27,6 @@ const WalletCard = ({ amount }) => {
       .join("-");
 
   const handleButtonCloseView = () => {
-    //console.log('aca')
     setShowInsufficientBalanceModal(false);
   };
   const handleButtonAbonarView = () => {
@@ -55,17 +54,14 @@ const WalletCard = ({ amount }) => {
     async function fetchData() {
       try {
         const data = await getTarjetas(authContext);
-        //console.log(data);
 
         if (data !== null) {
           setTarjetas(data.account.Cards);
           setLoading(false);
         } else {
-          console.error("La respuesta de GetTarjetas es null.");
           setLoading(false);
         }
       } catch (error) {
-        console.error("Error al obtener tarjetas:", error);
         setLoading(false);
       }
     }
@@ -73,7 +69,6 @@ const WalletCard = ({ amount }) => {
     fetchData();
   }, []);
 
-  //console.log("data tarjetas", tarjetas);
 
   return (
     <div className="flex relative md:min-h-screen justify-center items-start py-14">

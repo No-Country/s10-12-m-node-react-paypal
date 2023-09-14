@@ -6,7 +6,6 @@ export async function getTarjetas(authContext) {
   try {
     // Obtener el token almacenado en localStorage
     const token = localStorage.getItem("token");
-    //console.log(token)
 
     if (!token) {
       console.error("No se encontró el token en localStorage.");
@@ -25,7 +24,6 @@ export async function getTarjetas(authContext) {
 
     if (response.status === 200) {
       const data = await response.json();
-      console.log("Datos obtenidos:", data);
       return data;
     } else {
       const data = await response.json();
@@ -68,11 +66,9 @@ export async function agregarTarjetas(
 ) {
   const userId = authContext.user;
   const url = `https://countrypay.onrender.com/api/card/create/`;
-  //console.log(authContext ,'user!')
   try {
     // Obtener el token almacenado en localStorage
     const token = localStorage.getItem("token");
-    //console.log('token',token)
 
     if (!token) {
       console.error("No se encontró el token en localStorage.");
@@ -101,7 +97,6 @@ export async function agregarTarjetas(
 
     if (response.status === 200) {
       const data = await response.json();
-      //console.log("Datos obtenidos:", data);
       setSubmitting(false);
       router.push("/dashboard/wallet");
     } else {

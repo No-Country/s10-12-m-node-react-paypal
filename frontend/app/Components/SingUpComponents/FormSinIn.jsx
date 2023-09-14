@@ -45,7 +45,6 @@ function FormSinIn() {
     setRegistrationFail(true)
     
    }else {
-    console.log("Datos del Succes:" ,success)
      setRegistrationSuccess(true)
    }
   };

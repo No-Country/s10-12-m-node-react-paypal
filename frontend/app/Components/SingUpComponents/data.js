@@ -16,7 +16,6 @@ async function handleSignup( values, setSubmitting, setFieldError, authContext, 
     const response = await fetch("https://backend-s10-12-m-paypal.onrender.com/api/user/create", requestOptions);
     if (response.status === 200  ) {
       const data = await response.json();
-      console.log(data)
       return data, true;
     } else if (response.status === 400) {
       const errorData = await response.json(); // Si la API devuelve detalles del error en JSON
@@ -72,7 +71,6 @@ export default handleSignup;
 
 //           if (response.status === 200) {
 //             const data = await response.json();
-//             console.log("Datos obtenidos:", data);
 //             setIsAccountCreated(true);
 //           } else {
 //             const data = await response.json();

@@ -27,8 +27,6 @@ const LoginPageComp = () => {
     await handleLogin(values, setSubmitting, setFieldError, authContext, router);
   }
   
-
-  //console.log("user autenticado?", authContext.isUserAuthenticated())
   return (
     <div className="min-h-screen w-full flex flex-col md:flex-row">
       {/* Mitad Izquierda */}

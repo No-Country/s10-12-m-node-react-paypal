@@ -8,7 +8,6 @@ function ButtonDashCompIn({balance}) {
   const [showInsufficientBalanceModal, setShowInsufficientBalanceModal] = useState(false);
   const router = useRouter();
   const handleButtonCloseView = ()=>{
-    //console.log('aca')
     setShowInsufficientBalanceModal(false)
   } 
   const handleButtonAbonarView = ()=>{
