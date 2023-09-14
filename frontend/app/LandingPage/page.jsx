@@ -1,5 +1,4 @@
 
-import AccountApi from "../Components/DashboadComp/apis/AccountApi";
 import AboutUsComp from "../Components/LandingComp/AboutUs";
 import InicioComp from "../Components/LandingComp/Inicio";
 import DirectionPage from "../Components/LandingComp/product";

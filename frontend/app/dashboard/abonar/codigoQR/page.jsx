@@ -1,11 +1,23 @@
 'use client'
-import React from "react";
+import React, {useContext, useEffect} from "react";
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
+import { AuthContext } from "../../../context/auth-context";
 import Button from "@/app/Components/Button";
 import qrImg from "@/public/images/qr.png";
 import BackBtn from "@/app/Components/BackBtn";
 
 function QR() {
+  const router = useRouter();
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    // checks if the user is authenticated
+    authContext.isUserAuthenticated()
+      ? router.push("/dashboard/abonar/codigoQR")
+      : router.push("/");
+  }, []);
+
   return (
     <div className="w-full h-full  flex justify-center relative">
       <BackBtn />

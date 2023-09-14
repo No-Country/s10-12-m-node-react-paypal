@@ -20,7 +20,6 @@ export function NavBar() {
   const { navbar, dropdown, setNavbar, setDropDown, toggleDesplegable, toggleNavbar , handleLogout } = useClient();
 
 
-
   return (
     <header className="flex w-full h-14 lg:h-24 lg:py-0 py-10">
       <nav className="bg-Morado/50 flex w-full lg:h-24">
@@ -46,7 +45,7 @@ export function NavBar() {
                 <div className="w-full rounded-[10px] shadow-md max-w-[196px] h-full  absolute right-[-20px] top-[5.86rem]  bg-[#fefeff] flex flex-col justify-evenly items-left  z-10 ">
                   <ul className="h-full flex flex-col justify-evenly items-center relative">
                     <li className="bg-white flex  rounded-t-[10px] items-center p-2  shadow-md hover:bg-Grises/150 duration-300 cursor-pointer  z-10  h-full w-full ">
-                      <Link className="text-Grises/350 opacity-100 font-medium  w-full text-left" href="/dashboard/Perfil" >Perfil</Link>
+                      <Link className="text-Grises/350 opacity-100 font-medium  w-full text-left" href="/dashboard/Perfil" onClick={toggleDesplegable}>Perfil</Link>
                     </li>
                     <li className="bg-white relative flex items-center  rounded-b-[10px] p-2 text-Morado/700 cursor-pointer shadow-md hover:bg-Grises/150 duration-300 z-10  h-full w-full ">
                       <button  className="font-semibold  w-full text-left  " onClick={handleLogout}>Cerrar Sesión</button>

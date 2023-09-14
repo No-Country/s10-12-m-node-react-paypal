@@ -18,7 +18,7 @@ function AlertLogOut({handleLogout, handleViewLogOutClose}) {
 
     </div>
     <div className='mt-6 w-full flex justify-evenly items-center'>
-      <span className='flex justify-evenly items-center'>
+      <span className='flex justify-evenly items-center space-x-4'>
       <Button text="Cancelar"  variant="empty" className="mr-2"   onClick={handleViewLogOutClose}  />
       <Button text="Cerrar"  variant="filled"   onClick={handleLogout}  />
       </span>
