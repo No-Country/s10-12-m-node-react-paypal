@@ -3,7 +3,7 @@
 async function handleLogin(values, setSubmitting, setFieldError, authContext, router) {
   
     try {
-      const loginData = {
+      const loginData = { 
         email: values.email,
         password: values.password,
       };
@@ -16,11 +16,9 @@ async function handleLogin(values, setSubmitting, setFieldError, authContext, ro
   
       const response = await fetch('https://backend-s10-12-m-paypal.onrender.com/api/user/login', requestOptions);
       // const data = await response.json()
-      // console.log(data)
 
       if (response.status === 200) {
         const data = await response.json();
-        console.log('Usuario autenticado:', data);
         authContext.setAuthState(data);
         router.push('/dashboard');
         setSubmitting(false);

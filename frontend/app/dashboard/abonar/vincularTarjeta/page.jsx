@@ -16,7 +16,12 @@ const VincularTarjeta = () => {
   const [isLoading, setIsLoading] = useState(false);
   const cardSchema = Yup.object().shape({
     titular: Yup.string().required("Campo requerido"),
-    numero: Yup.number().required("Campo requerido"),
+    numero: Yup.string()
+    .required("Campo requerido")
+    .matches(/^\d{16}$/, {
+      message: 'El número de tarjeta debe tener exactamente 16 dígitos',
+      excludeEmptyString: true, // Asegura que el campo no esté vacío
+    }),
     fecha: Yup.string().required("Campo requerido"),
     cvv: Yup.number().required("Campo requerido"),
     generalError: Yup.string(),
@@ -99,6 +104,7 @@ const VincularTarjeta = () => {
               type="text"
               name="numero"
               placeholder="Introduzca los 16 digitos de la tarjeta"
+              maxLength="16"
               className="w-full h-9 p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 mt-2  text-xs  md:text-lg placeholder-Grises/350 mb-8 md:mb-6"
             />
             <ErrorMessage
@@ -112,8 +118,10 @@ const VincularTarjeta = () => {
                 <Field
                   type="text"
                   name="fecha"
-                  placeholder="MM/AAAA"
+                  placeholder="MM/AA"
+                  maxLength="5"
                   className="w-44 h-9 p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 mt-2  text-sm  md:text-lg placeholder-Grises/350 mb-8 md:mb-6"
+                
                 />
                 <ErrorMessage
                   name="fecha"
@@ -127,6 +135,7 @@ const VincularTarjeta = () => {
                   type="text"
                   name="cvv"
                   placeholder="CVV"
+                  maxLength="4"
                   className="w-24 h-9 p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 mt-2  text-sm  md:text-lg placeholder-Grises/350 mb-4"
                 />
                 <ErrorMessage

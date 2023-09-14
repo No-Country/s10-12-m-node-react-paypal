@@ -14,17 +14,17 @@ function SelectFirsView({ formData, onSelectionChange, onOptionChange }) {
   const MIN_AMOUNT = 1; // Define aquí el monto mínimo permitido
 
   const currencyFormats = {
-    usd: { currency: 'USD', style: 'currency', minimumFractionDigits: 0 },
-    mxn: { currency: 'MXN', style: 'currency', minimumFractionDigits: 0 },
-    eur: { currency: 'EUR', style: 'currency', minimumFractionDigits: 0 },
-    brl: { currency: 'BRL', style: 'currency', minimumFractionDigits: 0 },
-    arg: { currency: 'ARG', style: 'currency', minimumFractionDigits: 0 },
-    uyu: { currency: 'UYU', style: 'currency', minimumFractionDigits: 0 },
-    cop: { currency: 'COP', style: 'currency', minimumFractionDigits: 0 },
-    clp: { currency: 'CLP', style: 'currency', minimumFractionDigits: 0 },
-    pen: { currency: 'PEN', style: 'currency', minimumFractionDigits: 0 },
-    nio: { currency: 'NIO', style: 'currency', minimumFractionDigits: 0 },
-    vef: { currency: 'VEF', style: 'currency', minimumFractionDigits: 0 },
+    usd: { currency: 'USD', minimumFractionDigits: 0 },
+    mxn: { currency: 'MXN', minimumFractionDigits: 0 },
+    eur: { currency: 'EUR', minimumFractionDigits: 0 },
+    brl: { currency: 'BRL', minimumFractionDigits: 0 },
+    arg: { currency: 'ARG', minimumFractionDigits: 0 },
+    uyu: { currency: 'UYU', minimumFractionDigits: 0 },
+    cop: { currency: 'COP', minimumFractionDigits: 0 },
+    clp: { currency: 'CLP', minimumFractionDigits: 0 },
+    pen: { currency: 'PEN', minimumFractionDigits: 0 },
+    nio: { currency: 'NIO', minimumFractionDigits: 0 },
+    vef: { currency: 'VEF', minimumFractionDigits: 0 },
   };
 
   const handleCurrencyChange = (event) => {

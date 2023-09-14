@@ -4,7 +4,7 @@ import React from 'react';
 
 export function useForm() {
     const [formData, setFormData] = useState({
-        amount: '', 
+        amount: 0, 
         nickName: '',
         concept: '',
     });
@@ -18,7 +18,6 @@ export function useForm() {
         setFormData(data);
       };
     
-
 
     return {
         formData,

@@ -8,8 +8,9 @@ import { HiOutlinePlusCircle } from "react-icons/hi";
 import WalletCardImg from "@/public/images/walletCard";
 import BackBtn from "@/app/Components/BackBtn";
 import { useRouter } from "next/navigation";
-import {getTarjetas }from "../api/AgregarTarjeta";
+import { getTarjetas } from "../api/AgregarTarjeta";
 import { FaSpinner } from "react-icons/fa";
+import AlertSaldo from "@/app/Components/SingUpComponents/cards/Alert/Fail/AlertSaldo";
 
 const WalletCard = ({ amount }) => {
   const router = useRouter();
@@ -17,15 +18,29 @@ const WalletCard = ({ amount }) => {
   const balance = authContext.user?.Account?.balance;
   const [tarjetas, setTarjetas] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showInsufficientBalanceModal, setShowInsufficientBalanceModal] =
+    useState(false);
   const formatearNumero = (numero) =>
     numero
       .toString()
       .match(/.{1,4}/g)
       .join("-");
 
+  const handleButtonCloseView = () => {
+    setShowInsufficientBalanceModal(false);
+  };
+  const handleButtonAbonarView = () => {
+    setShowInsufficientBalanceModal(false);
+    router.push("./abonar");
+  };
   const handleTrans = () => {
-    router.push("/dashboard/transfer");
-    console.log("Saldo transferido");
+    if (balance <= 0) {
+      // El saldo es insuficiente, muestra el modal
+      setShowInsufficientBalanceModal(true);
+    } else {
+      // El saldo es suficiente, redirige a la funcionalidad de transferencia
+      router.push("/dashboard/transfer"); 
+    }
   };
 
   useEffect(() => {
@@ -39,17 +54,14 @@ const WalletCard = ({ amount }) => {
     async function fetchData() {
       try {
         const data = await getTarjetas(authContext);
-        //console.log(data);
 
         if (data !== null) {
           setTarjetas(data.account.Cards);
           setLoading(false);
         } else {
-          console.error("La respuesta de GetTarjetas es null.");
           setLoading(false);
         }
       } catch (error) {
-        console.error("Error al obtener tarjetas:", error);
         setLoading(false);
       }
     }
@@ -57,7 +69,6 @@ const WalletCard = ({ amount }) => {
     fetchData();
   }, []);
 
-  //console.log("data tarjetas", tarjetas);
 
   return (
     <div className="flex relative md:min-h-screen justify-center items-start py-14">
@@ -75,29 +86,29 @@ const WalletCard = ({ amount }) => {
         ) : (
           <ul>
             {tarjetas
-            .filter((tarjeta) => tarjeta.status === true)
-            .map((tarjeta) => (
-              // <li key={tarjeta.id}>{tarjeta.nombre}</li>
-              <div className="w-fit relative max-h-[fit-content] mb-2">
-                <WalletCardImg className="w-full h-auto relative" />
+              .filter((tarjeta) => tarjeta.status === true)
+              .map((tarjeta) => (
+                // <li key={tarjeta.id}>{tarjeta.nombre}</li>
+                <div className="w-fit relative max-h-[fit-content] mb-2">
+                  <WalletCardImg className="w-full h-auto relative" />
 
-                <p className="absolute top-2/4 left-8 mt-4 z-10 text-xl md:text-2xl text-white">
-                  {formatearNumero(tarjeta.number)}
-                </p>
-              </div>
-            ))}
+                  <p className="absolute top-2/4 left-8 mt-4 z-10 text-xl md:text-2xl text-white">
+                    {formatearNumero(tarjeta.number)}
+                  </p>
+                </div>
+              ))}
           </ul>
         )}
 
         <Link
           href={"/dashboard/abonar/vincularTarjeta"}
-          className="text-blue-800 font-semibold mr-20 mb-10 mt-10 self-end  px-6 hidden md:block"
+          className="text-blue-800 font-semibold mr-20 mb-5 mt-5 md:mb-12 md:mt-12 self-end px-6"
         >
           <HiOutlinePlusCircle size={24} className="inline mr-2" /> Nueva
           Tarjeta
         </Link>
 
-        <div className="flex flex-col w-full md:flex-row justify-center items-center gap-4 md:gap-24 md:gap-x-26 md:gap-y-4 mt-8 md:mt-0 pt-8 md:pt-14 md:pb-14 border-t-2 border-gray-400">
+        <div className="flex flex-col w-full md:flex-row justify-center items-center gap-4 md:gap-24 md:gap-x-26 md:gap-y-4 mt-0 pt-8 md:pt-14 md:pb-14 border-t-2 border-gray-400">
           <div className="text-left md:w-1/3">
             <h3 className="text-lg md:text-xl ">Saldo de CountryPay</h3>
             <p className="text-3xl md:text-3xl md:mt-4 font-semibold">
@@ -111,6 +122,12 @@ const WalletCard = ({ amount }) => {
               onClick={handleTrans}
               type={"button"}
             />
+            {showInsufficientBalanceModal && (
+              <AlertSaldo
+                handleButtonCloseView={handleButtonCloseView}
+                handleButtonAbonarView={handleButtonAbonarView}
+              />
+            )}
           </div>
         </div>
       </div>

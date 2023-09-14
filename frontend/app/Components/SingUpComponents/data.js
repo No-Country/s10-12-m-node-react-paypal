@@ -16,7 +16,6 @@ async function handleSignup( values, setSubmitting, setFieldError, authContext, 
     const response = await fetch("https://backend-s10-12-m-paypal.onrender.com/api/user/create", requestOptions);
     if (response.status === 200  ) {
       const data = await response.json();
-      console.log(data)
       return data, true;
     } else if (response.status === 400) {
       const errorData = await response.json(); // Si la API devuelve detalles del error en JSON
@@ -46,3 +45,47 @@ async function handleSignup( values, setSubmitting, setFieldError, authContext, 
 
 export default handleSignup;
 
+<<<<<<< HEAD
+=======
+
+// async function CrearCuenta() {
+//   const [isAccountCreated, setIsAccountCreated] = useState(false);
+//   const url = `https://countrypay.onrender.com/api/account/`;
+
+//   useEffect(() => {
+//     if (!isAccountCreated && user && !user.Account) {
+//       async function createAccount() {
+//         try {
+//           const token = localStorage.getItem("token");
+//           if (!token) {
+//             console.error("No se encontró el token en localStorage.");
+//             return;
+//           }
+
+//           const requestOptions = {
+//             method: "POST",
+//             headers: {
+//               Authorization: `Bearer ${token}`,
+//               "Content-Type": "application/json",
+//             },
+//           };
+
+//           const response = await fetch(`${url}${user.id}`, requestOptions);
+
+//           if (response.status === 200) {
+//             const data = await response.json();
+//             setIsAccountCreated(true);
+//           } else {
+//             const data = await response.json();
+//             console.error("Error al realizar la solicitud:", data);
+//           }
+//         } catch (error) {
+//           console.error("Error al realizar la solicitud:", error);
+//         }
+//       }
+
+//       createAccount();
+//     }
+//   }, [isAccountCreated, user, url]);
+// }
+>>>>>>> Front

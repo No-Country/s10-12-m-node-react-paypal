@@ -8,11 +8,10 @@ function AlertDeleteAccount({handleViewDeleteAccountClose}) {
 
     const handleViewConfirmDelete = ()=>{
         setViewConfirmDelete(true)
-        console.log('confirmar')
     }
     const handleViewConfirmDeleteClose = ()=>{
         setViewConfirmDelete(false)
-        console.log('cerrar')
+
     }
 
     return (

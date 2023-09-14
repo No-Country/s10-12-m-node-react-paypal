@@ -13,10 +13,8 @@ export function useCompDashboardInicioState() {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    console.log(user)
-    console.log('esta aut', authContext.isUserAuthenticated());
     setIsUserAuthenticated(authContext.isUserAuthenticated());
-    setText(isUserAuthenticated ? `Hola, ${user.lastName}` : '');
+    setText(isUserAuthenticated ? `Hola, ${user.name}` : '');
 
     if (!authContext.isUserAuthenticated()) {
       router.push('/LoginPage');
