@@ -30,7 +30,6 @@ async function CrearCuenta() {
 
           if (response.status === 200) {
             const data = await response.json();
-            //console.log("Datos obtenidos:", data);
             setIsAccountCreated(true);
           } else {
             const data = await response.json();

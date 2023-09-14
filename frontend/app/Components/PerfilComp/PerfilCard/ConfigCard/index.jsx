@@ -1,4 +1,5 @@
 'use client'
+import ButtonChangePass from "./ButtonChangePass";
 import ButtonDeleteAccount from "./DeleteButton";
 
 export default function ConfigCard (){
@@ -12,7 +13,7 @@ export default function ConfigCard (){
                     *********
                 </div>
                 <div className="flex md:items-end mt-5">
-                    <button className="bg-Morado/700  w-41 h-10 rounded-md py-3 px-5 flex items-center justify-center text-white whitespace-nowrap text-center ml-0 md:ml-5">Cambiar constraseña</button>
+                    <ButtonChangePass />
                 </div>
                 <div className="col-span-2 mb-9 mt-9">
                     <h2 className="text-xs font-medium my-3">ELIMINAR CUENTA</h2>
