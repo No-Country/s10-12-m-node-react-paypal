@@ -12,12 +12,12 @@ function Abonar() {
   const router = useRouter();
   const authContext = useContext(AuthContext);
   const handleQRClick = () => {
-    console.log("Botón Código QR clickeado");
+    //console.log("Botón Código QR clickeado");
     router.push('/dashboard/abonar/codigoQR');
   };
 
   const handleTarjetaClick = () => {
-    console.log("Botón Vincular tarjeta clickeado");
+    //console.log("Botón Vincular tarjeta clickeado");
     router.push('/dashboard/abonar/vincularTarjeta');
   };
   

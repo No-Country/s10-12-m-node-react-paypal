@@ -25,7 +25,7 @@ const WalletCard = ({ amount }) => {
 
   const handleTrans = () => {
     router.push("/dashboard/transfer");
-    console.log("Saldo transferido");
+    //console.log("Saldo transferido");
   };
 
   useEffect(() => {
@@ -91,13 +91,13 @@ const WalletCard = ({ amount }) => {
 
         <Link
           href={"/dashboard/abonar/vincularTarjeta"}
-          className="text-blue-800 font-semibold mr-20 mb-10 mt-10 self-end  px-6 hidden md:block"
+          className="text-blue-800 font-semibold mr-20 mb-5 mt-5 md:mb-12 md:mt-12 self-end px-6"
         >
           <HiOutlinePlusCircle size={24} className="inline mr-2" /> Nueva
           Tarjeta
         </Link>
 
-        <div className="flex flex-col w-full md:flex-row justify-center items-center gap-4 md:gap-24 md:gap-x-26 md:gap-y-4 mt-8 md:mt-0 pt-8 md:pt-14 md:pb-14 border-t-2 border-gray-400">
+        <div className="flex flex-col w-full md:flex-row justify-center items-center gap-4 md:gap-24 md:gap-x-26 md:gap-y-4 mt-0 pt-8 md:pt-14 md:pb-14 border-t-2 border-gray-400">
           <div className="text-left md:w-1/3">
             <h3 className="text-lg md:text-xl ">Saldo de CountryPay</h3>
             <p className="text-3xl md:text-3xl md:mt-4 font-semibold">
