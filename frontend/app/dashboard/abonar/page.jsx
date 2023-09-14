@@ -13,7 +13,7 @@ function Abonar() {
   const authContext = useContext(AuthContext);
   const handleQRClick = () => {
     //console.log("Botón Código QR clickeado");
-    router.push('/dashboard/abonar/codigoQR');
+    router.push('/dashboard/abonar/codigoQr');
   };
 
   const handleTarjetaClick = () => {
