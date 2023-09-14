@@ -8,8 +8,9 @@ import { HiOutlinePlusCircle } from "react-icons/hi";
 import WalletCardImg from "@/public/images/walletCard";
 import BackBtn from "@/app/Components/BackBtn";
 import { useRouter } from "next/navigation";
-import {getTarjetas }from "../api/AgregarTarjeta";
+import { getTarjetas } from "../api/AgregarTarjeta";
 import { FaSpinner } from "react-icons/fa";
+import AlertSaldo from "@/app/Components/SingUpComponents/cards/Alert/Fail/AlertSaldo";
 
 const WalletCard = ({ amount }) => {
   const router = useRouter();
@@ -17,15 +18,30 @@ const WalletCard = ({ amount }) => {
   const balance = authContext.user?.Account?.balance;
   const [tarjetas, setTarjetas] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showInsufficientBalanceModal, setShowInsufficientBalanceModal] =
+    useState(false);
   const formatearNumero = (numero) =>
     numero
       .toString()
       .match(/.{1,4}/g)
       .join("-");
 
+  const handleButtonCloseView = () => {
+    //console.log('aca')
+    setShowInsufficientBalanceModal(false);
+  };
+  const handleButtonAbonarView = () => {
+    setShowInsufficientBalanceModal(false);
+    router.push("./abonar");
+  };
   const handleTrans = () => {
-    router.push("/dashboard/transfer");
-    //console.log("Saldo transferido");
+    if (balance <= 0) {
+      // El saldo es insuficiente, muestra el modal
+      setShowInsufficientBalanceModal(true);
+    } else {
+      // El saldo es suficiente, redirige a la funcionalidad de transferencia
+      router.push("/dashboard/transfer"); 
+    }
   };
 
   useEffect(() => {
@@ -75,17 +91,17 @@ const WalletCard = ({ amount }) => {
         ) : (
           <ul>
             {tarjetas
-            .filter((tarjeta) => tarjeta.status === true)
-            .map((tarjeta) => (
-              // <li key={tarjeta.id}>{tarjeta.nombre}</li>
-              <div className="w-fit relative max-h-[fit-content] mb-2">
-                <WalletCardImg className="w-full h-auto relative" />
+              .filter((tarjeta) => tarjeta.status === true)
+              .map((tarjeta) => (
+                // <li key={tarjeta.id}>{tarjeta.nombre}</li>
+                <div className="w-fit relative max-h-[fit-content] mb-2">
+                  <WalletCardImg className="w-full h-auto relative" />
 
-                <p className="absolute top-2/4 left-8 mt-4 z-10 text-xl md:text-2xl text-white">
-                  {formatearNumero(tarjeta.number)}
-                </p>
-              </div>
-            ))}
+                  <p className="absolute top-2/4 left-8 mt-4 z-10 text-xl md:text-2xl text-white">
+                    {formatearNumero(tarjeta.number)}
+                  </p>
+                </div>
+              ))}
           </ul>
         )}
 
@@ -111,6 +127,12 @@ const WalletCard = ({ amount }) => {
               onClick={handleTrans}
               type={"button"}
             />
+            {showInsufficientBalanceModal && (
+              <AlertSaldo
+                handleButtonCloseView={handleButtonCloseView}
+                handleButtonAbonarView={handleButtonAbonarView}
+              />
+            )}
           </div>
         </div>
       </div>
