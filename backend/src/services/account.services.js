@@ -51,11 +51,17 @@ class AccountServices {
             if (!account) {
                 throw next(new AppError('user has no active account', 404));
             }
+            console.log({
+                number,
+                type: 'debit',
+                security_code,
+                AccountId: account.id,
+            });
 
             const card = await db.Cards.findOne({
                 where: {
                     number,
-                    type: 'debit',
+                    type: 'debito',
                     security_code,
                     AccountId: account.id,
                 },

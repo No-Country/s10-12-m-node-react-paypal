@@ -20,7 +20,7 @@ exports.rechargeCard = catchAsync(async (req, res, next) => {
     res.status(200).json({
         status: 'success',
         message: 'haz recargado tu cuenta',
-        charge,
+        charge: charge.TransactionDetail,
     });
 });
 

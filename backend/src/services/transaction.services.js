@@ -68,7 +68,7 @@ class TransactionServices {
                 },
             });
 
-            return { TransactionDetail, receivingUser };
+            return { TransactionDetail, receivingUser, transaction };
         } catch (error) {
             throw new Error(error);
         }
