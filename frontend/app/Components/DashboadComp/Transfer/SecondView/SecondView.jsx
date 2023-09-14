@@ -5,7 +5,7 @@ import { BsShop } from 'react-icons/bs';
 import ButtonDashCompTr from '../button';
 import { AuthContext } from '@/app/context/auth-context';
 import Link from 'next/link';
-import TransferApi from '../../api/TransferApi';
+import TransferApi from '../../api/TransfertoApi';
 
 function SecondView({ formData, handleButtonClick, handleButtonSecondClick, updateFormData, userdata }) {
   const user1 = userdata ? userdata.user : {};
