@@ -18,7 +18,6 @@ export function useForm() {
         setFormData(data);
       };
     
-console.log("FormData", formData)
 
     return {
         formData,

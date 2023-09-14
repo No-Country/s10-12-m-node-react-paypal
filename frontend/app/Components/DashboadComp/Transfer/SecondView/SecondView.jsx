@@ -44,7 +44,7 @@ function SecondView({ formData, handleButtonClick, handleButtonSecondClick, upda
               {userdata ? user1.name : 'No Hay Usuario Valido'}
               </h3>
           
-                <h4 className='text-xl text-Grises/600 opacity-70'> {userdata ? user1.nickName : ''}</h4>
+                <h4 className='text-xl text-Grises/600 opacity-70'> @{userdata ? user1.nickName : ''}</h4>
            
             </div>
           </div>

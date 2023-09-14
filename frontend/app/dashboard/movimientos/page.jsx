@@ -13,7 +13,7 @@ import { formatearFecha, traducirTipo, signo } from "./configuracionData";
 function Movimientos() {
   const router = useRouter();
   const authContext = useContext(AuthContext);
-  const userId = authContext.user.id;
+  const userId = authContext.user?.id;
   const [movimientosFiltrados, setMovimientosFiltrados] = useState([]);
   const [filtro, setFiltro] = useState("todos");
   const [loading, setLoading] = useState(true);

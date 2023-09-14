@@ -63,7 +63,6 @@ function TransferComp() {
         setIsNicknameConfirmed(true);
       } else {
         const data = await response.json();
-        console.log("Transferencia: ", data)
 
         setUserData(null);
         setIsNicknameConfirmed(false);

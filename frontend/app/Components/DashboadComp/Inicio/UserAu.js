@@ -14,7 +14,7 @@ export function useCompDashboardInicioState() {
 
   useEffect(() => {
     setIsUserAuthenticated(authContext.isUserAuthenticated());
-    setText(isUserAuthenticated ? `Hola, ${user.lastName}` : '');
+    setText(isUserAuthenticated ? `Hola, ${user.name}` : '');
 
     if (!authContext.isUserAuthenticated()) {
       router.push('/LoginPage');
